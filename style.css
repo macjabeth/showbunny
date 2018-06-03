@@ -1,20 +1,43 @@
 body {
   background-color: whitesmoke;
+  font-family: 'Raleway', sans-serif;
+
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+}
+
+.banner {
+  font-family: 'Fascinate Inline', cursive;
+  font-size: 80px;
+  margin: 0;
 }
 
 .search-form {
   width: 50%;
-  margin: auto;
+  margin: 0 auto;
   padding: 10px;
+
 }
 
 #search-box {
-  border-radius: 10px;
-  padding-left: 5px;
+  border-radius: 20px;
   outline-style: none;
-  background-color: azure;
+  background-color: white;
   border-color: ghostwhite;
-  width: 80%;
+  width: 100%;
+  font-size: 20px;
+  padding: 5px;
+  padding-left: 15px;
+  margin-bottom: 10px
 }
 
 .hidden {
@@ -28,6 +51,7 @@ body {
 #search-results {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .search-result {
