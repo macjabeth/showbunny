@@ -4,20 +4,33 @@ let searchButton = document.getElementById('search-button')
 
 const API_KEY = 'fa4fa1ba075a48db1aeb756f4343bc23'
 
+function showResultInfo(card) {
+  let html = `
+    <div id="infoModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+      </div>
+    </div>
+  `
+}
+
 function buildResultCard(data, category) {
   let card = document.createElement('li')
   let image = data.poster_path ? 'https://image.tmdb.org/t/p/w200' + data.poster_path
                                : 'http://via.placeholder.com/200x300'
   let html = `
     <img src="${image}">
-    <div class="container">
-      <h4><b>${category === 'movie' ? data.title : data.name}</b></h4>
-      <p>${data.overview}</p>
-    </div>
   `
 
   card.classList.add('search-result')
   card.innerHTML = html
+  card.data = data
+  card.category = category
+
+  card.addEventListener('click', (event) => {
+    event.preventDefault()
+    showResultInfo(card)
+  })
 
   searchResults.appendChild(card)
 }

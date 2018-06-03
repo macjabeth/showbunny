@@ -9,7 +9,9 @@ body {
 }
 
 #search-box {
-  border-radius: 5px;
+  border-radius: 10px;
+  padding-left: 5px;
+  outline-style: none;
   background-color: azure;
   border-color: ghostwhite;
   width: 80%;
@@ -23,26 +25,28 @@ body {
   display: inline-block;
 }
 
+#search-results {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .search-result {
-  margin-bottom: 10px;
+  margin: 5px;
   list-style-type: none;
   /* Add shadows to create the "card" effect */
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-  border-radius: 5px; /* 5px rounded corners */
+  border-radius: 10px; /* 5px rounded corners */
   display: flex;
 }
 
 .search-result img {
-  margin-right: 15px;
   border-radius: 5px 5px 0 0;
 }
 
 /* On mouse-over, add a deeper shadow */
-.search-result:hover {
+.search-result img:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
-.containers {
+/* .containers {
   padding: 2px 16px;
-}
+} */
