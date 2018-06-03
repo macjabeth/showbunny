@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +9,12 @@
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css?family=Archivo+Black|Fascinate+Inline|Raleway" rel="stylesheet">
 </head>
+
 <body>
   <header class="header">
-    <img src="easter-bunny.png" class="logo"/>
+    <img src="easter-bunny.png" class="logo" />
     <h1 class="banner">Showbunny</h1>
-    <img src="easter-bunny.png" class="logo"/>
+    <img src="easter-bunny.png" class="logo" />
   </header>
   <section>
     <form class="search-form">
@@ -26,7 +28,27 @@
   </section>
   <section>
     <ul id="search-results"></ul>
+    <div id="info-modal" class="modal">
+      <div class="modal-content">
+        <div class="info-top">
+          <span class="modal-close">&times;</span>
+          <img id="info-backdrop" class="info-backdrop"></img>
+          <h4 class="info-title" id="info-title"></h4>
+          <span id="info-date"></span>
+        </div>
+        <div class="info-middle">
+          <span class="info-rating" id="info-rating"></span>
+          <span class="info-network" id="info-network"></span>
+          <span class="info-genre" id="info-genre"></span>
+        </div>
+        <div class="info-bottom">
+          <div class="info-seasons" id="info-seasons"></div>
+          <div class="info-overview" id="info-overview"></div>
+        </div>
+      </div>
+    </div>
   </section>
   <script src="app.js"></script>
 </body>
+
 </html>
