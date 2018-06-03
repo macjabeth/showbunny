@@ -1,6 +1,6 @@
-let searchbox = document.getElementById('search-box');
-let searchbutton = document.getElementById('search-button')
+let searchBox = document.getElementById('search-box');
 let searchResults = document.getElementById('search-results')
+let searchButton = document.getElementById('search-button')
 
 const API_KEY = 'fa4fa1ba075a48db1aeb756f4343bc23'
 
@@ -22,9 +22,10 @@ function buildResultCard(data, category) {
   searchResults.appendChild(card)
 }
 
-searchbutton.addEventListener('click', (event) => {
+searchButton.addEventListener('click', (event) => {
   event.preventDefault()
-  let text = searchbox.value
+  console.log(event)
+  let text = searchBox.value
   let category = document.querySelector('input[name="search-category"]:checked').value;
   let searchQuery = `https://api.themoviedb.org/3/search/${category}?api_key=${API_KEY}&query=${text}`
 
