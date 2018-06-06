@@ -2,7 +2,7 @@
 const searchForm = document.getElementById('search-form')
 const searchResults = document.getElementById('search-results')
 const searchPagination = document.getElementById('search-pagination')
-// const infoDialog = document.getElementById('info-dialog')
+const mediaDialog = document.getElementById('media-dialog')
 
 // access data
 const API_KEY = 'fa4fa1ba075a48db1aeb756f4343bc23'
@@ -58,7 +58,7 @@ function createResultCard(result) {
   const img = document.createElement('img')
   img.src = result.poster_path ? `https://image.tmdb.org/t/p/w200${result.poster_path}` : 'http://via.placeholder.com/200x300'
 
-  // handle click event
+  // handle click event - media dialog events will go here
   li.addEventListener('click', () => console.log(result))
 
   // append the children
