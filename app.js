@@ -1,74 +1,112 @@
-let searchBox = document.getElementById('search-box');
-let searchResults = document.getElementById('search-results')
-let searchButton = document.getElementById('search-button')
+// html elements
+const searchForm = document.getElementById('search-form')
+const searchResults = document.getElementById('search-results')
+const searchPagination = document.getElementById('search-pagination')
+// const infoDialog = document.getElementById('info-dialog')
 
+// access data
 const API_KEY = 'fa4fa1ba075a48db1aeb756f4343bc23'
+let searchQuery, searchCategory
 
-function showResultInfo(card) {
-  let data = card.data
-  let category = card.category
-  let image = data.backdrop_path ? 'https://image.tmdb.org/t/p/w300' + data.backdrop_path : 'http://via.placeholder.com/300x300'
-  let title = category == 'tv' ? data.name : data.title
-  let original_date = category === 'tv' ? data.first_air_date : data.release_date
-  let overview = data.overview
+// event listeners
+searchForm.addEventListener('submit', handleSearch)
 
-  document.getElementById('info-backdrop').src = image
-  document.getElementById('info-title').innerHTML = title
-  document.getElementById('info-date').innerHTML = original_date
+// function handlers
+function handleSearch(event) {
+  const query = document.getElementById('search-bar').value
+  const category = document.querySelector('input[name="search-category"]:checked').value
 
-  let modal = document.getElementById('info-modal')
-  modal.style.display = 'block'
+  fetchData(query, category)
 
-  let span = document.getElementsByClassName('modal-close')[0]
-  span.addEventListener('click', () => {
-    modal.style.display = 'none'
-  })
-
-  window.addEventListener('click', (event) => {
-    if (event.target == modal) {
-      modal.style.display = 'none'
-    }
-  })
-}
-
-function buildResultCard(data, category) {
-  let card = document.createElement('li')
-  let image = data.poster_path ? 'https://image.tmdb.org/t/p/w200' + data.poster_path
-                               : 'http://via.placeholder.com/200x300'
-  let html = `
-    <img src="${image}">
-  `
-
-  card.classList.add('search-result')
-  card.innerHTML = html
-  card.data = data
-  card.category = category
-
-  card.addEventListener('click', (event) => {
-    event.preventDefault()
-    showResultInfo(card)
-  })
-
-  searchResults.appendChild(card)
-}
-
-searchButton.addEventListener('click', (event) => {
   event.preventDefault()
-  console.log(event)
+}
 
-  // clear the results first so they aren't appended to the bottom
+function fetchData(query, category, page = 1) {
+  if (query === '') {
+    alert('Bad bunny! You must add a search query.')
+  } else {
+    searchQuery = `https://api.themoviedb.org/3/search/${category}?api_key=${API_KEY}&query=${query}&page=${page}`
+    searchCategory = category
+    fetch(searchQuery)
+      .then((response) => response.json())
+      .then((json) => handleSearchResults(json))
+      .catch((reason) => console.error(reason))
+  }
+}
+
+function handleSearchResults(json) {
+  console.log(json)
+
+  // clear existing search results
   searchResults.innerHTML = ''
 
-  let text = searchBox.value
-  let category = document.querySelector('input[name="search-category"]:checked').value;
-  let searchQuery = `https://api.themoviedb.org/3/search/${category}?api_key=${API_KEY}&query=${text}`
+  // display results
+  json.results.forEach((result) => {
+    searchResults.appendChild(createResultCard(result))
+  })
 
-  fetch(searchQuery)
-    .then((response) => response.json())
-    .then((json) => {
-      console.log(json)
-      json.results.forEach((result) => {
-        buildResultCard(result, category)
-      })
+  createPagination(json.total_pages, json.page)
+}
+
+function createResultCard(result) {
+  const li = document.createElement('li')
+
+  // set class
+  li.className = 'search-result'
+
+  // create image
+  const img = document.createElement('img')
+  img.src = result.poster_path ? `https://image.tmdb.org/t/p/w200${result.poster_path}` : 'http://via.placeholder.com/200x300'
+
+  // handle click event
+  li.addEventListener('click', () => console.log(result))
+
+  // append the children
+  li.appendChild(img)
+
+  return li
+}
+
+function createPagination(pages, current) {
+  // clear existing search pagination
+  searchPagination.innerHTML = ''
+
+  // add previous page
+  if (current > 1) {
+    const previousPage = document.createElement('a')
+
+    previousPage.innerHTML = '&laquo;'
+    previousPage.addEventListener('click', () => {
+      fetchData(searchQuery, searchCategory, current - 1)
     })
-})
+
+    searchPagination.appendChild(previousPage)
+  }
+
+  // add all pages
+  for (let i = 1; i <= pages; i++) {
+    const link = document.createElement('a')
+
+    if (current === i) link.className = 'active'
+
+    link.textContent = i
+
+    link.addEventListener('click', () => {
+      fetchData(searchQuery, searchCategory, i)
+    })
+
+    searchPagination.appendChild(link)
+  }
+
+  // add next page
+  if (current < pages) {
+    const nextPage = document.createElement('a')
+
+    nextPage.innerHTML = '&raquo;'
+    nextPage.addEventListener('click', () => {
+      fetchData(searchQuery, searchCategory, current + 1)
+    })
+
+    searchPagination.appendChild(nextPage)
+  }
+}

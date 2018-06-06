@@ -5,9 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>ShowBunny</title>
+  <title>Showbunny</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css?family=Archivo+Black|Fascinate+Inline|Raleway" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Archivo+Black|Fascinate+Inline|Raleway">
 </head>
 
 <body>
@@ -16,38 +16,26 @@
     <h1 class="banner">Showbunny</h1>
     <img src="easter-bunny.png" class="logo" />
   </header>
+  <!-- <nav></nav> -->
   <section>
-    <form class="search-form">
-      <input type="text" name="search" id="search-box">
-      <input type="submit" class="hidden" id="search-button">
-      <div class="search-categories">
-        <input type="radio" name="search-category" value="movie" checked>Movie
-        <input type="radio" name="search-category" value="tv">TV
+    <form role="search" id="search-form">
+      <div>
+        <input type="search" name="bunny-search" id="search-bar" placeholder="Search..." aria-label="search for media content">
+      </div>
+      <div id="search-categories">
+        <input type="radio" name="search-category" id="movie-category" value="movie" checked>
+        <label for="movie-category">Movie</label>
+        <input type="radio" name="search-category" id="tv-category" value="tv">
+        <label for="tv-category">TV</label>
       </div>
     </form>
   </section>
   <section>
     <ul id="search-results"></ul>
-    <div id="info-modal" class="modal">
-      <div class="modal-content">
-        <div class="info-top">
-          <span class="modal-close">&times;</span>
-          <img id="info-backdrop" class="info-backdrop"></img>
-          <h4 class="info-title" id="info-title"></h4>
-          <span id="info-date"></span>
-        </div>
-        <div class="info-middle">
-          <span class="info-rating" id="info-rating"></span>
-          <span class="info-network" id="info-network"></span>
-          <span class="info-genre" id="info-genre"></span>
-        </div>
-        <div class="info-bottom">
-          <div class="info-seasons" id="info-seasons"></div>
-          <div class="info-overview" id="info-overview"></div>
-        </div>
-      </div>
-    </div>
+    <div id="search-pagination"></div>
+    <dialog id="info-dialog"></dialog>
   </section>
+  <!-- <footer></footer> -->
   <script src="app.js"></script>
 </body>
 

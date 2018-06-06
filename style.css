@@ -20,13 +20,13 @@ body {
   margin: 0;
 }
 
-.search-form {
+#search-form {
   width: 50%;
   margin: 0 auto;
   padding: 10px;
 }
 
-#search-box {
+#search-bar {
   border-radius: 20px;
   outline-style: none;
   background-color: white;
@@ -38,11 +38,7 @@ body {
   margin-bottom: 10px
 }
 
-.hidden {
-  display: none;
-}
-
-.search-categories {
+#search-categories {
   display: inline-block;
 }
 
@@ -70,45 +66,28 @@ body {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
-/* .containers {
-  padding: 2px 16px;
-} */
-
-/* INFO MODAL */
-
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+#search-pagination {
+  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
-/* Modal Content/Box */
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-}
-
-/* The Close Button */
-.modal-close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.modal-close:hover,
-.modal-close:focus {
+#search-pagination a {
   color: black;
+  float: left;
+  padding: 8px 16px;
   text-decoration: none;
-  cursor: pointer;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+  margin: 0 4px;
+}
+
+#search-pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #4CAF50;
+}
+
+#search-pagination a:hover:not(.active) {
+  background-color: #ddd;
 }
