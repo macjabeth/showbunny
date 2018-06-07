@@ -34,6 +34,8 @@ function fetchData(query, category, page = 1) {
   }
 }
 
+fetchData('bunny', 'movie');
+
 function handleSearchResults(json) {
   console.log(json)
 
