@@ -46,24 +46,61 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  padding: 0;
+  margin: 0 16px;
 }
 
 .search-result {
-  margin: 5px;
+  margin: 8px;
   list-style-type: none;
   /* Add shadows to create the "card" effect */
-  border-radius: 10px; /* 5px rounded corners */
+  border-radius: 5px; /* 5px rounded corners */
   display: flex;
+  flex-direction: column;
   cursor: pointer;
+  overflow: hidden;
+  height: 300px;
+  position: relative;
+  background: black;
+  transition: .3s;
+}
+
+.search-result:hover {
+  box-shadow: 0 13px 20px 0 rgba(0,0,0,0.6);
 }
 
 .search-result img {
-  border-radius: 5px 5px 0 0;
+  /*border-radius: 5px 5px 0 0;*/
 }
 
 /* On mouse-over, add a deeper shadow */
 .search-result img:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3);*/
+}
+
+/* Card info styles */
+.info {
+  background: linear-gradient(to top, rgba(0,0,0,.9) 0%,
+                                      rgba(0,0,0,.8) 40%,
+                                      rgba(0,0,0,.5) 80%,
+                                      rgba(0,0,0,.0) 100%);
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  transition: .3s;
+  position: absolute;
+  width: 100%;
+  height: 0;
+  bottom: -10px;
+  padding-top: 10px;
+}
+
+.info > span {
+  display: block;
+}
+
+.peek {
+  height: 55px;
 }
 
 #search-pagination {

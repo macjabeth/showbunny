@@ -64,7 +64,35 @@ function createResultCard(result) {
   // append the children
   li.appendChild(img)
 
+  // Add title and year info
+  const info = document.createElement('div');
+  const title = document.createElement('span');
+  const year = document.createElement('span');
+
+  title.textContent = result.title || result.name;
+  const year_text = result.release_date || result.first_air_date || '';
+  year.textContent = year_text.split('-')[0];
+
+  info.classList.add('info');
+  title.classList.add('info-title');
+  year.classList.add('info-year');
+
+  info.appendChild(title);
+  info.appendChild(year);
+
+  li.appendChild(info);
+
+  li.addEventListener('mouseover', showInfo);
+  li.addEventListener('mouseleave', hideInfo);
   return li
+}
+
+function showInfo() {
+  this.getElementsByClassName('info')[0].classList.add('peek');
+}
+
+function hideInfo() {
+  this.getElementsByClassName('info')[0].classList.remove('peek');
 }
 
 function createPagination(pages, current) {
