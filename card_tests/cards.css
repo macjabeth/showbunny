@@ -1,0 +1,64 @@
+
+h2 {
+	font-family: 'Fascinate Inline', cursive;
+	font-size: 50px;
+	margin: 10px 15px;
+}	
+
+.cards {
+	display: flex;
+	justify-content: space-evenly;
+	margin-bottom: 50px;
+}
+
+.card {
+	width: 200px;
+	border-radius: 10px;
+	overflow: hidden;
+	border: solid black 3px;
+	transition: .3s;
+}
+
+.card:hover {
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
+}
+
+.image-container {
+	height: 300px;
+	width: 200px;
+}
+
+.info {
+	font-family: 'Raleway', sans-serif;
+	padding: 5px 10px;
+	border-top: solid black 3px;
+	text-align: center;
+	background: black;
+	color: white;
+}
+
+.year {
+	display: block;
+}
+
+.fonts {	
+	font-family: 'Archivo Black', sans-serif;
+}
+
+/*Style 2*/
+
+.info-two {
+	position: relative;
+    bottom: 5px;
+    background: red;
+    text-align: center;
+    height: 5px;
+    overflow: hidden;
+    transition: 1s;
+    cursor: pointer;
+}
+
+.info-two:hover {
+	height: 40px;
+	bottom: 40px;
+}
