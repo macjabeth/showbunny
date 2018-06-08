@@ -6,7 +6,7 @@ const mediaDialog = document.getElementById('media-dialog');
 
 // access data
 const API_KEY = 'fa4fa1ba075a48db1aeb756f4343bc23';
-let searchQuery, searchCategory;
+const Query = {};
 
 // event listeners
 searchForm.addEventListener('submit', handleSearch);
@@ -25,9 +25,9 @@ function fetchData(query, category, page = 1) {
   if (query === '') {
     alert('Bad bunny! You must add a search query.');
   } else {
-    searchQuery = `https://api.themoviedb.org/3/search/${category}?api_key=${API_KEY}&query=${query}&page=${page}`;
-    searchCategory = category;
-    fetch(searchQuery)
+    Query.search = `https://api.themoviedb.org/3/search/${category}?api_key=${API_KEY}&query=${query}&page=${page}`;
+    Query.category = category;
+    fetch(Query.search)
       .then((response) => response.json())
       .then((json) => handleSearchResults(json))
       .catch((reason) => console.error(reason));
@@ -56,14 +56,14 @@ function createResultCard(result) {
   const li = document.createElement('li');
 
   // set class
-  li.className = 'search-result';
+  li.classList.add('search-result');
 
   // create image
   const img = document.createElement('img');
   img.src = result.poster_path ? `https://image.tmdb.org/t/p/w200${result.poster_path}` : 'http://via.placeholder.com/200x300';
 
   // handle click event - media dialog events will go here
-  li.addEventListener('click', () => console.log(result));
+  li.addEventListener('click', () => createDialog(result));
 
   // append the children
   li.appendChild(img);
@@ -111,7 +111,7 @@ function createPagination(pages, current) {
 
     previousPage.innerHTML = '&laquo;';
     previousPage.addEventListener('click', () => {
-      fetchData(searchQuery, searchCategory, current - 1);
+      fetchData(Query.search, Query.category, current - 1);
     });
 
     searchPagination.appendChild(previousPage);
@@ -121,12 +121,12 @@ function createPagination(pages, current) {
   for (let i = 1; i <= pages; i++) {
     const link = document.createElement('a');
 
-    if (current === i) link.className = 'active';
+    if (current === i) link.classList.add('active');
 
     link.textContent = i;
 
     link.addEventListener('click', () => {
-      fetchData(searchQuery, searchCategory, i);
+      fetchData(Query.search, Query.category, i);
     });
 
     searchPagination.appendChild(link);
@@ -138,9 +138,34 @@ function createPagination(pages, current) {
 
     nextPage.innerHTML = '&raquo;';
     nextPage.addEventListener('click', () => {
-      fetchData(searchQuery, searchCategory, current + 1);
+      fetchData(Query.search, Query.category, current + 1);
     });
 
     searchPagination.appendChild(nextPage);
   }
+}
+
+function createDialog(result) {
+  console.log(result);
+
+  // insert data
+  document.getElementById('media-backdrop').src = result.backdrop_path ? `https://image.tmdb.org/t/p/w500${result.backdrop_path}` : 'http://via.placeholder.com/500x300';
+
+  document.getElementById('media-rating').textContent = result.vote_average;
+
+  document.getElementById('media-overview').textContent = result.overview;
+
+  // add event listeners
+  document.getElementById('media-close').addEventListener('click', () => {
+    mediaDialog.close();
+  });
+
+  window.addEventListener('click', (event) => {
+    if (event.target == mediaDialog) {
+      mediaDialog.close();
+    }
+  });
+
+  // display dialog
+  mediaDialog.showModal();
 }

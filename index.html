@@ -33,7 +33,29 @@
   <section>
     <ul id="search-results"></ul>
     <div id="search-pagination"></div>
-    <dialog id="media-dialog"></dialog>
+    <dialog id="media-dialog">
+      <span id="media-close">&times;</span>
+      <div id="media-content">
+        <div id="media-top">
+          <img src="#" id="media-backdrop">
+          <div>
+            <span id="media-title"></span>
+            <span id="media-status"></span>
+          </div>
+        </div>
+        <div id="media-middle">
+          <span id="media-rating"></span>
+          <span id="media-network"></span>
+          <span id="media-genre"></span>
+        </div>
+        <div id="media-bottom">
+          <div id="media-stream"></div>
+          <div id="media-details">
+            <p id="media-overview"></p>
+          </div>
+        </div>
+      </div>
+    </dialog>
   </section>
   <!-- <footer></footer> -->
   <script src="app.js"></script>
