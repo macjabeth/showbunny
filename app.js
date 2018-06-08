@@ -145,21 +145,48 @@ function createPagination(pages, current) {
   }
 }
 
+const roundHalf = (num) => Math.round(num * 2) / 2;
+
 function createDialog(result) {
   console.log(result);
 
-  // insert data
+  // add backdrop
   document.getElementById('media-backdrop').src = result.backdrop_path ? `https://image.tmdb.org/t/p/w500${result.backdrop_path}` : 'http://via.placeholder.com/500x300';
 
-  document.getElementById('media-rating').textContent = result.vote_average;
+  // select media rating
+  const mediaRating = document.getElementById('media-rating');
 
+  // clear existing ratings
+  while (mediaRating.firstChild) {
+    mediaRating.removeChild(mediaRating.firstChild);
+  }
+
+  // add ze stars
+  function addStar(cls) {
+    let icon = document.createElement('i');
+    icon.className = cls;
+    mediaRating.appendChild(icon);
+  }
+
+  const stars = roundHalf(result.vote_average * 0.5);
+
+  for (let i = 1; i <= 5; i++) {
+    if (i <= stars) {
+      addStar('fas fa-star');
+    } else if (i - 0.5 === stars) {
+      addStar('fas fa-star-half');
+    }
+  }
+
+  // add overview
   document.getElementById('media-overview').textContent = result.overview;
 
-  // add event listeners
+  // close dialog when clicking the top-right X
   document.getElementById('media-close').addEventListener('click', () => {
     mediaDialog.close();
   });
 
+  // close dialog when clicking outside the element
   window.addEventListener('click', (event) => {
     if (event.target == mediaDialog) {
       mediaDialog.close();
