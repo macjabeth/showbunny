@@ -4,9 +4,14 @@ class BunnyChan {
     this.key = key;
   }
 
-  // types: token, session
-  async authenticate(type) {
-    const response = await fetch(`https://api.themoviedb.org/3/authentication/${type}/new?api_key=${this.key}`);
+  async createRequestToken() {
+    const response = await fetch(`https://api.themoviedb.org/3/authentication/token/new?api_key=${this.key}`);
+    const data = await response.json();
+    return data;
+  }
+
+  async createSession(token) {
+    const response = await fetch(`https://api.themoviedb.org/3/authentication/token/new?api_key=${this.key}&request_token=${token}`);
     const data = await response.json();
     return data;
   }
