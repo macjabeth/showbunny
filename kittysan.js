@@ -10,7 +10,7 @@ class KittySan {
     this.mediaStatus = document.getElementById('media-status');
     this.mediaRating = document.getElementById('media-rating');
     this.mediaNetwork = document.getElementById('media-network');
-    this.mediaGenres = document.getElementById('media-genres');
+    this.mediaGenres = document.getElementsByClassName('genres')[0];
     this.mediaStream = document.getElementById('media-stream');
     this.mediaDetails = document.getElementById('media-details');
     this.mediaOverview = document.getElementById('media-overview');
@@ -148,13 +148,13 @@ class KittySan {
       .filter(genre => result.genre_ids.includes(genre.id))
       .forEach(genre => {
         // create genre element
-        const span = document.createElement('span');
+        const li = document.createElement('li');
         // add classes
-        span.classList.add('genre');
+        li.classList.add('genre');
         // add text content
-        span.textContent = genre.name;
+        li.textContent = genre.name;
         // add genre element to genres div
-        this.mediaGenres.appendChild(span);
+        this.mediaGenres.appendChild(li);
       });
     // add overview
     this.mediaOverview.textContent = result.overview;
