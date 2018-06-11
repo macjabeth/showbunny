@@ -142,18 +142,18 @@ class KittySan {
       this.mediaGenres.removeChild(this.mediaGenres.firstChild);
     }
     // add genres
-    result.genre_ids.forEach(genre => {
-      if ((bunny.category === 'movie' && bunny.movie_genres[genre]) || (bunny.category === 'tv' && bunny.tv_genres[genre])) {
+    bunny[bunny.category + '_genres'].forEach(genre => {
+      if (result.genre_ids.includes(genre.id)) {
         // create genre element
         const span = document.createElement('span');
         // add classes
         span.classList.add('genre');
         // add text content
-        span.textContent = bunny.category === 'movie' ? bunny.movie_genres[genre].name : bunny.tv_genres[genre].name;
+        span.textContent = genre.name;
         // add genre element to genres div
         this.mediaGenres.appendChild(span);
       }
-    })
+    });
     // add overview
     this.mediaOverview.textContent = result.overview;
     // handle dialog close event
