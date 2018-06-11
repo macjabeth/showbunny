@@ -67,6 +67,10 @@ input[type="radio"] + label {
   justify-content: center;
 }
 
+input[type="radio"] + label:hover {
+    background-color: grey;
+}
+
 input[type="radio"] + label:last-child {
   border-radius: 0 20px 20px 0;
   padding-right: 10px;
