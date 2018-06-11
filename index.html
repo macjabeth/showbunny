@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Showbunny</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Archivo+Black|Fascinate+Inline|Raleway">
+<link href="https://fonts.googleapis.com/css?family=Archivo+Black|Fascinate+Inline|Raleway|Oswald" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 </head>
 
@@ -35,25 +35,46 @@
     <ul id="search-results"></ul>
     <div id="search-pagination"></div>
     <dialog id="media-dialog">
-      <span id="media-close">&times;</span>
+  
       <div id="media-content">
-        <div id="media-top">
-          <img src="#" id="media-backdrop">
-          <div>
-            <span id="media-title"></span>
-            <span id="media-status"></span>
+        
+        <div id="media-header"> 
+          <div class="close-btn">
+            <i class="fas fa-times" id="media-close"></i>
           </div>
+          <img id="media-backdrop">
         </div>
-        <div id="media-middle">
-          <span id="media-rating"></span>
-          <span id="media-network"></span>
-          <div id="media-genres"></div>
-        </div>
-        <div id="media-bottom">
-          <div id="media-stream"></div>
+
+        <div id="media-text">
+          <div class="media-info">
+            <div class="title-status">
+              <h2 id="media-title"></h2>
+              <div id="media-status">Status?</div>
+            </div>  
+            <span id="media-rating"></span>
+          </div>          
+          
+          <div id="media-genres">
+            <h3 class="genre-header">Genres:</h3>
+            <ul class="genres">
+              <li class="genre"></li>
+            </ul>
+          </div>
+
           <div id="media-details">
+            <h2>Info</h2>
             <p id="media-overview"></p>
           </div>
+
+          <div id="media-stream">
+            <h3 id="stream-header">Stream Now!</h3>
+            <div class="stream-icons">
+              <i class="fab fa-amazon stream-icon"></i>
+              <i class="fab fa-youtube stream-icon"></i>
+              <i class="fab fa-vimeo-square stream-icon"></i>
+            </div>
+          </div>
+
         </div>
       </div>
     </dialog>
