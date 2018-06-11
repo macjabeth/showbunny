@@ -19,6 +19,16 @@ document.getElementById('search-form').addEventListener('submit', (event) => {
   event.preventDefault();
 });
 
+// Toggle categories with tab
+document.getElementById('search-bar').addEventListener('keydown', (event) => {
+  if (event.code === 'Tab') {
+    // next category
+    kitty.toggleCategory();
+    // prevent tab from moving to next element
+    event.preventDefault();
+  }
+});
+
 function fetchData() {
   bunny.fetchData()
     .then(data => kitty.paintSearchResults(data))

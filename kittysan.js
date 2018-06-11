@@ -1,6 +1,7 @@
 // kittysan handles ui logic
 class KittySan {
   constructor() {
+    this.searchCategories = document.getElementsByName('search-category');
     this.searchResults = document.getElementById('search-results');
     this.searchPagination = document.getElementById('search-pagination');
     this.mediaDialog = document.getElementById('media-dialog');
@@ -14,6 +15,17 @@ class KittySan {
     this.mediaStream = document.getElementById('media-stream');
     this.mediaDetails = document.getElementById('media-details');
     this.mediaOverview = document.getElementById('media-overview');
+  }
+
+  toggleCategory() {
+    for (let i = 0; i < this.searchCategories.length; i++) {
+      const element = this.searchCategories[i];
+      if (element.checked) {
+        element.checked = false;
+        (this.searchCategories[i + 1] || this.searchCategories[0]).checked = true;
+        break;
+      }
+    }
   }
 
   paintSearchResults(data) {
@@ -57,7 +69,7 @@ class KittySan {
       li.addEventListener('mouseleave', () => info.classList.remove('peek'));
       // add list item to results
       this.searchResults.appendChild(li);
-    })
+    });
 
     // clear existing search pagination
     while (this.searchPagination.firstChild) {
@@ -74,7 +86,7 @@ class KittySan {
       previousPage.addEventListener('click', () => {
         bunny.changeQuery(bunny.query, bunny.category, bunny.page - 1);
         fetchData();
-      })
+      });
       // add link to search pagination
       this.searchPagination.appendChild(previousPage);
     }
@@ -106,7 +118,7 @@ class KittySan {
       nextPage.addEventListener('click', () => {
         bunny.changeQuery(bunny.query, bunny.category, bunny.page + 1);
         fetchData();
-      })
+      });
       // add link to search pagination
       this.searchPagination.appendChild(nextPage);
     }
@@ -127,7 +139,7 @@ class KittySan {
       const icon = document.createElement('i');
       icon.className = cls;
       this.mediaRating.appendChild(icon);
-    }
+    };
     // add title
     this.mediaTitle.textContent = result.title;
     // add ze stars
