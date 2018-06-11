@@ -142,8 +142,9 @@ class KittySan {
       this.mediaGenres.removeChild(this.mediaGenres.firstChild);
     }
     // add genres
-    bunny[bunny.category + '_genres'].forEach(genre => {
-      if (result.genre_ids.includes(genre.id)) {
+    bunny[bunny.category + '_genres']
+      .filter(genre => result.genre_ids.includes(genre.id))
+      .forEach(genre => {
         // create genre element
         const span = document.createElement('span');
         // add classes
@@ -152,8 +153,7 @@ class KittySan {
         span.textContent = genre.name;
         // add genre element to genres div
         this.mediaGenres.appendChild(span);
-      }
-    });
+      });
     // add overview
     this.mediaOverview.textContent = result.overview;
     // handle dialog close event
