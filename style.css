@@ -33,8 +33,7 @@ body {
   border-color: ghostwhite;
   width: 100%;
   font-size: 20px;
-  padding: 5px;
-  padding-left: 15px;
+  padding: 5px 5px 5px 15px;
   margin-bottom: 10px
 }
 
@@ -66,7 +65,7 @@ body {
 }
 
 .search-result:hover {
-  box-shadow: 0 13px 20px 0 rgba(0,0,0,0.6);
+  box-shadow: 0 13px 20px 0 rgba(0, 0, 0, 0.6);
 }
 
 .search-result img {
@@ -80,18 +79,18 @@ body {
 
 /* Card info styles */
 .info {
-  background: linear-gradient(to top, rgba(0,0,0,.9) 0%,
-                                      rgba(0,0,0,.8) 40%,
-                                      rgba(0,0,0,.5) 80%,
-                                      rgba(0,0,0,.0) 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, .9) 0%,
+                                      rgba(0, 0, 0, .8) 40%,
+                                      rgba(0, 0, 0, .5) 80%,
+                                      rgba(0, 0, 0, .0) 100%);
   color: white;
   font-family: 'Raleway', sans-serif;
   text-align: center;
   transition: .3s;
   position: absolute;
   width: 100%;
-/*  height: 0;
-  bottom: -10px;*/
+  /*  height: 0;
+    bottom: -10px;*/
   padding: 10px 0;
   bottom: -30%;
 }
@@ -149,9 +148,9 @@ body {
 
 #media-close:hover,
 #media-close:focus {
-    color: #aaa;
-    text-decoration: none;
-    cursor: pointer;
+  color: #aaa;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 #media-close:active {
@@ -169,7 +168,7 @@ body {
 
 .title-status {
   display: flex;
-  align-items: : baseline;
+  align-items: baseline;
   justify-content: space-between;
 }
 
@@ -180,7 +179,7 @@ body {
   /*padding: 10px 0;*/
   font-size: 20px;
   margin: 0;
-  font-family: Oswald;
+  font-family: Oswald, sans-serif;
 }
 
 #media-status {
@@ -197,7 +196,7 @@ body {
 
 h2 {
   margin: 10px 0;
-  font-family: Oswald;
+  font-family: Oswald, sans-serif;
   font-size: 20px;
 }
 
@@ -243,8 +242,7 @@ p {
 }
 
 #media-stream {
-  margin: 10px 0;
-  margin-top: 20px;
+  margin: 20px 0 10px;
 }
 
 .stream-icons {
@@ -258,6 +256,5 @@ p {
 }
 
 #media-text {
-  padding: 15px;
-  padding-bottom: 0;
+  padding: 15px 15px 0;
 }
