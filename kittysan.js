@@ -141,7 +141,7 @@ class KittySan {
       this.mediaRating.appendChild(icon);
     };
     // add title
-    this.mediaTitle.textContent = result.title;
+    this.mediaTitle.textContent = result.title || result.name;
     // add ze stars
     const stars = roundHalf(result.vote_average * 0.5);
     for (let i = 1; i <= 5; i++) {
