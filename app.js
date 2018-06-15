@@ -11,10 +11,8 @@ document.getElementById('search-form').addEventListener('submit', (event) => {
   // capture form data
   const query = document.getElementById('search-bar').value;
   const category = document.querySelector('input[name="search-category"]:checked').value;
-  // change current search query
-  bunny.changeQuery(query, category);
-  // fetch and display results
-  fetchData();
+  // change current search query & display results
+  bunny.changeQuery(query, category, 1, true);
   // prevent page reload
   event.preventDefault();
 });

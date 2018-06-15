@@ -160,6 +160,7 @@ input[type="radio"]:checked + label:active {
 
 #search-pagination a {
   color: black;
+  cursor: pointer;
   float: left;
   padding: 8px 16px;
   text-decoration: none;
@@ -172,6 +173,10 @@ input[type="radio"]:checked + label:active {
   background-color: #4CAF50;
   color: white;
   border: 1px solid #4CAF50;
+}
+
+#search-pagination a:hover {
+  background-color: hsl(120, 82%, 45%);
 }
 
 #search-pagination a:hover:not(.active) {
