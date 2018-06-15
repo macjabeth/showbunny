@@ -1,19 +1,20 @@
-// bunnychan handles api logic
+// handles API logic
 class BunnyChan {
   constructor() {
-    this.key = 'fa4fa1ba075a48db1aeb756f4343bc23';
+    this.tmdb_key = 'fa4fa1ba075a48db1aeb756f4343bc23';
+    this.spider_key = '4VQ6XG7DQ6o6EhxC';
     this.query = 'bunny';
     this.category = 'movie';
     this.page = 1;
     this.movie_genres = [];
     this.tv_genres = [];
 
-    // fetch movie genres
+    // fetch the movie genres
     this.fetchMovieGenres()
       .then(data => this.movie_genres = data.genres)
       .catch(err => console.error(err));
 
-    // fetch tv genres
+    // fetch the tv genres
     this.fetchTVGenres()
       .then(data => this.tv_genres = data.genres)
       .catch(err => console.error(err));
@@ -21,12 +22,12 @@ class BunnyChan {
 
   // user authentication
   async createRequestToken() {
-    const response = await fetch(`https://api.themoviedb.org/3/authentication/token/new?api_key=${this.key}`);
+    const response = await fetch(`https://api.themoviedb.org/3/authentication/token/new?api_key=${this.tmdb_key}`);
     return await response.json();
   }
 
   async createSession(token) {
-    const response = await fetch(`https://api.themoviedb.org/3/authentication/token/new?api_key=${this.key}&request_token=${token}`);
+    const response = await fetch(`https://api.themoviedb.org/3/authentication/token/new?api_key=${this.tmdb_key}&request_token=${token}`);
     return await response.json();
   }
 
@@ -34,20 +35,29 @@ class BunnyChan {
     window.open(`https://www.themoviedb.org/authenticate/${token}`, '_blank');
   }
 
-  // fetching data
+  // queries and genres
   async fetchData() {
-    const response = await fetch(`https://api.themoviedb.org/3/search/${this.category}?api_key=${this.key}&query=${this.query}&page=${this.page}`);
+    const response = await fetch(`https://api.themoviedb.org/3/search/${this.category}?api_key=${this.tmdb_key}&query=${this.query}&page=${this.page}`);
     return await response.json();
   }
 
   async fetchMovieGenres() {
-    const response = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${this.key}&language=en-US`);
+    const response = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${this.tmdb_key}&language=en-US`);
     return await response.json();
   }
 
   async fetchTVGenres() {
-    const response = await fetch(`https://api.themoviedb.org/3/genre/tv/list?api_key=${this.key}&language=en-US`);
+    const response = await fetch(`https://api.themoviedb.org/3/genre/tv/list?api_key=${this.tmdb_key}&language=en-US`);
     return await response.json();
+  }
+
+  // streaming videos
+  getMovieStream(id) {
+    return `https://videospider.in/getvideo?key=${this.spider_key}&video_id=${id}&tmdb=1`;
+  }
+
+  getTVStream(id, season, episode) {
+    return `https://videospider.in/getvideo?key=${this.spider_key}&video_id=${id}&tmdb=1&tv=1&s=${season}&e=${episode}`;
   }
 
   // controllers

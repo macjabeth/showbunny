@@ -27,7 +27,7 @@
         <label for="movie-category"><span>Movie</span></label>
         <input type="radio" name="search-category" id="tv-category" value="tv">
         <label for="tv-category"><span>TV</span></label>
-        <!-- </div> --> 
+        <!-- </div> -->
       </div>
     </form>
   </section>
@@ -61,12 +61,8 @@
             <p id="media-overview"></p>
           </div>
           <div id="media-stream">
-            <h3 id="stream-header">Stream Now!</h3>
-            <div class="stream-icons">
-              <i class="fab fa-amazon stream-icon"></i>
-              <i class="fab fa-youtube stream-icon"></i>
-              <i class="fab fa-vimeo-square stream-icon"></i>
-            </div>
+            <button id="stream-btn">Stream Now!</button>
+            <iframe onload="this.style.display = 'block'" width="500" height="400" id="stream-iframe" frameborder="0" allowfullscreen></iframe>
           </div>
         </div>
       </div>

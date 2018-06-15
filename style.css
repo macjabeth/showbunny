@@ -306,3 +306,9 @@ p {
 #media-text {
   padding: 15px 15px 0;
 }
+
+#stream-iframe {
+  display: none;
+  position: fixed;
+  top: 30%;
+}

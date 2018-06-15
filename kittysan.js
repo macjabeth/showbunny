@@ -1,4 +1,4 @@
-// kittysan handles ui logic
+// handles UI logic
 class KittySan {
   constructor() {
     this.searchCategories = document.getElementsByName('search-category');
@@ -15,6 +15,8 @@ class KittySan {
     this.mediaStream = document.getElementById('media-stream');
     this.mediaDetails = document.getElementById('media-details');
     this.mediaOverview = document.getElementById('media-overview');
+    this.streamBtn = document.getElementById('stream-btn');
+    this.streamIframe = document.getElementById('stream-iframe');
   }
 
   toggleCategory() {
@@ -170,11 +172,17 @@ class KittySan {
       });
     // add overview
     this.mediaOverview.textContent = result.overview;
+    // handle media spider stream
+    this.streamBtn.addEventListener('click', () => {
+      // set streaming source
+      this.streamIframe.setAttribute('src', bunny.category === 'movie' && bunny.getMovieStream(result.id) || bunny.getTVStream(result.id));
+    });
     // handle dialog close event
     this.mediaClose.addEventListener('click', () => this.mediaDialog.close());
     // handle clicking outside the dialog
     window.addEventListener('click', (event) => {
       if (event.target === this.mediaDialog) {
+        this.streamIframe.style.display = 'none';
         this.mediaDialog.close();
       }
     });
