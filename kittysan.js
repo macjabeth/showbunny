@@ -17,6 +17,14 @@ class KittySan {
     this.mediaOverview = document.getElementById('media-overview');
     this.streamBtn = document.getElementById('stream-btn');
     this.streamIframe = document.getElementById('stream-iframe');
+    // handle dialog close event
+    this.mediaClose.addEventListener('click', () => this.mediaDialog.close());
+    // handle clicking outside the dialog
+    window.addEventListener('click', (event) => {
+      if (event.target === this.mediaDialog) {
+        this.mediaDialog.close();
+      }
+    });
   }
 
   toggleCategory() {
@@ -176,15 +184,6 @@ class KittySan {
     this.streamBtn.addEventListener('click', () => {
       // set streaming source
       this.streamIframe.setAttribute('src', bunny.category === 'movie' && bunny.getMovieStream(result.id) || bunny.getTVStream(result.id));
-    });
-    // handle dialog close event
-    this.mediaClose.addEventListener('click', () => this.mediaDialog.close());
-    // handle clicking outside the dialog
-    window.addEventListener('click', (event) => {
-      if (event.target === this.mediaDialog) {
-        this.streamIframe.style.display = 'none';
-        this.mediaDialog.close();
-      }
     });
     // display dialog
     this.mediaDialog.showModal();
