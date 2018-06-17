@@ -104,7 +104,7 @@ class KittySan {
           link.addEventListener('click', () => document.execCommand('selectAll', false, null));
           link.addEventListener('keypress', (event) => {
             if (event.code === 'Enter') {
-              bunny.changeQuery(bunny.query, bunny.category, Number(event.target.textContent), true);
+              bunny.changeQuery(bunny.query, bunny.category, parseInt(event.target.textContent), true);
               event.preventDefault();
             }
           })
