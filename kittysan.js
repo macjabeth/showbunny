@@ -198,8 +198,8 @@ class KittySan {
     this.mediaOverview.textContent = result.overview;
     // handle media spider stream
     this.streamBtn.addEventListener('click', () => {
-      // set streaming source
-      this.streamIframe.setAttribute('src', bunny.category === 'movie' && bunny.getMovieStream(result.id) || bunny.getTVStream(result.id));
+    // set streaming source
+    this.streamIframe.setAttribute('src', bunny.category === 'movie' && bunny.getMovieStream(result.id) || bunny.getTVStream(result.id));
 
     this.streamContainer.classList.add('stream-active');
     this.mediaDialog.close();
