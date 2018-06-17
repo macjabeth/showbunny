@@ -5,7 +5,7 @@ class KittySan {
     this.searchResults = document.getElementById('search-results');
     this.searchPagination = document.getElementById('search-pagination');
     this.mediaDialog = document.getElementById('media-dialog');
-    this.mediaClose = document.getElementById('media-close');
+    this.mediaClose = document.getElementById('media-header').getElementsByClassName('close-btn')[0];
     this.mediaBackdrop = document.getElementById('media-backdrop');
     this.mediaTitle = document.getElementById('media-title');
     this.mediaStatus = document.getElementById('media-status');

@@ -182,7 +182,7 @@ input[type="radio"]:checked + label:active {
   display: flex;
 }
 
-#media-close {
+.close-btn {
   color: white;
   font-size: 30px;
   position: absolute;
@@ -194,14 +194,14 @@ input[type="radio"]:checked + label:active {
   text-align: center;
 }
 
-#media-close:hover,
-#media-close:focus {
+.close-btn:hover,
+.close-btnfocus {
   color: #aaa;
   text-decoration: none;
   cursor: pointer;
 }
 
-#media-close:active {
+.close-btn:active {
   opacity: .5;
 }
 
