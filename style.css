@@ -294,7 +294,10 @@ p {
 }
 
 #media-stream {
-  margin: 20px 0 10px;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .stream-icons {
@@ -332,4 +335,36 @@ p {
 
 .stream-disable-transition {
   transition: height 0s;
+}
+
+#stream-btn {
+  font-size: 14px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: solid black 2px;
+  font-family: Raleway;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3px;
+  transition: .2s;
+}
+
+#stream-btn:hover {
+  box-shadow: -4px 4px 12px 0px #969696;
+  padding: 6px 10px;
+  margin-top: -4px;
+}
+
+#stream-btn:active {
+  background: black;
+  color: white;
+}
+
+#stream-btn i{
+  padding: 2px 0px 2px 5px;
+  font-size: 20px;
+  text-align: center;
+  vertical-align: middle;
 }
