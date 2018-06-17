@@ -194,6 +194,10 @@ input[type="radio"]:checked + label:active {
   text-align: center;
 }
 
+.close-btn-dark {
+  color: grey;
+}
+
 .close-btn:hover,
 .close-btnfocus {
   color: #aaa;
