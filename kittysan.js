@@ -84,8 +84,7 @@ class KittySan {
       previousPage.innerHTML = '&laquo;';
       // handle click event to fetch results from previous page
       previousPage.addEventListener('click', () => {
-        bunny.changeQuery(bunny.query, bunny.category, bunny.page - 1);
-        fetchData();
+        bunny.changeQuery(bunny.query, bunny.category, bunny.page - 1, true);
       });
       // add link to search pagination
       this.searchPagination.appendChild(previousPage);
@@ -93,19 +92,33 @@ class KittySan {
 
     // add all pages
     for (let i = 1; i <= data.total_pages; i++) {
-      // create link element
-      const link = document.createElement('a');
-      // set active page class
-      if (data.page === i) link.classList.add('active');
-      // add text content
-      link.textContent = i;
-      // handle click event to fetch data from page
-      link.addEventListener('click', () => {
-        bunny.changeQuery(bunny.query, bunny.category, i);
-        fetchData();
-      });
-      // add link to search pagination
-      this.searchPagination.appendChild(link);
+      if (i === 1 || (i >= (data.page - 2) && i <= (data.page + 2)) || i === data.total_pages) {
+        // create link element
+        const link = document.createElement('a');
+        // if current page
+        if (data.page === i) {
+          // set active page class
+          link.classList.add('active');
+          // make it editable
+          link.setAttribute('contenteditable', true);
+          link.addEventListener('click', () => document.execCommand('selectAll', false, null));
+          link.addEventListener('keypress', (event) => {
+            if (event.code === 'Enter') {
+              bunny.changeQuery(bunny.query, bunny.category, parseInt(event.target.textContent), true);
+              event.preventDefault();
+            }
+          })
+        } else {
+          // handle click event to fetch data from page
+          link.addEventListener('click', () => {
+            bunny.changeQuery(bunny.query, bunny.category, i, true);
+          });
+        }
+        // add text content
+        link.textContent = i;
+        // add link to search pagination
+        this.searchPagination.appendChild(link);
+      }
     }
 
     // add next page
@@ -116,8 +129,7 @@ class KittySan {
       nextPage.innerHTML = '&raquo;';
       // handle click event to fetch results from next page
       nextPage.addEventListener('click', () => {
-        bunny.changeQuery(bunny.query, bunny.category, bunny.page + 1);
-        fetchData();
+        bunny.changeQuery(bunny.query, bunny.category, bunny.page + 1, true);
       });
       // add link to search pagination
       this.searchPagination.appendChild(nextPage);

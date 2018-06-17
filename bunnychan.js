@@ -51,9 +51,10 @@ class BunnyChan {
   }
 
   // controllers
-  changeQuery(query, category, page = 1) {
+  changeQuery(query, category, page = 1, fetch) {
     this.query = query;
     this.category = category;
     this.page = page;
+    if (fetch) fetchData();
   }
 }
