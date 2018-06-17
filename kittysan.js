@@ -16,7 +16,10 @@ class KittySan {
     this.mediaDetails = document.getElementById('media-details');
     this.mediaOverview = document.getElementById('media-overview');
     this.streamBtn = document.getElementById('stream-btn');
+    this.streamContainer = document.getElementById('stream-container');
     this.streamIframe = document.getElementById('stream-iframe');
+    this.streamClose = this.streamContainer.getElementsByClassName('close-btn')[0];
+
     // handle dialog close event
     this.mediaClose.addEventListener('click', () => this.mediaDialog.close());
     // handle clicking outside the dialog
@@ -25,6 +28,19 @@ class KittySan {
         this.mediaDialog.close();
       }
     });
+
+    // handle stream close event
+    this.streamClose.addEventListener('click', () => {
+      this.streamContainer.classList.remove('stream-active');
+      //clear currently loaded movie
+      this.streamIframe.src = '';
+      //re enable transition
+      const meow = this;
+      setTimeout(function() {
+        meow.streamContainer.classList.remove('stream-disable-transition');
+      }, 1100);
+    });
+
   }
 
   toggleCategory() {
@@ -184,8 +200,18 @@ class KittySan {
     this.streamBtn.addEventListener('click', () => {
       // set streaming source
       this.streamIframe.setAttribute('src', bunny.category === 'movie' && bunny.getMovieStream(result.id) || bunny.getTVStream(result.id));
+
+    this.streamContainer.classList.add('stream-active');
+    this.mediaDialog.close();
+
+    const meow = this;
+    setTimeout(function(){
+      meow.streamContainer.classList.add('stream-disable-transition');
+      }, 1100);
     });
+
     // display dialog
     this.mediaDialog.showModal();
   }
+
 }
