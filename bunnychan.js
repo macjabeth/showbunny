@@ -51,13 +51,23 @@ class BunnyChan {
     return await response.json();
   }
 
-  // streaming videos
-  getMovieStream(id) {
-    return `https://videospider.in/getvideo?key=${this.spider_key}&video_id=${id}&tmdb=1`;
+  async fetchMovieDetails(movie_id) {
+    const response = await fetch(`https://api.themoviedb.org/3/movie/${movie_id}?api_key=${this.tmdb_key}&language=en-US`);
+    return await response.json();
   }
 
-  getTVStream(id, season, episode) {
-    return `https://videospider.in/getvideo?key=${this.spider_key}&video_id=${id}&tmdb=1&tv=1&s=${season}&e=${episode}`;
+  async fetchTVDetails(tv_id) {
+    const response = await fetch(`https://api.themoviedb.org/3/tv/${tv_id}?api_key=${this.tmdb_key}&language=en-US`);
+    return await response.json();
+  }
+
+  // streaming videos
+  getMovieStream(movie_id) {
+    return `https://videospider.in/getvideo?key=${this.spider_key}&video_id=${movie_id}&tmdb=1`;
+  }
+
+  getTVStream(tv_id, season, episode) {
+    return `https://videospider.in/getvideo?key=${this.spider_key}&video_id=${tv_id}&tmdb=1&tv=1&s=${season}&e=${episode}`;
   }
 
   // controllers

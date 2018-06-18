@@ -153,6 +153,26 @@ class KittySan {
   paintDialog(result) {
     // log data
     console.log(result);
+    // fetch result details
+    if (bunny.category === 'movie') {
+      bunny.fetchMovieDetails(result.id)
+        .then(data => {
+          // log details
+          console.log(data);
+          // set media status
+          this.mediaStatus.textContent = data.status;
+        })
+        .catch(err => console.error(err));
+    } else {
+      bunny.fetchTVDetails(result.id)
+        .then(data => {
+          // log details
+          console.log(data);
+          // set media status
+          this.mediaStatus.textContent = data.status;
+        })
+        .catch(err => console.error(err));
+    }
     // add backdrop
     this.mediaBackdrop.setAttribute('src', result.backdrop_path ? `https://image.tmdb.org/t/p/w500${result.backdrop_path}` : 'http://via.placeholder.com/500x300');
     // clear existing media ratings
@@ -198,16 +218,16 @@ class KittySan {
     this.mediaOverview.textContent = result.overview;
     // handle media spider stream
     this.streamBtn.addEventListener('click', () => {
-    // set streaming source
-    this.streamIframe.setAttribute('src', bunny.category === 'movie' && bunny.getMovieStream(result.id) || bunny.getTVStream(result.id));
+      // set streaming source
+      this.streamIframe.setAttribute('src', bunny.category === 'movie' && bunny.getMovieStream(result.id) || bunny.getTVStream(result.id));
 
-    this.streamContainer.classList.add('stream-active');
-    this.mediaDialog.close();
+      this.streamContainer.classList.add('stream-active');
+      this.mediaDialog.close();
 
-    const meow = this;
-    setTimeout(function(){
-      meow.streamContainer.classList.add('stream-disable-transition');
-      }, 1100);
+      const meow = this;
+      setTimeout(function(){
+        meow.streamContainer.classList.add('stream-disable-transition');
+        }, 1100);
     });
 
     // display dialog
