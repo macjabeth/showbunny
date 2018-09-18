@@ -1,11 +1,11 @@
-// kittysan handles ui logic
+// handles UI logic
 class KittySan {
   constructor() {
     this.searchCategories = document.getElementsByName('search-category');
     this.searchResults = document.getElementById('search-results');
     this.searchPagination = document.getElementById('search-pagination');
     this.mediaDialog = document.getElementById('media-dialog');
-    this.mediaClose = document.getElementById('media-close');
+    this.mediaClose = document.getElementById('media-header').getElementsByClassName('close-btn')[0];
     this.mediaBackdrop = document.getElementById('media-backdrop');
     this.mediaTitle = document.getElementById('media-title');
     this.mediaStatus = document.getElementById('media-status');
@@ -15,6 +15,32 @@ class KittySan {
     this.mediaStream = document.getElementById('media-stream');
     this.mediaDetails = document.getElementById('media-details');
     this.mediaOverview = document.getElementById('media-overview');
+    this.streamBtn = document.getElementById('stream-btn');
+    this.streamContainer = document.getElementById('stream-container');
+    this.streamIframe = document.getElementById('stream-iframe');
+    this.streamClose = this.streamContainer.getElementsByClassName('close-btn')[0];
+
+    // handle dialog close event
+    this.mediaClose.addEventListener('click', () => this.mediaDialog.close());
+    // handle clicking outside the dialog
+    window.addEventListener('click', (event) => {
+      if (event.target === this.mediaDialog) {
+        this.mediaDialog.close();
+      }
+    });
+
+    // handle stream close event
+    this.streamClose.addEventListener('click', () => {
+      this.streamContainer.classList.remove('stream-active');
+      //clear currently loaded movie
+      this.streamIframe.src = '';
+      //re enable transition
+      const meow = this;
+      setTimeout(function () {
+        meow.streamContainer.classList.remove('stream-disable-transition');
+      }, 1100);
+    });
+
   }
 
   toggleCategory() {
@@ -84,8 +110,7 @@ class KittySan {
       previousPage.innerHTML = '&laquo;';
       // handle click event to fetch results from previous page
       previousPage.addEventListener('click', () => {
-        bunny.changeQuery(bunny.query, bunny.category, bunny.page - 1);
-        fetchData();
+        bunny.changeQuery(bunny.query, bunny.category, bunny.page - 1, true);
       });
       // add link to search pagination
       this.searchPagination.appendChild(previousPage);
@@ -93,19 +118,33 @@ class KittySan {
 
     // add all pages
     for (let i = 1; i <= data.total_pages; i++) {
-      // create link element
-      const link = document.createElement('a');
-      // set active page class
-      if (data.page === i) link.classList.add('active');
-      // add text content
-      link.textContent = i;
-      // handle click event to fetch data from page
-      link.addEventListener('click', () => {
-        bunny.changeQuery(bunny.query, bunny.category, i);
-        fetchData();
-      });
-      // add link to search pagination
-      this.searchPagination.appendChild(link);
+      if (i === 1 || (i >= (data.page - 2) && i <= (data.page + 2)) || i === data.total_pages) {
+        // create link element
+        const link = document.createElement('a');
+        // if current page
+        if (data.page === i) {
+          // set active page class
+          link.classList.add('active');
+          // make it editable
+          link.setAttribute('contenteditable', true);
+          link.addEventListener('click', () => document.execCommand('selectAll', false, null));
+          link.addEventListener('keypress', (event) => {
+            if (event.code === 'Enter') {
+              bunny.changeQuery(bunny.query, bunny.category, parseInt(event.target.textContent), true);
+              event.preventDefault();
+            }
+          })
+        } else {
+          // handle click event to fetch data from page
+          link.addEventListener('click', () => {
+            bunny.changeQuery(bunny.query, bunny.category, i, true);
+          });
+        }
+        // add text content
+        link.textContent = i;
+        // add link to search pagination
+        this.searchPagination.appendChild(link);
+      }
     }
 
     // add next page
@@ -116,8 +155,7 @@ class KittySan {
       nextPage.innerHTML = '&raquo;';
       // handle click event to fetch results from next page
       nextPage.addEventListener('click', () => {
-        bunny.changeQuery(bunny.query, bunny.category, bunny.page + 1);
-        fetchData();
+        bunny.changeQuery(bunny.query, bunny.category, bunny.page + 1, true);
       });
       // add link to search pagination
       this.searchPagination.appendChild(nextPage);
@@ -127,6 +165,26 @@ class KittySan {
   paintDialog(result) {
     // log data
     console.log(result);
+    // fetch result details
+    if (bunny.category === 'movie') {
+      bunny.fetchMovieDetails(result.id)
+        .then(data => {
+          // log details
+          console.log(data);
+          // set media status
+          this.mediaStatus.textContent = data.status;
+        })
+        .catch(err => console.error(err));
+    } else {
+      bunny.fetchTVDetails(result.id)
+        .then(data => {
+          // log details
+          console.log(data);
+          // set media status
+          this.mediaStatus.textContent = data.status;
+        })
+        .catch(err => console.error(err));
+    }
     // add backdrop
     this.mediaBackdrop.setAttribute('src', result.backdrop_path ? `https://image.tmdb.org/t/p/w500${result.backdrop_path}` : 'http://via.placeholder.com/500x300');
     // clear existing media ratings
@@ -170,15 +228,22 @@ class KittySan {
       });
     // add overview
     this.mediaOverview.textContent = result.overview;
-    // handle dialog close event
-    this.mediaClose.addEventListener('click', () => this.mediaDialog.close());
-    // handle clicking outside the dialog
-    window.addEventListener('click', (event) => {
-      if (event.target === this.mediaDialog) {
-        this.mediaDialog.close();
-      }
+    // handle media spider stream
+    this.streamBtn.addEventListener('click', () => {
+      // set streaming source
+      this.streamIframe.setAttribute('src', bunny.category === 'movie' && bunny.getMovieStream(result.id) || bunny.getTVStream(result.id));
+
+      this.streamContainer.classList.add('stream-active');
+      this.mediaDialog.close();
+
+      const meow = this;
+      setTimeout(function () {
+        meow.streamContainer.classList.add('stream-disable-transition');
+      }, 1100);
     });
+
     // display dialog
     this.mediaDialog.showModal();
   }
+
 }
