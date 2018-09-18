@@ -63,16 +63,20 @@
               <p id="media-overview"></p>
             </div>
             <div id="media-stream">
-              <h3 id="stream-header">Stream Now!</h3>
-              <div class="stream-icons">
-                <i class="fab fa-amazon stream-icon"></i>
-                <i class="fab fa-youtube stream-icon"></i>
-                <i class="fab fa-vimeo-square stream-icon"></i>
-              </div>
+              <button id="stream-btn">
+                <span>Stream Now!</span>
+                <i class="fas fa-play-circle"></i>
+              </button>
             </div>
           </div>
         </div>
       </dialog>
+    </section>
+    <section id="stream-container" class="stream-container">
+      <div class="close-btn close-btn-dark">
+        <i class="fas fa-times"></i>
+      </div>
+      <iframe id="stream-iframe" frameborder="0" allowfullscreen></iframe>
     </section>
   </main>
   <footer>
