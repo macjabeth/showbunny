@@ -36,7 +36,7 @@ class KittySan {
       this.streamIframe.src = '';
       //re enable transition
       const meow = this;
-      setTimeout(function() {
+      setTimeout(function () {
         meow.streamContainer.classList.remove('stream-disable-transition');
       }, 1100);
     });
@@ -225,9 +225,9 @@ class KittySan {
       this.mediaDialog.close();
 
       const meow = this;
-      setTimeout(function(){
+      setTimeout(function () {
         meow.streamContainer.classList.add('stream-disable-transition');
-        }, 1100);
+      }, 1100);
     });
 
     // display dialog
