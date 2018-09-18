@@ -19,65 +19,69 @@
     <img src="easter-bunny.png" class="logo" />
   </header>
   <!-- <nav></nav> -->
-  <section>
-    <form role="search" id="search-form">
-      <div class="search-container">
-        <input type="search" name="bunny-search" id="search-bar" placeholder="Search..." aria-label="search for media content">
-        <!-- <div id="search-categories"> -->
-        <input type="radio" name="search-category" id="movie-category" value="movie" checked>
-        <label for="movie-category"><span>Movie</span></label>
-        <input type="radio" name="search-category" id="tv-category" value="tv">
-        <label for="tv-category"><span>TV</span></label>
-        <!-- </div> -->
-      </div>
-    </form>
-  </section>
-  <section>
-    <ul id="search-results"></ul>
-    <div id="search-pagination"></div>
-    <dialog id="media-dialog">
-      <div id="media-content">
-        <div id="media-header">
-          <div class="close-btn">
-            <i class="fas fa-times"></i>
-          </div>
-          <img id="media-backdrop">
+  <main>
+    <section>
+      <form role="search" id="search-form">
+        <div class="search-container">
+          <input type="search" name="bunny-search" id="search-bar" placeholder="Search..." aria-label="search for media content">
+          <!-- <div id="search-categories"> -->
+          <input type="radio" name="search-category" id="movie-category" value="movie" checked>
+          <label for="movie-category"><span>Movie</span></label>
+          <input type="radio" name="search-category" id="tv-category" value="tv">
+          <label for="tv-category"><span>TV</span></label>
+          <!-- </div> -->
         </div>
-        <div id="media-text">
-          <div class="media-info">
-            <div class="title-status">
-              <h2 id="media-title"></h2>
-              <div id="media-status">Status?</div>
+      </form>
+    </section>
+    <section>
+      <ul id="search-results"></ul>
+      <div id="search-pagination"></div>
+      <dialog id="media-dialog">
+        <div id="media-content">
+          <div id="media-header">
+            <div class="close-btn">
+              <i class="fas fa-times"></i>
             </div>
-            <span id="media-rating"></span>
+            <img id="media-backdrop">
           </div>
-          <div id="media-genres">
-            <h3 class="genre-header">Genres:</h3>
-            <ul class="genres">
-              <li class="genre"></li>
-            </ul>
-          </div>
-          <div id="media-details">
-            <h2>Info</h2>
-            <p id="media-overview"></p>
-          </div>
-          <div id="media-stream">
-            <button id="stream-btn">
-              <span>Stream Now!</span>
-              <i class="fas fa-play-circle"></i>
-            </button>
+          <div id="media-text">
+            <div class="media-info">
+              <div class="title-status">
+                <h2 id="media-title"></h2>
+                <div id="media-status">Status?</div>
+              </div>
+              <span id="media-rating"></span>
+            </div>
+            <div id="media-genres">
+              <h3 class="genre-header">Genres:</h3>
+              <ul class="genres">
+                <li class="genre"></li>
+              </ul>
+            </div>
+            <div id="media-details">
+              <h2>Info</h2>
+              <p id="media-overview"></p>
+            </div>
+            <div id="media-stream">
+              <button id="stream-btn">
+                <span>Stream Now!</span>
+                <i class="fas fa-play-circle"></i>
+              </button>
+            </div>
           </div>
         </div>
+      </dialog>
+    </section>
+    <section id="stream-container" class="stream-container">
+      <div class="close-btn close-btn-dark">
+        <i class="fas fa-times"></i>
       </div>
-    </dialog>
-  </section>
-  <section id="stream-container" class="stream-container">
-    <div class="close-btn close-btn-dark">
-      <i class="fas fa-times"></i>
-    </div>
-    <iframe id="stream-iframe" frameborder="0" allowfullscreen></iframe>
-  </section>
-  <!-- <footer></footer> -->
+      <iframe id="stream-iframe" frameborder="0" allowfullscreen></iframe>
+    </section>
+  </main>
+  <footer>
+    Showbunny &copy;
+  </footer>
   <script src="bunnychan.js"></script>
   <script src="kittysan.js"></script>
   <script src="app.js"></script>
