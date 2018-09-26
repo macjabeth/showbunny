@@ -62,7 +62,7 @@ class KittySan {
     });
     document.getElementById('search-bar').addEventListener('keydown', (event) => {
       if (event.code === 'Tab') {
-        kitty.toggleCategory();
+        this.toggleCategory();
         event.preventDefault();
       }
     });

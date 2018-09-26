@@ -1,1 +1,1 @@
-# Showbunny
+![Showbunny Logo](https://github.com/macjabeth/showbunny/raw/develop/banner.png "Showbunny Logo")
