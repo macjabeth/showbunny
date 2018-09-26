@@ -200,6 +200,7 @@ class KittySan {
   paintDialog(result) {
     // log data
     console.log(result);
+    let result_data;
     // fetch result details
     if (bunny.category === 'movie') {
       bunny.fetchMovieDetails(result.id)
@@ -215,6 +216,7 @@ class KittySan {
         .then(data => {
           // log details
           console.log(data);
+          result_data = data;
           // set media status
           this.elements.mediaStatus.textContent = data.status;
         })
@@ -265,8 +267,14 @@ class KittySan {
     this.elements.mediaOverview.textContent = result.overview;
     // handle media spider stream
     this.elements.streamBtn.addEventListener('click', () => {
+      // get season
+      const seasons = result_data.seasons.length;
+      let season = prompt(`Which season? (${seasons === 1 ? '1' : '1-' + seasons})`);
+      // get episode
+      const episode_count = result_data.seasons[parseInt(season) - 1].episode_count;
+      let episode = prompt(`Which episode? (1-${episode_count})`)
       // set streaming source
-      this.elements.streamIframe.setAttribute('src', bunny.category === 'movie' && bunny.getMovieStream(result.id) || bunny.getTVStream(result.id, prompt('Which season?'), prompt('Which episode?')));
+      this.elements.streamIframe.setAttribute('src', bunny.category === 'movie' && bunny.getMovieStream(result.id) || bunny.getTVStream(result.id, season, episode));
 
       this.elements.streamContainer.classList.add('stream-active');
       this.elements.mediaDialog.close();
