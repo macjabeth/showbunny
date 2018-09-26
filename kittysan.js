@@ -1,54 +1,85 @@
 // handles UI logic
 class KittySan {
   constructor() {
-    this.searchCategories = document.getElementsByName('search-category');
-    this.searchResults = document.getElementById('search-results');
-    this.searchPagination = document.getElementById('search-pagination');
-    this.mediaDialog = document.getElementById('media-dialog');
-    this.mediaClose = document.getElementById('media-header').getElementsByClassName('close-btn')[0];
-    this.mediaBackdrop = document.getElementById('media-backdrop');
-    this.mediaTitle = document.getElementById('media-title');
-    this.mediaStatus = document.getElementById('media-status');
-    this.mediaRating = document.getElementById('media-rating');
-    this.mediaNetwork = document.getElementById('media-network');
-    this.mediaGenres = document.getElementsByClassName('genres')[0];
-    this.mediaStream = document.getElementById('media-stream');
-    this.mediaDetails = document.getElementById('media-details');
-    this.mediaOverview = document.getElementById('media-overview');
-    this.streamBtn = document.getElementById('stream-btn');
-    this.streamContainer = document.getElementById('stream-container');
-    this.streamIframe = document.getElementById('stream-iframe');
-    this.streamClose = this.streamContainer.getElementsByClassName('close-btn')[0];
+    this.elements = {
+      searchCategories: document.getElementsByName('search-category'),
+      searchResults: document.getElementById('search-results'),
+      searchPagination: document.getElementById('search-pagination'),
+      mediaDialog: document.getElementById('media-dialog'),
+      mediaClose: document.getElementById('media-header').getElementsByClassName('close-btn')[0],
+      mediaBackdrop: document.getElementById('media-backdrop'),
+      mediaTitle: document.getElementById('media-title'),
+      mediaStatus: document.getElementById('media-status'),
+      mediaRating: document.getElementById('media-rating'),
+      mediaNetwork: document.getElementById('media-network'),
+      mediaGenres: document.getElementsByClassName('genres')[0],
+      mediaStream: document.getElementById('media-stream'),
+      mediaDetails: document.getElementById('media-details'),
+      mediaOverview: document.getElementById('media-overview'),
+      streamBtn: document.getElementById('stream-btn'),
+      streamContainer: document.getElementById('stream-container'),
+      streamIframe: document.getElementById('stream-iframe')
+    };
+    this.elements.streamClose = this.elements.streamContainer.getElementsByClassName('close-btn')[0];
+  }
 
-    // handle dialog close event
-    this.mediaClose.addEventListener('click', () => this.mediaDialog.close());
+  init() {
+    document.addEventListener('DOMContentLoaded', () => {
+      this.paintData();
+      this.handleSearchBar();
+      this.handleMediaClose();
+    });
+  }
+
+  handleMediaClose() {
+    this.elements.mediaClose.addEventListener('click', () => this.elements.mediaDialog.close());
     // handle clicking outside the dialog
     window.addEventListener('click', (event) => {
       if (event.target === this.mediaDialog) {
-        this.mediaDialog.close();
+        this.elements.mediaDialog.close();
       }
     });
-
     // handle stream close event
-    this.streamClose.addEventListener('click', () => {
-      this.streamContainer.classList.remove('stream-active');
+    this.elements.streamClose.addEventListener('click', () => {
+      this.elements.streamContainer.classList.remove('stream-active');
       //clear currently loaded movie
-      this.streamIframe.src = '';
+      this.elements.streamIframe.src = '';
       //re enable transition
-      const meow = this;
+      const meow = this.elements;
       setTimeout(function () {
         meow.streamContainer.classList.remove('stream-disable-transition');
       }, 1100);
     });
+  }
 
+  handleSearchBar() {
+    document.getElementById('search-form').addEventListener('submit', (event) => {
+      const query = document.getElementById('search-bar').value;
+      const category = document.querySelector('input[name="search-category"]:checked').value;
+      bunny.changeQuery(query, category, 1);
+      this.paintData();
+      event.preventDefault();
+    });
+    document.getElementById('search-bar').addEventListener('keydown', (event) => {
+      if (event.code === 'Tab') {
+        kitty.toggleCategory();
+        event.preventDefault();
+      }
+    });
+  }
+
+  paintData() {
+    bunny.fetchData()
+      .then(data => this.paintSearchResults(data))
+      .catch(err => console.error(err));
   }
 
   toggleCategory() {
-    for (let i = 0; i < this.searchCategories.length; i++) {
-      const element = this.searchCategories[i];
+    for (let i = 0; i < this.elements.searchCategories.length; i++) {
+      const element = this.elements.searchCategories[i];
       if (element.checked) {
         element.checked = false;
-        (this.searchCategories[i + 1] || this.searchCategories[0]).checked = true;
+        (this.elements.searchCategories[i + 1] || this.elements.searchCategories[0]).checked = true;
         break;
       }
     }
@@ -56,8 +87,8 @@ class KittySan {
 
   paintSearchResults(data) {
     // clear existing search results
-    while (this.searchResults.firstChild) {
-      this.searchResults.removeChild(this.searchResults.firstChild);
+    while (this.elements.searchResults.firstChild) {
+      this.elements.searchResults.removeChild(this.elements.searchResults.firstChild);
     }
 
     // display results
@@ -94,12 +125,12 @@ class KittySan {
       li.addEventListener('mouseover', () => info.classList.add('peek'));
       li.addEventListener('mouseleave', () => info.classList.remove('peek'));
       // add list item to results
-      this.searchResults.appendChild(li);
+      this.elements.searchResults.appendChild(li);
     });
 
     // clear existing search pagination
-    while (this.searchPagination.firstChild) {
-      this.searchPagination.removeChild(this.searchPagination.firstChild);
+    while (this.elements.searchPagination.firstChild) {
+      this.elements.searchPagination.removeChild(this.elements.searchPagination.firstChild);
     }
 
     // add previous page
@@ -110,10 +141,11 @@ class KittySan {
       previousPage.innerHTML = '&laquo;';
       // handle click event to fetch results from previous page
       previousPage.addEventListener('click', () => {
-        bunny.changeQuery(bunny.query, bunny.category, bunny.page - 1, true);
+        bunny.changeQuery(bunny.query, bunny.category, bunny.page - 1);
+        this.paintData();
       });
       // add link to search pagination
-      this.searchPagination.appendChild(previousPage);
+      this.elements.searchPagination.appendChild(previousPage);
     }
 
     // add all pages
@@ -130,20 +162,22 @@ class KittySan {
           link.addEventListener('click', () => document.execCommand('selectAll', false, null));
           link.addEventListener('keypress', (event) => {
             if (event.code === 'Enter') {
-              bunny.changeQuery(bunny.query, bunny.category, parseInt(event.target.textContent), true);
+              bunny.changeQuery(bunny.query, bunny.category, parseInt(event.target.textContent));
+              this.paintData();
               event.preventDefault();
             }
           })
         } else {
           // handle click event to fetch data from page
           link.addEventListener('click', () => {
-            bunny.changeQuery(bunny.query, bunny.category, i, true);
+            bunny.changeQuery(bunny.query, bunny.category, i);
+            this.paintData();
           });
         }
         // add text content
         link.textContent = i;
         // add link to search pagination
-        this.searchPagination.appendChild(link);
+        this.elements.searchPagination.appendChild(link);
       }
     }
 
@@ -155,10 +189,11 @@ class KittySan {
       nextPage.innerHTML = '&raquo;';
       // handle click event to fetch results from next page
       nextPage.addEventListener('click', () => {
-        bunny.changeQuery(bunny.query, bunny.category, bunny.page + 1, true);
+        bunny.changeQuery(bunny.query, bunny.category, bunny.page + 1);
+        this.paintData();
       });
       // add link to search pagination
-      this.searchPagination.appendChild(nextPage);
+      this.elements.searchPagination.appendChild(nextPage);
     }
   }
 
@@ -172,7 +207,7 @@ class KittySan {
           // log details
           console.log(data);
           // set media status
-          this.mediaStatus.textContent = data.status;
+          this.elements.mediaStatus.textContent = data.status;
         })
         .catch(err => console.error(err));
     } else {
@@ -181,25 +216,25 @@ class KittySan {
           // log details
           console.log(data);
           // set media status
-          this.mediaStatus.textContent = data.status;
+          this.elements.mediaStatus.textContent = data.status;
         })
         .catch(err => console.error(err));
     }
     // add backdrop
-    this.mediaBackdrop.setAttribute('src', result.backdrop_path ? `https://image.tmdb.org/t/p/w500${result.backdrop_path}` : 'http://via.placeholder.com/500x300');
+    this.elements.mediaBackdrop.setAttribute('src', result.backdrop_path ? `https://image.tmdb.org/t/p/w500${result.backdrop_path}` : 'http://via.placeholder.com/500x300');
     // clear existing media ratings
-    while (this.mediaRating.firstChild) {
-      this.mediaRating.removeChild(this.mediaRating.firstChild);
+    while (this.elements.mediaRating.firstChild) {
+      this.elements.mediaRating.removeChild(this.elements.mediaRating.firstChild);
     }
     // helper functions
     const roundHalf = (num) => Math.round(num * 2) * 0.5;
     const addStar = (cls) => {
       const icon = document.createElement('i');
       icon.className = cls;
-      this.mediaRating.appendChild(icon);
+      this.elements.mediaRating.appendChild(icon);
     };
     // add title
-    this.mediaTitle.textContent = result.title || result.name;
+    this.elements.mediaTitle.textContent = result.title || result.name;
     // add ze stars
     const stars = roundHalf(result.vote_average * 0.5);
     for (let i = 1; i <= 5; i++) {
@@ -210,8 +245,8 @@ class KittySan {
       }
     }
     // clear existing media genres
-    while (this.mediaGenres.firstChild) {
-      this.mediaGenres.removeChild(this.mediaGenres.firstChild);
+    while (this.elements.mediaGenres.firstChild) {
+      this.elements.mediaGenres.removeChild(this.elements.mediaGenres.firstChild);
     }
     // add genres
     bunny[bunny.category + '_genres']
@@ -224,26 +259,26 @@ class KittySan {
         // add text content
         li.textContent = genre.name;
         // add genre element to genres div
-        this.mediaGenres.appendChild(li);
+        this.elements.mediaGenres.appendChild(li);
       });
     // add overview
-    this.mediaOverview.textContent = result.overview;
+    this.elements.mediaOverview.textContent = result.overview;
     // handle media spider stream
-    this.streamBtn.addEventListener('click', () => {
+    this.elements.streamBtn.addEventListener('click', () => {
       // set streaming source
-      this.streamIframe.setAttribute('src', bunny.category === 'movie' && bunny.getMovieStream(result.id) || bunny.getTVStream(result.id));
+      this.elements.streamIframe.setAttribute('src', bunny.category === 'movie' && bunny.getMovieStream(result.id) || bunny.getTVStream(result.id, prompt('Which season?'), prompt('Which episode?')));
 
-      this.streamContainer.classList.add('stream-active');
-      this.mediaDialog.close();
+      this.elements.streamContainer.classList.add('stream-active');
+      this.elements.mediaDialog.close();
 
-      const meow = this;
+      const meow = this.elements;
       setTimeout(function () {
         meow.streamContainer.classList.add('stream-disable-transition');
       }, 1100);
     });
 
     // display dialog
-    this.mediaDialog.showModal();
+    this.elements.mediaDialog.showModal();
   }
 
 }
