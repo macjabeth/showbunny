@@ -3,6 +3,7 @@ h2 {
 	font-family: 'Fascinate Inline', cursive;
 	font-size: 50px;
 	margin: 10px 15px;
+	color:white;
 }	
 
 .cards {
@@ -17,6 +18,7 @@ h2 {
 	overflow: hidden;
 	border: solid black 3px;
 	transition: .3s;
+	color:black;
 }
 
 .card:hover {
