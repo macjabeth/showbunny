@@ -69,9 +69,15 @@ class KittySan {
   }
 
   paintData() {
-    bunny.fetchData()
+    if (bunny.query === '') {
+      bunny.fetchTrendingData()
       .then(data => this.paintSearchResults(data))
       .catch(err => console.error(err));
+    } else {
+      bunny.fetchData()
+      .then(data => this.paintSearchResults(data))
+      .catch(err => console.error(err));
+    }
   }
 
   toggleCategory() {
@@ -79,7 +85,10 @@ class KittySan {
       const element = this.elements.searchCategories[i];
       if (element.checked) {
         element.checked = false;
-        (this.elements.searchCategories[i + 1] || this.elements.searchCategories[0]).checked = true;
+        let nextCategory = this.elements.searchCategories[i + 1] || this.elements.searchCategories[0];
+        nextCategory.checked = true;
+        bunny.category = nextCategory.value;
+        this.paintData();
         break;
       }
     }
