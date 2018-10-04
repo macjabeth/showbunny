@@ -267,14 +267,19 @@ class KittySan {
     this.elements.mediaOverview.textContent = result.overview;
     // handle media spider stream
     this.elements.streamBtn.addEventListener('click', () => {
-      // get season
-      const seasons = result_data.seasons.length;
-      let season = prompt(`Which season? (${seasons === 1 ? '1' : '1-' + seasons})`);
-      // get episode
-      const episode_count = result_data.seasons[parseInt(season) - 1].episode_count;
-      let episode = prompt(`Which episode? (1-${episode_count})`)
       // set streaming source
-      this.elements.streamIframe.setAttribute('src', bunny.category === 'movie' && bunny.getMovieStream(result.id) || bunny.getTVStream(result.id, season, episode));
+      if (bunny.category === 'movie') {
+        this.elements.streamIframe.setAttribute('src', bunny.getMovieStream(result.id));
+      } else {
+        // get season
+        const seasons = result_data.seasons.length;
+        const season = prompt(`Which season? (${seasons === 1 ? '1' : '1-' + seasons})`);
+        // get episode
+        const episode_count = result_data.seasons[parseInt(season) - 1].episode_count;
+        const episode = prompt(`Which episode? (1-${episode_count})`)
+
+        this.elements.streamIframe.setAttribute('src', bunny.getTVStream(result.id, season, episode));
+      }
 
       this.elements.streamContainer.classList.add('stream-active');
       this.elements.mediaDialog.close();
