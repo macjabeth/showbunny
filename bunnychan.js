@@ -80,7 +80,7 @@ class BunnyChan {
 
   async fetchTrendingData() {
     // Check if the data has already been fetched for a category.
-    if(this.cachedResponse.hasOwnProperty(this.category) && this.cachedResponse[this.category].hasOwnProperty(this.page))
+    if(this.cachedResponse[this.category] && this.cachedResponse[this.category][this.page])
       return this.cachedResponse[this.category][this.page];
 
     // If not then fetch the data.
