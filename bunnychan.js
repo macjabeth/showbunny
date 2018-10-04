@@ -3,11 +3,12 @@ class BunnyChan {
   constructor() {
     this.tmdb_key = 'fa4fa1ba075a48db1aeb756f4343bc23';
     this.spider_key = '4VQ6XG7DQ6o6EhxC';
-    this.query = 'bunny';
+    this.query = '';
     this.category = 'movie';
     this.page = 1;
     this.movie_genres = [];
     this.tv_genres = [];
+    this.cachedResponse = {};
 
     // fetch the movie genres
     this.fetchMovieGenres()
@@ -75,5 +76,19 @@ class BunnyChan {
     this.query = query;
     this.category = category;
     this.page = page;
+  }
+
+  async fetchTrendingData() {
+    // Check if the data has already been fetched for a category.
+    if(this.cachedResponse.hasOwnProperty(this.category))
+      return this.cachedResponse[this.category];
+
+    // If not then fetch the data.
+    const response = await fetch(`https://api.themoviedb.org/3/trending/${this.category}/week?api_key=${this.tmdb_key}&page=${this.page}`);
+
+    // Cache the data for the next time.
+    this.cachedResponse[this.category] = await response.json();
+    
+    return this.cachedResponse[this.category];
   }
 }
