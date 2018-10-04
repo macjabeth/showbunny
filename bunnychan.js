@@ -72,7 +72,7 @@ class BunnyChan {
   }
 
   // controllers
-  changeQuery(query, category, page = 1) {
+  changeQuery(query, category = this.category, page = 1) {
     this.query = query;
     this.category = category;
     this.page = page;

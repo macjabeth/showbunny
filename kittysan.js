@@ -55,11 +55,16 @@ class KittySan {
   handleSearchBar() {
     document.getElementById('search-form').addEventListener('submit', (event) => {
       const query = document.getElementById('search-bar').value;
-      const category = document.querySelector('input[name="search-category"]:checked').value;
-      bunny.changeQuery(query, category, 1);
+      bunny.changeQuery(query, null, 1);
       this.paintData();
       event.preventDefault();
     });
+    this.elements.searchCategories.forEach((element) => {
+      element.addEventListener('click', (event) => {
+        bunny.category = element.value;
+        this.paintData();
+      })
+    })
     document.getElementById('search-bar').addEventListener('keydown', (event) => {
       if (event.code === 'Tab') {
         this.toggleCategory();
