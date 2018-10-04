@@ -80,15 +80,16 @@ class BunnyChan {
 
   async fetchTrendingData() {
     // Check if the data has already been fetched for a category.
-    if(this.cachedResponse.hasOwnProperty(this.category))
-      return this.cachedResponse[this.category];
+    if(this.cachedResponse.hasOwnProperty(this.category) && this.cachedResponse[this.category].hasOwnProperty(this.page))
+      return this.cachedResponse[this.category][this.page];
 
     // If not then fetch the data.
     const response = await fetch(`https://api.themoviedb.org/3/trending/${this.category}/week?api_key=${this.tmdb_key}&page=${this.page}`);
 
     // Cache the data for the next time.
-    this.cachedResponse[this.category] = await response.json();
+    this.cachedResponse[this.category] = this.cachedResponse[this.category] || {}
+    this.cachedResponse[this.category][this.page] = await response.json();
     
-    return this.cachedResponse[this.category];
+    return this.cachedResponse[this.category][this.page];
   }
 }
