@@ -111,7 +111,7 @@ class KittySan {
       // create the image
       const img = document.createElement('img');
       // set the image path
-      img.setAttribute('src', result.poster_path ? `https://image.tmdb.org/t/p/w200${result.poster_path}` : 'http://via.placeholder.com/200x300');
+      img.setAttribute('src', result.poster_path ? `https://image.tmdb.org/t/p/w200${result.poster_path}` : 'placeholder.png');
       // append image to list item
       li.appendChild(img);
       // create title and year elements
