@@ -61,7 +61,7 @@ class KittySan {
     });
     this.elements.searchCategories.forEach((element) => {
       element.addEventListener('click', (event) => {
-        bunny.category = element.value;
+        bunny.changeQuery(bunny.query, element.value, 1);
         this.paintData();
       })
     })
