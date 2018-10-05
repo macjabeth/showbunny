@@ -9,6 +9,13 @@ body {
   margin-top: 20px;
 }
 
+footer {
+  width: 50%;
+  font-weight: bold;
+  text-align: center;
+  margin: 20px auto;
+}
+
 .logo {
   width: 100px;
   height: 100px;
