@@ -309,7 +309,7 @@ class KittySan {
       } else {
         this.elements.trailerBtn.firstChild.style = 'text-decoration: line-through';
       }
-    });
+    }, {once: true});
     // handle media spider stream
     this.elements.streamBtn.addEventListener('click', () => {
       // set streaming source
@@ -325,7 +325,7 @@ class KittySan {
 
         this.setStreamSource(bunny.getTVStream(result.id, season, episode));
       }
-    });
+    }, {once: true});
 
     // display dialog
     this.elements.mediaDialog.showModal();
