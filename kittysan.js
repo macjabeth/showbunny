@@ -35,7 +35,7 @@ class KittySan {
   handleMediaClose() {
     this.elements.mediaClose.addEventListener('click', () => this.elements.mediaDialog.close());
     // handle clicking outside the dialog
-    window.addEventListener('click', (event) => {
+    window.addEventListener('click', event => {
       if (event.target === this.mediaDialog) {
         this.elements.mediaDialog.close();
       }
@@ -47,26 +47,26 @@ class KittySan {
       this.elements.streamIframe.src = '';
       //re enable transition
       const meow = this.elements;
-      setTimeout(function () {
+      setTimeout(function() {
         meow.streamContainer.classList.remove('stream-disable-transition');
       }, 1100);
     });
   }
 
   handleSearchBar() {
-    document.getElementById('search-form').addEventListener('submit', (event) => {
+    document.getElementById('search-form').addEventListener('submit', event => {
       const query = document.getElementById('search-bar').value;
       bunny.changeQuery(query, null, 1);
       this.paintData();
       event.preventDefault();
     });
-    this.elements.searchCategories.forEach((element) => {
-      element.addEventListener('click', (event) => {
+    this.elements.searchCategories.forEach(element => {
+      element.addEventListener('click', event => {
         bunny.changeQuery(bunny.query, element.value, 1);
         this.paintData();
-      })
-    })
-    document.getElementById('search-bar').addEventListener('keydown', (event) => {
+      });
+    });
+    document.getElementById('search-bar').addEventListener('keydown', event => {
       if (event.code === 'Tab') {
         this.toggleCategory();
         event.preventDefault();
@@ -76,13 +76,15 @@ class KittySan {
 
   paintData() {
     if (bunny.query === '') {
-      bunny.fetchTrendingData()
-      .then(data => this.paintSearchResults(data))
-      .catch(err => console.error(err));
+      bunny
+        .fetchTrendingData()
+        .then(data => this.paintSearchResults(data))
+        .catch(err => console.error(err));
     } else {
-      bunny.fetchData()
-      .then(data => this.paintSearchResults(data))
-      .catch(err => console.error(err));
+      bunny
+        .fetchData()
+        .then(data => this.paintSearchResults(data))
+        .catch(err => console.error(err));
     }
   }
 
@@ -165,7 +167,7 @@ class KittySan {
 
     // add all pages
     for (let i = 1; i <= data.total_pages; i++) {
-      if (i === 1 || (i >= (data.page - 2) && i <= (data.page + 2)) || i === data.total_pages) {
+      if (i === 1 || (i >= data.page - 2 && i <= data.page + 2) || i === data.total_pages) {
         // create link element
         const link = document.createElement('a');
         // if current page
@@ -175,13 +177,13 @@ class KittySan {
           // make it editable
           link.setAttribute('contenteditable', true);
           link.addEventListener('click', () => document.execCommand('selectAll', false, null));
-          link.addEventListener('keypress', (event) => {
+          link.addEventListener('keypress', event => {
             if (event.code === 'Enter') {
               bunny.changeQuery(bunny.query, bunny.category, parseInt(event.target.textContent));
               this.paintData();
               event.preventDefault();
             }
-          })
+          });
         } else {
           // handle click event to fetch data from page
           link.addEventListener('click', () => {
@@ -218,7 +220,8 @@ class KittySan {
     let result_data;
     // fetch result details
     if (bunny.category === 'movie') {
-      bunny.fetchMovieDetails(result.id)
+      bunny
+        .fetchMovieDetails(result.id)
         .then(data => {
           // log details
           console.log(data);
@@ -226,15 +229,15 @@ class KittySan {
           // set media status
           this.elements.mediaStatus.textContent = data.status;
           // fetch videos
-          bunny.fetchMovieVideos(data.id)
-            .then(data => {
-              console.log(data)
-              result_data.videos = data;
-            })
+          bunny.fetchMovieVideos(data.id).then(data => {
+            console.log(data);
+            result_data.videos = data;
+          });
         })
         .catch(err => console.error(err));
     } else {
-      bunny.fetchTVDetails(result.id)
+      bunny
+        .fetchTVDetails(result.id)
         .then(data => {
           // log details
           console.log(data);
@@ -242,11 +245,10 @@ class KittySan {
           // set media status
           this.elements.mediaStatus.textContent = data.status;
           // fetch videos
-          bunny.fetchTVVideos(data.id)
-            .then(data => {
-              console.log(data)
-              result_data.videos = data;
-            })
+          bunny.fetchTVVideos(data.id).then(data => {
+            console.log(data);
+            result_data.videos = data;
+          });
         })
         .catch(err => console.error(err));
     }
@@ -257,8 +259,8 @@ class KittySan {
       this.elements.mediaRating.removeChild(this.elements.mediaRating.firstChild);
     }
     // helper functions
-    const roundHalf = (num) => Math.round(num * 2) * 0.5;
-    const addStar = (cls) => {
+    const roundHalf = num => Math.round(num * 2) * 0.5;
+    const addStar = cls => {
       const icon = document.createElement('i');
       icon.className = cls;
       this.elements.mediaRating.appendChild(icon);
@@ -279,18 +281,16 @@ class KittySan {
       this.elements.mediaGenres.removeChild(this.elements.mediaGenres.firstChild);
     }
     // add genres
-    bunny[bunny.category + '_genres']
-      .filter(genre => result.genre_ids.includes(genre.id))
-      .forEach(genre => {
-        // create genre element
-        const li = document.createElement('li');
-        // add classes
-        li.classList.add('genre');
-        // add text content
-        li.textContent = genre.name;
-        // add genre element to genres div
-        this.elements.mediaGenres.appendChild(li);
-      });
+    bunny[bunny.category + '_genres'].filter(genre => result.genre_ids.includes(genre.id)).forEach(genre => {
+      // create genre element
+      const li = document.createElement('li');
+      // add classes
+      li.classList.add('genre');
+      // add text content
+      li.textContent = genre.name;
+      // add genre element to genres div
+      this.elements.mediaGenres.appendChild(li);
+    });
     // add overview
     this.elements.mediaOverview.textContent = result.overview;
     // handle media trailer
@@ -304,12 +304,12 @@ class KittySan {
         }
       }
       if (result_video) {
-        this.elements.trailerBtn.firstChild.style = "";  // failsafe
+        this.elements.trailerBtn.firstChild.style = ''; // failsafe
         this.setStreamSource(`https://www.youtube.com/embed/${result_video.key}`);
       } else {
-        this.elements.trailerBtn.firstChild.style = "text-decoration: line-through";
+        this.elements.trailerBtn.firstChild.style = 'text-decoration: line-through';
       }
-    })
+    });
     // handle media spider stream
     this.elements.streamBtn.addEventListener('click', () => {
       // set streaming source
@@ -321,7 +321,7 @@ class KittySan {
         const season = prompt(`Which season? (${seasons === 1 ? '1' : '1-' + seasons})`);
         // get episode
         const episode_count = result_data.seasons[parseInt(season) - 1].episode_count;
-        const episode = prompt(`Which episode? (1-${episode_count})`)
+        const episode = prompt(`Which episode? (1-${episode_count})`);
 
         this.setStreamSource(bunny.getTVStream(result.id, season, episode));
       }
@@ -331,13 +331,12 @@ class KittySan {
     this.elements.mediaDialog.showModal();
   }
 
-
   setStreamSource(src) {
     this.elements.streamIframe.setAttribute('src', src);
     this.elements.streamContainer.classList.add('stream-active');
     this.elements.mediaDialog.close();
     const meow = this.elements;
-    setTimeout(function () {
+    setTimeout(function() {
       meow.streamContainer.classList.add('stream-disable-transition');
     }, 1100);
   }

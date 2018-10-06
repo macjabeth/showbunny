@@ -1,3 +1,3 @@
-const bunny = new BunnyChan;
-const kitty = new KittySan;
+const bunny = new BunnyChan();
+const kitty = new KittySan();
 kitty.init();
