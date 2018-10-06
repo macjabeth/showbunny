@@ -16,7 +16,8 @@ class KittySan {
       mediaStream: document.getElementById('media-stream'),
       mediaDetails: document.getElementById('media-details'),
       mediaOverview: document.getElementById('media-overview'),
-      streamBtn: document.getElementById('stream-btn'),
+      trailerBtn: document.getElementById('trailer'),
+      streamBtn: document.getElementById('stream'),
       streamContainer: document.getElementById('stream-container'),
       streamIframe: document.getElementById('stream-iframe')
     };
@@ -221,8 +222,15 @@ class KittySan {
         .then(data => {
           // log details
           console.log(data);
+          result_data = data;
           // set media status
           this.elements.mediaStatus.textContent = data.status;
+          // fetch videos
+          bunny.fetchMovieVideos(data.id)
+            .then(data => {
+              console.log(data)
+              result_data.videos = data;
+            })
         })
         .catch(err => console.error(err));
     } else {
@@ -233,6 +241,12 @@ class KittySan {
           result_data = data;
           // set media status
           this.elements.mediaStatus.textContent = data.status;
+          // fetch videos
+          bunny.fetchTVVideos(data.id)
+            .then(data => {
+              console.log(data)
+              result_data.videos = data;
+            })
         })
         .catch(err => console.error(err));
     }
@@ -279,11 +293,28 @@ class KittySan {
       });
     // add overview
     this.elements.mediaOverview.textContent = result.overview;
+    // handle media trailer
+    this.elements.trailerBtn.addEventListener('click', () => {
+      let result_video;
+      for (let i = 0; i < result_data.videos.results.length; i++) {
+        const video = result_data.videos.results[i];
+        if (video.type === 'Trailer') {
+          result_video = video;
+          break;
+        }
+      }
+      if (result_video) {
+        this.elements.trailerBtn.firstChild.style = "";  // failsafe
+        this.setStreamSource(`https://www.youtube.com/embed/${result_video.key}`);
+      } else {
+        this.elements.trailerBtn.firstChild.style = "text-decoration: line-through";
+      }
+    })
     // handle media spider stream
     this.elements.streamBtn.addEventListener('click', () => {
       // set streaming source
       if (bunny.category === 'movie') {
-        this.elements.streamIframe.setAttribute('src', bunny.getMovieStream(result.id));
+        this.setStreamSource(bunny.getMovieStream(result.id));
       } else {
         // get season
         const seasons = result_data.seasons.length;
@@ -292,20 +323,22 @@ class KittySan {
         const episode_count = result_data.seasons[parseInt(season) - 1].episode_count;
         const episode = prompt(`Which episode? (1-${episode_count})`)
 
-        this.elements.streamIframe.setAttribute('src', bunny.getTVStream(result.id, season, episode));
+        this.setStreamSource(bunny.getTVStream(result.id, season, episode));
       }
-
-      this.elements.streamContainer.classList.add('stream-active');
-      this.elements.mediaDialog.close();
-
-      const meow = this.elements;
-      setTimeout(function () {
-        meow.streamContainer.classList.add('stream-disable-transition');
-      }, 1100);
     });
 
     // display dialog
     this.elements.mediaDialog.showModal();
   }
 
+
+  setStreamSource(src) {
+    this.elements.streamIframe.setAttribute('src', src);
+    this.elements.streamContainer.classList.add('stream-active');
+    this.elements.mediaDialog.close();
+    const meow = this.elements;
+    setTimeout(function () {
+      meow.streamContainer.classList.add('stream-disable-transition');
+    }, 1100);
+  }
 }

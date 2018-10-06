@@ -83,7 +83,7 @@ footer {
 #search-bar {
   border-radius: 20px 0 0 20px;
   outline-style: none;
-  background-color: white;
+  background-color: #FFF;
   border: none;
   border-right: groove ghostwhite 3px;
   width: 100%;
@@ -98,7 +98,7 @@ footer {
 
 .search-container {
   border-radius: 20px;
-  background-color: white;
+  background-color: #FFF;
   border: inset ghostwhite 3px;
   display: flex;
   /*justify-content: stretch;*/
@@ -130,7 +130,7 @@ input[type="radio"] + label:last-child {
 }
 
 input[type="radio"]:checked + label {
-  background: black;
+  background: #000;
   color: ghostwhite;
 }
 
@@ -161,7 +161,7 @@ input[type="radio"]:checked + label:active {
   overflow: hidden;
   height: 300px;
   position: relative;
-  background: black;
+  background: #000;
   transition: .3s;
 }
 
@@ -184,7 +184,7 @@ input[type="radio"]:checked + label:active {
                                       rgba(0, 0, 0, .8) 40%,
                                       rgba(0, 0, 0, .5) 80%,
                                       rgba(0, 0, 0, .0) 100%);
-  color: white;
+  color: #FFF;
   font-family: 'Raleway', sans-serif;
   text-align: center;
   transition: .3s;
@@ -212,7 +212,7 @@ input[type="radio"]:checked + label:active {
 }
 
 #search-pagination a {
-  color: black;
+  color: #000;
   cursor: pointer;
   float: left;
   padding: 8px 16px;
@@ -224,7 +224,7 @@ input[type="radio"]:checked + label:active {
 
 #search-pagination a.active {
   background-color: #4CAF50;
-  color: white;
+  color: #FFF;
   border: 1px solid #4CAF50;
 }
 
@@ -241,7 +241,7 @@ input[type="radio"]:checked + label:active {
 }
 
 .close-btn {
-  color: white;
+  color: #FFF;
   font-size: 30px;
   position: absolute;
   right: 0;
@@ -276,6 +276,10 @@ input[type="radio"]:checked + label:active {
   max-width: 550px;
 }
 
+#media-close {
+  text-shadow: 2px 2px 8px #000;
+}
+
 .title-status {
   display: flex;
   align-items: baseline;
@@ -283,8 +287,8 @@ input[type="radio"]:checked + label:active {
 }
 
 #media-title {
-  /*background: black;*/
-  /*color: white;*/
+  /*background: #000;*/
+  /*color: #FFF;*/
   /*text-align: center;*/
   /*padding: 10px 0;*/
   font-size: 20px;
@@ -333,13 +337,13 @@ h3 {
 
 .genre {
   /*background: darkgrey;*/
-  /*color: white;*/
+  /*color: #FFF;*/
   list-style-type: none;
   padding: 4px 7px;
   margin: 0 3px;
   border-radius: 7px;
   font-size: 11px;
-  border: solid black 1px;
+  border: solid #000 1px;
 }
 
 p {
@@ -395,11 +399,13 @@ p {
   transition: height 0s;
 }
 
-#stream-btn {
+.stream-btn {
   font-size: 14px;
   padding: 4px 8px;
   border-radius: 6px;
-  border: solid black 2px;
+  color: #FFF;
+  background-color: #080;
+  border: solid #000 2px;
   font-family: Raleway;
   outline: none;
   display: flex;
@@ -409,20 +415,25 @@ p {
   transition: .2s;
 }
 
-#stream-btn:hover {
+.stream-btn:hover {
   box-shadow: -4px 4px 12px 0px #969696;
   padding: 6px 10px;
   margin-top: -4px;
 }
 
-#stream-btn:active {
-  background: black;
-  color: white;
+.stream-btn:active {
+  background: #000;
+  color: #FFF;
 }
 
-#stream-btn i{
+.stream-btn i{
   padding: 2px 0px 2px 5px;
   font-size: 20px;
   text-align: center;
   vertical-align: middle;
+}
+
+.trailer-btn {
+  background-color: #800;
+  margin-right: 5px;
 }

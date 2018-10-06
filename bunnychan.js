@@ -92,4 +92,14 @@ class BunnyChan {
     
     return this.cachedResponse[this.category][this.page];
   }
+
+  async fetchMovieVideos(movie_id) {
+    const response = await fetch(`https://api.themoviedb.org/3/movie/${movie_id}/videos?api_key=${this.tmdb_key}&language=en-US`)
+    return await response.json();
+  }
+
+  async fetchTVVideos(tv_id) {
+    const response = await fetch(`https://api.themoviedb.org/3/tv/${tv_id}/videos?api_key=${this.tmdb_key}&language=en-US`)
+    return await response.json();
+  }
 }
