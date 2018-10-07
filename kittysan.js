@@ -56,7 +56,7 @@ class KittySan {
   handleSearchBar() {
     document.getElementById('search-form').addEventListener('submit', event => {
       const query = document.getElementById('search-bar').value;
-      bunny.changeQuery(query, null, 1);
+      bunny.changeQuery(query, bunny.category, 1);
       this.paintData();
       event.preventDefault();
     });
