@@ -119,7 +119,7 @@ class KittySan {
       // create the image
       const img = document.createElement('img');
       // set the image path
-      img.setAttribute('src', result.poster_path ? `https://image.tmdb.org/t/p/w200${result.poster_path}` : 'http://via.placeholder.com/200x300');
+      img.setAttribute('src', result.poster_path ? `https://image.tmdb.org/t/p/w200${result.poster_path}` : 'placeholder.png');
       // append image to list item
       li.appendChild(img);
       // create title and year elements
@@ -253,7 +253,7 @@ class KittySan {
         .catch(err => console.error(err));
     }
     // add backdrop
-    this.elements.mediaBackdrop.setAttribute('src', result.backdrop_path ? `https://image.tmdb.org/t/p/w500${result.backdrop_path}` : 'http://via.placeholder.com/500x300');
+    this.elements.mediaBackdrop.setAttribute('src', result.backdrop_path ? `https://image.tmdb.org/t/p/w500${result.backdrop_path}` : 'placeholder_wide.png');
     // clear existing media ratings
     while (this.elements.mediaRating.firstChild) {
       this.elements.mediaRating.removeChild(this.elements.mediaRating.firstChild);
