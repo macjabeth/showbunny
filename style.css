@@ -282,6 +282,10 @@ input[type='radio']:checked + label:active {
   justify-content: space-between;
 }
 
+.title-container {
+  display: flex;
+}
+
 #media-title {
   /*background: #000;*/
   /*color: #FFF;*/
@@ -290,6 +294,11 @@ input[type='radio']:checked + label:active {
   font-size: 20px;
   margin: 0;
   font-family: Oswald, sans-serif;
+  font-weight: bold;
+}
+
+#media-rating {
+  padding: 3px 0 0 15px;
 }
 
 /* #media-status {
@@ -316,7 +325,7 @@ h3 {
 }
 
 #media-genres {
-  padding-top: 10px;
+  padding: 10px 0;
   display: flex;
 }
 
@@ -326,6 +335,7 @@ h3 {
 
 .genres {
   display: flex;
+  flex-wrap: wrap;
   padding: 0;
   margin: 0;
   align-items: center;
@@ -336,7 +346,7 @@ h3 {
   /*color: #FFF;*/
   list-style-type: none;
   padding: 4px 7px;
-  margin: 0 3px;
+  margin: 3px;
   border-radius: 7px;
   font-size: 11px;
   border: solid #000 1px;
