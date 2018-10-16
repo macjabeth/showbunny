@@ -120,6 +120,8 @@ class KittySan {
       const img = document.createElement('img');
       // set the image path
       img.setAttribute('src', result.poster_path ? `https://image.tmdb.org/t/p/w200${result.poster_path}` : 'placeholder.png');
+      // attach image class
+      img.classList.add('search-image');
       // append image to list item
       li.appendChild(img);
       // create title and year elements
