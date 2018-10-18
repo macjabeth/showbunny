@@ -3,7 +3,7 @@
     "short_name": "",
     "description": "",
     "icons":{"app_icon":"easter-bunny.png"},
-    "start_url": "",
+    "start_url": "showbunny/index.html",
     "display": "fullscreen",
     "theme_color": "#B12A34",
     "background_color": "#B12A34"
