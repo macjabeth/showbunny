@@ -1,7 +1,7 @@
 {
     "name": "Showbunny",
     "short_name": "Showbunny",
-    "start_url": "index.html",
+    "start_url": "/index.html",
     "scope": "./",
     "icons": [
         {
