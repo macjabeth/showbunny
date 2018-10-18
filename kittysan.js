@@ -119,7 +119,9 @@ class KittySan {
       // create the image
       const img = document.createElement('img');
       // set the image path
-      img.setAttribute('src', result.poster_path ? `https://image.tmdb.org/t/p/w200${result.poster_path}` : 'placeholder.png');
+      img.setAttribute('src', result.poster_path ? `https://image.tmdb.org/t/p/w200${result.poster_path}` : 'img/placeholder.png');
+      // set alt attribute
+      img.setAttribute('alt', `${result.title} poster`)
       // attach image class
       img.classList.add('search-image');
       // append image to list item
@@ -255,7 +257,7 @@ class KittySan {
         .catch(err => console.error(err));
     }
     // add backdrop
-    this.elements.mediaBackdrop.setAttribute('src', result.backdrop_path ? `https://image.tmdb.org/t/p/w500${result.backdrop_path}` : 'placeholder_wide.png');
+    this.elements.mediaBackdrop.setAttribute('src', result.backdrop_path ? `https://image.tmdb.org/t/p/w500${result.backdrop_path}` : 'img/placeholder_wide.png');
     // clear existing media ratings
     while (this.elements.mediaRating.firstChild) {
       this.elements.mediaRating.removeChild(this.elements.mediaRating.firstChild);

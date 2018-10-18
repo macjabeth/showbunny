@@ -5,18 +5,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="Description" content="Watch and track your favourite tv shows and movies.">
   <title>Showbunny</title>
+  <link rel="preconnect" href="https://api.themoviedb.org">
+  <link rel="preconnect" href="https://use.fontawesome.com">
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css?family=Archivo+Black|Fascinate+Inline|Raleway|Oswald" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
-    crossorigin="anonymous">
+  <link href="fonts.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="apple-mobile-web-app-title" content="Showbunny">
+  <meta name="application-name" content="Showbunny">
+  <meta name="msapplication-TileColor" content="#b91d47">
+  <meta name="theme-color" content="#ffffff">
 </head>
 
 <body>
   <header class="header">
-    <img src="easter-bunny.png" class="logo" />
+    <img src="img/easter-bunny.svg" class="logo" role="presentation"/>
     <h1 class="banner">Showbunny</h1>
-    <img src="easter-bunny.png" class="logo" />
+    <img src="img/easter-bunny.svg" class="logo" role="presentation"/>
   </header>
   <!-- <nav></nav> -->
   <main>
@@ -82,7 +93,7 @@
       <div class="close-btn close-btn-dark">
         <i class="fas fa-times"></i>
       </div>
-      <iframe id="stream-iframe" frameborder="0" allowfullscreen></iframe>
+      <iframe title="stream iframe" id="stream-iframe" frameborder="0" allowfullscreen></iframe>
     </section>
   </main>
   <footer>
@@ -91,6 +102,35 @@
   <script src="bunnychan.js"></script>
   <script src="kittysan.js"></script>
   <script src="app.js"></script>
+  <script src="upup.min.js"></script>
+  <script>
+    UpUp.start({
+      'content-url': 'index.html',
+      'assets': [
+        'fonts/Archivo_Black/ArchivoBlack-Regular.ttf',
+        'fonts/Fascinate_Inline/FascinateInline-Regular.ttf',
+        'fonts/Oswald/Oswald-Regular.ttf',
+        'fonts/Raleway/Raleway-Regular.ttf',
+        'img/android-chrome-192x192.png',
+        'img/android-chrome-512x512.png',
+        'img/apple-touch-icon.png',
+        'img/banner.png',
+        'img/easter-bunny.svg',
+        'img/favicon-16x16.png',
+        'img/favicon-32x32.png',
+        'img/favicon.ico',
+        'img/mstile-150x150.png',
+        'img/placeholder_wide.png',
+        'img/placeholder.png',
+        'img/safari-pinned-tab.svg',
+        'app.js',
+        'bunnychan.js',
+        'kittysan.js',
+        'style.css',
+        'fonts.css'
+      ]
+    });
+  </script>
 </body>
 
 </html>

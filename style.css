@@ -242,7 +242,6 @@ input[type='radio']:checked + label:active {
 
 #search-pagination a.active {
   background-color: #4caf50;
-  color: #fff;
   border: 1px solid #4caf50;
 }
 
@@ -321,7 +320,7 @@ input[type='radio']:checked + label:active {
 }
 
 #media-rating {
-  padding: 3px 0 0 15px;
+  margin: 5px 0 0 15px;
 }
 
 /* #media-status {
