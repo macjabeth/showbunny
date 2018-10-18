@@ -2,7 +2,7 @@
     "name": "ShowBunny Progressive Web App",
     "short_name": "",
     "description": "",
-    "icons": [],
+    "icons":{"app_icon":"easter-bunny.png"},
     "start_url": "",
     "display": "fullscreen",
     "theme_color": "#B12A34",
