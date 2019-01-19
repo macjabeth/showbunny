@@ -4,6 +4,8 @@
 
 This branch is a personal project in the attempt to redesign the website from scratch using better organisation and a mobile-first layout.
 
+**Notice** - The current design uses experimental features only available on Google Chrome. Other browsers will display incorrectly (hence the needs for this redesign). Accessibility is important.
+
 ## Description
 
 The client for this challenge is _Mr. Bunny_. He needs your help to build the Showbunny website using best practices for HTML and CSS - that includes both desktop and mobile designs.
