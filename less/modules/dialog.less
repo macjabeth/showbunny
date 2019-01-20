@@ -1,0 +1,36 @@
+.result-dialog {
+  background: @dialog-bg;
+  top: 10%;
+  width: 90%;
+  height: 80%;
+
+  &::-webkit-backdrop {
+    background: rgba(0,0,0,0.75);
+  }
+
+  &::backdrop {
+    background: rgba(0,0,0,0.75);
+  }
+
+  .dialog-x {
+    position: absolute;
+    top: 1%;
+    right: 2%;
+    color: @main-color;
+    font-size: 3rem;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+
+    &:hover {
+      font-weight: bold;
+      cursor: pointer;
+      -webkit-transform: rotate(180deg);
+              transform: rotate(180deg);
+    }
+
+    @media @desktop {
+      right: 1.25%;
+      font-size: 4rem;
+    }
+  }
+}

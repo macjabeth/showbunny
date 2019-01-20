@@ -136,7 +136,7 @@ html {
 body {
   font-size: 1.6rem;
   background-color: #232528;
-  color: #EAF6FF;
+  color: #eaf6ff;
 }
 .wrapper {
   width: 100%;
@@ -220,4 +220,37 @@ body {
 }
 .main-content .site-search:focus::placeholder {
   color: #ffe8a3;
+}
+.result-dialog {
+  background: #4d5061e6;
+  top: 10%;
+  width: 90%;
+  height: 80%;
+}
+.result-dialog::-webkit-backdrop {
+  background: rgba(0, 0, 0, 0.75);
+}
+.result-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.75);
+}
+.result-dialog .dialog-x {
+  position: absolute;
+  top: 1%;
+  right: 2%;
+  color: #eaf6ff;
+  font-size: 3rem;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+.result-dialog .dialog-x:hover {
+  font-weight: bold;
+  cursor: pointer;
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+@media (min-width: 1024px) {
+  .result-dialog .dialog-x {
+    right: 1.25%;
+    font-size: 4rem;
+  }
 }
