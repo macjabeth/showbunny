@@ -1,6 +1,6 @@
 /* http://meyerweb.com/eric/tools/css/reset/
-   v2.0 | 20110126
-   License: none (public domain)
+v2.0 | 20110126
+License: none (public domain)
 */
 html,
 body,
@@ -135,8 +135,8 @@ html {
 }
 body {
   font-size: 1.6rem;
-  background-color: #232528;
-  color: #eaf6ff;
+  background-color: #1d1e22;
+  color: #e9f6ff;
 }
 .wrapper {
   width: 100%;
@@ -182,7 +182,7 @@ body {
 }
 .main-content .site-search .search-input {
   -ms-flex-item-align: center;
-  background-color: #aed6d1;
+  background-color: #264440;
   color: #55706d;
   border-radius: 40px;
   padding: 10px 30px;
@@ -198,44 +198,50 @@ body {
 .main-content .site-search .search-input::-webkit-input-placeholder {
   -webkit-transition: 0.5s;
   transition: 0.5s;
+  color: #B8B3AA;
 }
 .main-content .site-search .search-input:-ms-input-placeholder {
   -webkit-transition: 0.5s;
   transition: 0.5s;
+  color: #B8B3AA;
 }
 .main-content .site-search .search-input::-ms-input-placeholder {
   -webkit-transition: 0.5s;
   transition: 0.5s;
+  color: #B8B3AA;
 }
 .main-content .site-search .search-input::placeholder {
   -webkit-transition: 0.5s;
   transition: 0.5s;
+  color: #B8B3AA;
 }
 .main-content .site-search .search-input:focus {
-  background: #55706d;
-  color: #ffe8a3;
+  background: #3E4F4D;
+  color: #FFE7A1;
   width: 85%;
-  border: 10px solid #8dccc4;
+  border: 10px solid #346B63;
   -webkit-box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.15);
   box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.15);
 }
 .main-content .site-search .search-input:focus::-webkit-input-placeholder {
-  color: #ffe8a3;
+  color: #FFE7A1;
 }
 .main-content .site-search .search-input:focus:-ms-input-placeholder {
-  color: #ffe8a3;
+  color: #FFE7A1;
 }
 .main-content .site-search .search-input:focus::-ms-input-placeholder {
-  color: #ffe8a3;
+  color: #FFE7A1;
 }
 .main-content .site-search .search-input:focus::placeholder {
-  color: #ffe8a3;
+  color: #FFE7A1;
 }
 .result-dialog {
-  background: #4d5061e6;
+  background: #344155e6;
   top: 10%;
   width: 90%;
   height: 80%;
+  padding: 5px;
+  border-radius: 10px;
 }
 .result-dialog::-webkit-backdrop {
   background: rgba(0, 0, 0, 0.75);
@@ -247,11 +253,12 @@ body {
   position: absolute;
   top: 1%;
   right: 2%;
-  color: #eaf6ff;
+  color: #e9f6ff;
   font-size: 3rem;
   -webkit-transition: 0.5s;
   transition: 0.5s;
   padding: 5px;
+  z-index: 1;
 }
 .result-dialog .dialog-x:hover {
   font-weight: bold;
@@ -264,4 +271,7 @@ body {
     right: 1.25%;
     font-size: 4rem;
   }
+}
+.result-dialog .dialog-iframe {
+  opacity: 0.8;
 }

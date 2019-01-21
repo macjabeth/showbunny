@@ -38,7 +38,7 @@
 
     .search-input {
       -ms-flex-item-align: center;
-      background-color: #aed6d1;
+      background-color: @search-bg;
       color: #55706d;
       border-radius: 40px;
       padding: 10px 30px;
@@ -54,46 +54,50 @@
       &::-webkit-input-placeholder {
         -webkit-transition: 0.5s;
         transition: 0.5s;
+        color: @search-colour;
       }
 
       &:-ms-input-placeholder {
         -webkit-transition: 0.5s;
         transition: 0.5s;
+        color: @search-colour;
       }
 
       &::-ms-input-placeholder {
         -webkit-transition: 0.5s;
         transition: 0.5s;
+        color: @search-colour;
       }
 
       &::placeholder {
         -webkit-transition: 0.5s;
         transition: 0.5s;
+        color: @search-colour;
       }
 
       &:focus {
-        background: #55706d;
-        color: #ffe8a3;
+        background: @search-focus-bg;
+        color: @search-focus-colour;
         width: 85%;
-        border: 10px solid #8dccc4;
+        border: 10px solid @search-focus-border;
         -webkit-box-shadow: 3px 3px 2px rgba(0,0,0, 0.15);
                 box-shadow: 3px 3px 2px rgba(0,0,0, 0.15);
       }
 
       &:focus::-webkit-input-placeholder {
-        color: #ffe8a3;
+        color: @search-focus-colour;
       }
 
       &:focus:-ms-input-placeholder {
-        color: #ffe8a3;
+        color: @search-focus-colour;
       }
 
       &:focus::-ms-input-placeholder {
-        color: #ffe8a3;
+        color: @search-focus-colour;
       }
 
       &:focus::placeholder {
-        color: #ffe8a3;
+        color: @search-focus-colour;
       }
     }
   }

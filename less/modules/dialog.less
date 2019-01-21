@@ -3,6 +3,8 @@
   top: 10%;
   width: 90%;
   height: 80%;
+  padding: 5px;
+  border-radius: 10px;
 
   &::-webkit-backdrop {
     background: rgba(0,0,0,0.75);
@@ -16,11 +18,12 @@
     position: absolute;
     top: 1%;
     right: 2%;
-    color: @main-color;
+    color: @main-colour;
     font-size: 3rem;
     -webkit-transition: 0.5s;
     transition: 0.5s;
     padding: 5px;
+    z-index: 1;
 
     &:hover {
       font-weight: bold;
@@ -33,5 +36,9 @@
       right: 1.25%;
       font-size: 4rem;
     }
+  }
+
+  .dialog-iframe {
+    opacity: 0.8;
   }
 }
