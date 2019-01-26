@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Showbunny</title>
   <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
-  <link href="css/index.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -16,15 +16,16 @@
       <h1 class="header-title">Showbunny</h1>
     </header>
     <main class="main-content">
-      <div class="site-search">
-        <input type="search" class="search-input" name="q" aria-label="Search for movies or tv shows" placeholder="Search">
-      </div>
+      <form class="site-search">
+        <input type="search" class="search-input" aria-label="Search for movies or tv shows" placeholder="Search">
+      </form>
       <section class="search-results"></section>
       <dialog class="result-dialog">
         <span class="dialog-x">&times;</span>
       </dialog>
     </main>
   </div>
+  <script type="module" src="js/app.js"></script>
 </body>
 
 </html>

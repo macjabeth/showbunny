@@ -101,4 +101,31 @@
       }
     }
   }
+
+  .search-results {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+
+    .result-card {
+      width: 25%;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+      padding: 2% 1%;
+      cursor: pointer;
+      text-align: center;
+      -webkit-transition: 0.3s;
+      transition: 0.3s;
+
+      &:hover {
+        background-color: lighten(@main-bg, 10%);
+      }
+    }
+  }
 }
