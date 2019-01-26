@@ -138,7 +138,12 @@ body {
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
-  padding: 1%;
+  padding: 2%;
+}
+@media (min-width: 800px) {
+  .wrapper {
+    padding: 1%;
+  }
 }
 .main-header {
   display: -webkit-box;
@@ -242,18 +247,31 @@ body {
   justify-content: space-evenly;
 }
 .main-content .search-results .result-card {
-  width: 25%;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  width: 33.33%;
+  height: 100px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
   padding: 2% 1%;
   cursor: pointer;
-  text-align: center;
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 .main-content .search-results .result-card:hover {
   background-color: #34363e;
+}
+@media (min-width: 800px) {
+  .main-content .search-results .result-card {
+    width: 25%;
+  }
 }
 .result-dialog {
   background: #344155e6;
@@ -286,7 +304,7 @@ body {
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
-@media (min-width: 1024px) {
+@media (min-width: 800px) {
   .result-dialog .dialog-x {
     right: 1.25%;
     font-size: 4rem;

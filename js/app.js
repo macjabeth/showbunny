@@ -34,16 +34,19 @@ class App {
 
   getSearchResult (data) {
     const { media_type, name, title, id, release_date, first_air_date } = data;
-    let year = release_date || first_air_date;
-    year = typeof year !== 'undefined' ? year.split('-')[0] : year;
+
+    let year = release_date || first_air_date; year = typeof year !== 'undefined' ? year.split('-')[0] : year;
 
     const div = document.createElement('div');
     div.classList.add('result-card');
 
     const h3 = document.createElement('h3');
     h3.classList.add('result-title');
-    h3.innerText = `${name || title}`;
-    if (year) h3.innerText += ` (${year})`;
+    h3.appendChild(document.createTextNode(`${name || title}`));
+    if (year) {
+      h3.appendChild(document.createElement('br'));
+      h3.appendChild(document.createTextNode(`(${year})`));
+    }
 
     div.appendChild(h3);
 

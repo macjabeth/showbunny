@@ -113,18 +113,30 @@
             justify-content: space-evenly;
 
     .result-card {
-      width: 25%;
-      -webkit-box-pack: justify;
-          -ms-flex-pack: justify;
-              justify-content: space-between;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      text-align: center;
+      width: 33.33%;
+      height: 100px;
+      border: 1px solid rgba(0,0,0, 0.15);
       padding: 2% 1%;
       cursor: pointer;
-      text-align: center;
       -webkit-transition: 0.3s;
       transition: 0.3s;
 
       &:hover {
         background-color: lighten(@main-bg, 10%);
+      }
+
+      @media @desktop {
+        width: 25%;
       }
     }
   }
