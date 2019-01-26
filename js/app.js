@@ -29,7 +29,7 @@ class App {
     event.preventDefault();
     this.elem.results.innerHTML = '';
     this.tmdb.search(event.target.children[0].value)
-      .then(data => this.paintSearchResults(data.results));
+      .then(({ results }) => this.paintSearchResults(results));
   }
 
   getSearchResult (data) {
@@ -49,9 +49,7 @@ class App {
 
     const { dialog } = this.elem;
     div.addEventListener('click', (event) => {
-      const iframe = media_type === 'movie' ? this.spider.getMovieStream(id) : (() => {
-        return this.spider.getTVStream(id, prompt('Season?'), prompt('Episode?'));
-      })();
+      const iframe = media_type === 'movie' ? this.spider.getMovieStream(id) : (() => this.spider.getTVStream(id, prompt('Season?'), prompt('Episode?')))();
       dialog.insertAdjacentHTML('beforeend', iframe);
       dialog.showModal();
     });
@@ -61,8 +59,8 @@ class App {
 
   paintSearchResults (data) {
     console.log(data);
-    const { results } = this.elem
-    data.forEach(result => {
+    const { results } = this.elem;
+    data.filter(({ media_type }) => media_type !== 'person').forEach(result => {
       results.appendChild(this.getSearchResult(result));
     });
   }
