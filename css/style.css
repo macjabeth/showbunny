@@ -264,6 +264,7 @@ body {
   border-radius: 10px;
   margin: 3px;
   cursor: pointer;
+  opacity: 0.85;
   -webkit-transition: 0.2s;
   transition: 0.2s;
 }
