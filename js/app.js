@@ -33,12 +33,16 @@ class App {
   }
 
   getSearchResult (data) {
-    const { media_type, name, title, id, release_date, first_air_date } = data;
+    const { media_type, poster_path, name, title, id, release_date, first_air_date } = data;
+    const { base_url, poster_sizes } = this.tmdb.config.images;
 
     let year = release_date || first_air_date; year = typeof year !== 'undefined' ? year.split('-')[0] : year;
 
     const div = document.createElement('div');
     div.classList.add('result-card');
+    div.style.backgroundImage = poster_path
+      ? `url('${base_url}original${poster_path}')`
+      : `url('img/placeholder.png')`;
 
     const h3 = document.createElement('h3');
     h3.classList.add('result-title');
