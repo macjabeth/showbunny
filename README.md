@@ -2,9 +2,9 @@
 
 # Showbunny: Watch your favourite movies and TV shows
 
-This branch is a personal project in the attempt to redesign the website from scratch using better organisation and a mobile-first layout.
+This branch is an attempt to redesign the website from scratch using better organisation and a mobile-first layout.
 
-**Notice** - The current design uses experimental features only available on Google Chrome. Other browsers will display incorrectly (hence the needs for this redesign). Accessibility is important.
+**Notice** - The current design uses experimental features natively available on Google Chrome. See [this page](https://caniuse.com/#search=dialog) to check if you can enable it in your browser.
 
 ## What and Why
 
