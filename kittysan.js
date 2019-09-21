@@ -33,13 +33,7 @@ class KittySan {
   }
 
   handleMediaClose() {
-    this.elements.mediaClose.addEventListener('click', () => this.elements.mediaDialog.close());
-    // handle clicking outside the dialog
-    window.addEventListener('click', event => {
-      if (event.target === this.mediaDialog) {
-        this.elements.mediaDialog.close();
-      }
-    });
+    this.elements.mediaClose.addEventListener('click', () => this.elements.mediaDialog.style.display = 'none');
     // handle stream close event
     this.elements.streamClose.addEventListener('click', () => {
       this.elements.streamContainer.classList.remove('stream-active');
@@ -332,13 +326,13 @@ class KittySan {
     }, {once: true});
 
     // display dialog
-    this.elements.mediaDialog.showModal();
+    this.elements.mediaDialog.style.display = 'block';
   }
 
   setStreamSource(src) {
     this.elements.streamIframe.setAttribute('src', src);
     this.elements.streamContainer.classList.add('stream-active');
-    this.elements.mediaDialog.close();
+    this.elements.mediaDialog.style.display = 'none';
     const meow = this.elements;
     setTimeout(function() {
       meow.streamContainer.classList.add('stream-disable-transition');
