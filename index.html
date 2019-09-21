@@ -15,40 +15,70 @@
   <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
   <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
   <link rel="preconnect" href="https://api.themoviedb.org">
-  <link rel="preconnect" href="https://use.fontawesome.com">
   <meta name="apple-mobile-web-app-title" content="Showbunny">
   <meta name="application-name" content="Showbunny">
   <meta name="msapplication-TileColor" content="#b91d47">
   <meta name="theme-color" content="#ffffff">
+  <script src="https://kit.fontawesome.com/4f64c80531.js" crossorigin="anonymous"></script>
+  <script defer src="bunnychan.js"></script>
+  <script defer src="kittysan.js"></script>
+  <script defer src="app.js"></script>
+  <script defer src="upup.min.js"></script>
+  <script defer>
+    UpUp.start({
+      'content-url': 'index.html',
+      'assets': [
+        'fonts/Archivo_Black/ArchivoBlack-Regular.ttf',
+        'fonts/Fascinate_Inline/FascinateInline-Regular.ttf',
+        'fonts/Oswald/Oswald-Regular.ttf',
+        'fonts/Raleway/Raleway-Regular.ttf',
+        'img/android-chrome-192x192.png',
+        'img/android-chrome-512x512.png',
+        'img/apple-touch-icon.png',
+        'img/banner.png',
+        'img/easter-bunny.svg',
+        'img/favicon-16x16.png',
+        'img/favicon-32x32.png',
+        'img/favicon.ico',
+        'img/mstile-150x150.png',
+        'img/placeholder_wide.png',
+        'img/placeholder.png',
+        'img/safari-pinned-tab.svg',
+        'app.js',
+        'bunnychan.js',
+        'kittysan.js',
+        'style.css',
+        'fonts.css'
+      ]
+    });
+  </script>
 </head>
 
 <body>
-  <header class="header">
-    <img src="img/easter-bunny.svg" class="logo" role="presentation"/>
-    <h1 class="banner">Showbunny</h1>
-    <img src="img/easter-bunny.svg" class="logo" role="presentation"/>
-  </header>
-  <!-- <nav></nav> -->
-  <main>
-    <section class="search-form-wrapper">
-      <form role="search" id="search-form">
-        <div class="search-container">
-          <input type="search" name="bunny-search" id="search-bar" placeholder="Search..." aria-label="search for media content">
-          <!-- <div id="search-categories"> -->
-          <input type="radio" name="search-category" id="movie-category" value="movie" checked>
-          <label for="movie-category"><span>Movie</span></label>
-          <input type="radio" name="search-category" id="tv-category" value="tv">
-          <label for="tv-category"><span>TV</span></label>
-          <!-- </div> -->
-        </div>
-      </form>
-    </section>
-    <section>
-      <ul id="search-results"></ul>
-      <div id="search-pagination"></div>
-      <dialog id="media-dialog">
+  <div class="container">
+    <header class="header">
+      <img src="img/easter-bunny.svg" class="logo" role="presentation"/>
+      <h1 class="banner">Showbunny</h1>
+      <img src="img/easter-bunny.svg" class="logo" role="presentation"/>
+    </header>
+    <main>
+      <section class="search-form-wrapper">
+        <form role="search" id="search-form">
+          <div class="search-container">
+            <input type="search" name="bunny-search" id="search-bar" placeholder="Search..." aria-label="search for media content">
+            <input type="radio" name="search-category" id="movie-category" value="movie" checked>
+            <label for="movie-category"><span>Movie</span></label>
+            <input type="radio" name="search-category" id="tv-category" value="tv">
+            <label for="tv-category"><span>TV</span></label>
+          </div>
+        </form>
+      </section>
+      <section class="search">
+        <ul id="search-results"></ul>
+        <div id="search-pagination"></div>
+      </section>
+      <div id="media-dialog">
         <div id="media-content">
           <div id="media-header">
             <div class="close-btn">
@@ -88,50 +118,18 @@
             </div>
           </div>
         </div>
-      </dialog>
-    </section>
-    <section id="stream-container" class="stream-container">
-      <div class="close-btn close-btn-dark">
-        <i class="fas fa-times"></i>
       </div>
-      <iframe title="stream iframe" id="stream-iframe" frameborder="0" allowfullscreen></iframe>
-    </section>
-  </main>
-  <footer>
-    <small>Showbunny &copy;</small>
-  </footer>
-  <script src="bunnychan.js"></script>
-  <script src="kittysan.js"></script>
-  <script src="app.js"></script>
-  <script src="upup.min.js"></script>
-  <script>
-    UpUp.start({
-      'content-url': 'index.html',
-      'assets': [
-        'fonts/Archivo_Black/ArchivoBlack-Regular.ttf',
-        'fonts/Fascinate_Inline/FascinateInline-Regular.ttf',
-        'fonts/Oswald/Oswald-Regular.ttf',
-        'fonts/Raleway/Raleway-Regular.ttf',
-        'img/android-chrome-192x192.png',
-        'img/android-chrome-512x512.png',
-        'img/apple-touch-icon.png',
-        'img/banner.png',
-        'img/easter-bunny.svg',
-        'img/favicon-16x16.png',
-        'img/favicon-32x32.png',
-        'img/favicon.ico',
-        'img/mstile-150x150.png',
-        'img/placeholder_wide.png',
-        'img/placeholder.png',
-        'img/safari-pinned-tab.svg',
-        'app.js',
-        'bunnychan.js',
-        'kittysan.js',
-        'style.css',
-        'fonts.css'
-      ]
-    });
-  </script>
+      <section id="stream-container" class="stream-container">
+        <div class="close-btn close-btn-dark">
+          <i class="fas fa-times"></i>
+        </div>
+        <iframe title="stream iframe" id="stream-iframe" frameborder="0" allowfullscreen></iframe>
+      </section>
+    </main>
+    <footer>
+      <small>Showbunny &copy;</small>
+    </footer>
+  </div>
 </body>
 
 </html>
