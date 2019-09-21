@@ -1,203 +1,128 @@
+@import "minireset.min.css";
+
+html {
+  font-size: 62.5%;
+}
+
 body {
   background-color: #f5f5f5;
   font-family: 'Raleway', sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.25;
+}
+
+.container {
+  width: 100%;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 .header {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin: 20px 0 10px;
+  align-items: center;
 }
 
 footer {
-  width: 50%;
   font-weight: bold;
   text-align: center;
-  margin: 20px auto;
+  padding-bottom: 15px;
 }
 
 .logo {
-  width: 100px;
-  height: 100px;
+  width: 6rem;
+  height: 6rem;
 }
 
 .banner {
   font-family: 'Fascinate Inline', cursive;
-  font-size: 80px;
+  font-size: 4rem;
   margin: 0;
 }
 
-@media only screen and (max-width: 695px) {
-  .logo {
-    width: 85px;
-    height: 85px;
-  }
-
-  .banner {
-    font-size: 65px;
-  }
-
-  .search-image {
-    width: 150px;
-    height: 225px;
-  }
-
-  .info {
-    display: none;
-  }
+main {
+  flex-grow: 1;
 }
 
-@media only screen and (max-width: 545px) {
-  .logo {
-    width: 70px;
-    height: 70px;
-  }
-
-  .banner {
-    font-size: 60px;
-  }
-
-  .search-image {
-    width: 130px;
-    height: 195px;
-  }
-}
-
-@media only screen and (max-width: 485px) {
-  .logo {
-    width: 60px;
-    height: 60px;
-  }
-
-  .banner {
-    font-size: 50px;
-  }
-
-  .search-image {
-    width: 110px;
-    height: 165px;
-  }
-}
-
-#search-form {
-  width: 50%;
-  min-width: 400px;
-  margin: 0 auto;
-  padding: 10px;
-}
-
-@media only screen and (max-width: 440px) {
-  .search-form-wrapper {
-    display: flex;
-    justify-content: center;
-  }
-
-  #search-form {
-    min-width: 320px;
-  }
-
-  .search-image {
-    width: 100px;
-    height: 150px;
-  }
+.search-form-wrapper {
+  margin: 15px 0;
 }
 
 #search-bar {
   border-radius: 20px 0 0 20px;
-  outline-style: none;
-  background-color: #fff;
   border: none;
-  border-right: groove #f8f8ff 3px;
-  width: 100%;
-  font-size: 20px;
-  padding: 5px 5px 5px 15px;
   flex: 1;
+  padding: 5px 15px;
+  background-color: #f5f5f5;
 }
 
 #search-categories {
   display: inline-block;
 }
 
+.search {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
 .search-container {
   border-radius: 20px;
-  background-color: #fff;
-  border: inset #f8f8ff 3px;
+  background-color: #f5f5f5;
   display: flex;
-  /*justify-content: stretch;*/
-  align-items: stretch;
-  margin-bottom: 10px;
-  overflow: hidden;
+  align-items: center;
+  border: 1px solid black;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 input[type='radio'] {
   display: none;
 }
 
-input[type='radio'] + label {
-  padding: 5px;
-  flex: 0 0 50px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+input[type="radio"] + label {
+  padding: 1px 5px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 input[type='radio'] + label:hover {
-  background-color: #888;
-}
-
-input[type='radio'] + label:last-child {
-  border-radius: 0 20px 20px 0;
-  padding-right: 10px;
-}
-
-input[type='radio']:checked + label {
-  background: #000;
+  background-color: #2f4f4f;
   color: #f8f8ff;
 }
 
-input[type='radio']:checked + label:hover {
-  background-color: #888;
+input[type='radio'] + label:last-child {
+  margin-right: 10px;
+  margin-left: 5px;
 }
 
-input[type='radio']:checked + label:active {
-  background-color: darkgrey;
+input[type="radio"]:checked + label {
+  background: #000;
+  color: #f8f8ff;
 }
 
 #search-results {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 0;
-  margin: 0 16px;
 }
 
 .search-result {
-  margin: 8px;
-  list-style-type: none;
-  /* Add shadows to create the "card" effect */
-  border-radius: 5px; /* 5px rounded corners */
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-  overflow: hidden;
-  position: relative;
-  background: #000;
-  transition: 0.3s;
+  margin: 3px;
 }
 
 .search-result:hover {
   box-shadow: 0 13px 20px 0 rgba(0, 0, 0, 0.6);
 }
 
-/* .search-result img {
-  border-radius: 5px 5px 0 0;
-} */
-
-/* On mouse-over, add a deeper shadow */
-/* .search-result img:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3);
-} */
+.search-image {
+  height: 100%;
+  width: 100px;
+  border-radius: 5px;
+}
 
 /* Card info styles */
 .info {
@@ -208,10 +133,9 @@ input[type='radio']:checked + label:active {
   transition: 0.3s;
   position: absolute;
   width: 100%;
-  /*  height: 0;
-    bottom: -10px;*/
   padding: 10px 0;
   bottom: -30%;
+  display: none;
 }
 
 .info > span {
@@ -219,25 +143,25 @@ input[type='radio']:checked + label:active {
 }
 
 .peek {
-  /*height: 55px;*/
   bottom: 0;
 }
 
 #search-pagination {
-  text-align: center;
   display: flex;
   justify-content: center;
+  margin: 15px 0;
 }
 
 #search-pagination a {
   color: #000;
   cursor: pointer;
   float: left;
-  padding: 8px 16px;
+  padding: 6px 12px;
   text-decoration: none;
   transition: background-color 0.3s;
   border: 1px solid #ddd;
   margin: 0 4px;
+  border-radius: 5px;
 }
 
 #search-pagination a.active {
@@ -262,8 +186,7 @@ input[type='radio']:checked + label:active {
   font-size: 30px;
   position: absolute;
   right: 0;
-  top: 0;
-  padding: 5px;
+  top: 5px;
   height: 30px;
   width: 30px;
   text-align: center;
@@ -285,13 +208,16 @@ input[type='radio']:checked + label:active {
 }
 
 #media-dialog {
+  display: none;
   background-color: #f5f5f5;
+  border: 2px solid black;
+  border-radius: 5px;
   position: fixed;
   top: 50%;
-  bottom: 50%;
-  width: 80%;
-  padding: 0;
-  max-width: 550px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 500px;
 }
 
 #media-close {
@@ -417,6 +343,7 @@ p {
   background: #f5f5f5;
   width: 100%;
   transition: height 1s;
+  display: none;
 }
 
 .stream-active {
@@ -464,4 +391,35 @@ p {
 .trailer-btn {
   background-color: #800;
   margin-right: 5px;
+}
+
+@media (min-width: 565px) {
+  .banner {
+    font-size: 6rem;
+  }
+
+  .logo {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  .search-container {
+    max-width: 550px;
+  }
+
+  #search-bar {
+    padding: 10px 15px;
+  }
+
+  .search-image {
+    width: 128px;
+  }
+
+  #search-bar {
+    font-size: 1.4rem;
+  }
+
+  input[type="radio"] + label {
+    font-size: 1.5rem;
+  }
 }
