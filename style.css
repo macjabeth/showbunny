@@ -368,6 +368,8 @@ p {
   align-items: center;
   margin-bottom: 3px;
   transition: 0.2s;
+  user-select: none;
+  cursor: pointer;
 }
 
 .stream-btn:hover {
@@ -391,6 +393,7 @@ p {
 .trailer-btn {
   background-color: #800;
   margin-right: 5px;
+  text-decoration: none;
 }
 
 @media (min-width: 565px) {

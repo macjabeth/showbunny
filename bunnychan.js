@@ -19,6 +19,11 @@ class BunnyChan {
     this.fetchTVGenres()
       .then(data => (this.tv_genres = data.genres))
       .catch(err => console.error(err));
+    
+    // fetch movies in theatres
+    this.fetchMoviesInTheatres()
+      .then(data => (this.inTheatres = data))
+      .catch(err => console.error(err));
   }
 
   // user authentication
@@ -55,6 +60,12 @@ class BunnyChan {
   async fetchMovieDetails(movie_id) {
     const response = await fetch(`https://api.themoviedb.org/3/movie/${movie_id}?api_key=${this.tmdb_key}&language=en-US`);
     return await response.json();
+  }
+
+  async fetchMoviesInTheatres() {
+    const response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${this.tmdb_key}&language=en-US`);
+    const data = await response.json();
+    return new Set(data.results.map(movie => movie.id));
   }
 
   async fetchTVDetails(tv_id) {
