@@ -215,21 +215,43 @@ class KittySan {
   paintDialog(result) {
     // log data
     console.log(result);
-    let result_data;
+
+    const setTrailerLink = (videos) => {
+      let result_video;
+      for (const video of videos) {
+        if (video.type === "Trailer") {
+          result_video = video;
+          break;
+        }
+      }
+      // handle media trailer
+      if (result_video) {
+        this.elements.trailerBtn.firstChild.style = ""; // failsafe
+        console.log(result_video)
+        this.elements.trailerBtn.href = `https://www.youtube.com/embed/${result_video.key}`;
+      } else {
+        this.elements.trailerBtn.firstChild.style =
+          "text-decoration: line-through";
+      }
+    };
+
     // fetch result details
     if (bunny.category === 'movie') {
       bunny
         .fetchMovieDetails(result.id)
         .then(data => {
-          // log details
-          console.log(data);
-          result_data = data;
           // set media status
-          this.elements.mediaStatus.textContent = data.status;
+          this.elements.mediaStatus.textContent =
+            bunny.inTheatres.has(data.id)
+              ? 'In Theatres'
+              : data.status;
+          // handle streaming link
+          this.elements.streamBtn.onclick = () => {
+            window.open(`https://ololo.to/s/${data.title} --new --whole`);
+          };
           // fetch videos
-          bunny.fetchMovieVideos(data.id).then(data => {
-            console.log(data);
-            result_data.videos = data;
+          bunny.fetchMovieVideos(data.id).then(videos => {
+            setTrailerLink(videos.results);
           });
         })
         .catch(err => console.error(err));
@@ -237,15 +259,19 @@ class KittySan {
       bunny
         .fetchTVDetails(result.id)
         .then(data => {
-          // log details
-          console.log(data);
-          result_data = data;
           // set media status
           this.elements.mediaStatus.textContent = data.status;
+          // handle streaming link
+          this.elements.streamBtn.onclick = () => {
+            const seasons = data.seasons.length;
+            const season = prompt(`Which season? (${seasons === 1 ? '1' : '1-' + seasons})`);
+            const episodes = data.seasons[parseInt(season) - 1].episodes;
+            const episode = prompt(`Which episode? (1-${episodes})`);
+            window.open(`https://ololo.to/s/${result.name} s${season.padStart(2, '0')}e${episode.padStart(2, '0')} --new --strict`)
+          };
           // fetch videos
-          bunny.fetchTVVideos(data.id).then(data => {
-            console.log(data);
-            result_data.videos = data;
+          bunny.fetchTVVideos(data.id).then(videos => {
+            setTrailerLink(videos.results);
           });
         })
         .catch(err => console.error(err));
@@ -291,40 +317,6 @@ class KittySan {
     });
     // add overview
     this.elements.mediaOverview.textContent = result.overview;
-    // handle media trailer
-    this.elements.trailerBtn.addEventListener('click', () => {
-      let result_video;
-      for (let i = 0; i < result_data.videos.results.length; i++) {
-        const video = result_data.videos.results[i];
-        if (video.type === 'Trailer') {
-          result_video = video;
-          break;
-        }
-      }
-      if (result_video) {
-        this.elements.trailerBtn.firstChild.style = ''; // failsafe
-        this.setStreamSource(`https://www.youtube.com/embed/${result_video.key}`);
-      } else {
-        this.elements.trailerBtn.firstChild.style = 'text-decoration: line-through';
-      }
-    }, {once: true});
-    // handle media spider stream
-    this.elements.streamBtn.addEventListener('click', () => {
-      // set streaming source
-      if (bunny.category === 'movie') {
-        this.setStreamSource(bunny.getMovieStream(result.id));
-      } else {
-        // get season
-        const seasons = result_data.seasons.length;
-        const season = prompt(`Which season? (${seasons === 1 ? '1' : '1-' + seasons})`);
-        // get episode
-        const episode_count = result_data.seasons[parseInt(season) - 1].episode_count;
-        const episode = prompt(`Which episode? (1-${episode_count})`);
-
-        this.setStreamSource(bunny.getTVStream(result.id, season, episode));
-      }
-    }, {once: true});
-
     // display dialog
     this.elements.mediaDialog.style.display = 'block';
   }
