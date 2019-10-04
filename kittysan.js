@@ -1,12 +1,15 @@
 // handles UI logic
 class KittySan {
   constructor() {
+    this.firstLoad = true;
     this.elements = {
       searchCategories: document.getElementsByName('search-category'),
       searchResults: document.getElementById('search-results'),
       searchPagination: document.getElementById('search-pagination'),
       mediaDialog: document.getElementById('media-dialog'),
-      mediaClose: document.getElementById('media-header').getElementsByClassName('close-btn')[0],
+      mediaClose: document
+        .getElementById('media-header')
+        .getElementsByClassName('close-btn')[0],
       mediaBackdrop: document.getElementById('media-backdrop'),
       mediaTitle: document.getElementById('media-title'),
       mediaStatus: document.getElementById('media-status'),
@@ -33,7 +36,14 @@ class KittySan {
   }
 
   handleMediaClose() {
-    this.elements.mediaClose.addEventListener('click', () => this.elements.mediaDialog.style.display = 'none');
+    this.elements.mediaClose.addEventListener('click', () => {
+      this.elements.mediaDialog.classList.remove('fadeIn');
+      this.elements.mediaDialog.classList.add('fadeOut');
+      setTimeout(() => {
+        this.elements.mediaDialog.style.display = 'none';
+      }, 500);
+    });
+
     // handle stream close event
     this.elements.streamClose.addEventListener('click', () => {
       this.elements.streamContainer.classList.remove('stream-active');
@@ -87,7 +97,9 @@ class KittySan {
       const element = this.elements.searchCategories[i];
       if (element.checked) {
         element.checked = false;
-        let nextCategory = this.elements.searchCategories[i + 1] || this.elements.searchCategories[0];
+        let nextCategory =
+          this.elements.searchCategories[i + 1] ||
+          this.elements.searchCategories[0];
         nextCategory.checked = true;
         bunny.category = nextCategory.value;
         this.paintData();
@@ -97,141 +109,178 @@ class KittySan {
   }
 
   paintSearchResults(data) {
-    // clear existing search results
-    while (this.elements.searchResults.firstChild) {
-      this.elements.searchResults.removeChild(this.elements.searchResults.firstChild);
-    }
-
-    // display results
-    data.results.forEach(result => {
-      // create list item
-      const li = document.createElement('li');
-      // add classes
-      li.classList.add('search-result');
-      // handle click event
-      li.addEventListener('click', () => this.paintDialog(result));
-      // create the image
-      const img = document.createElement('img');
-      // set the image path
-      img.setAttribute('src', result.poster_path ? `https://image.tmdb.org/t/p/w200${result.poster_path}` : 'img/placeholder.png');
-      // set alt attribute
-      img.setAttribute('alt', `${result.title} poster`)
-      // attach image class
-      img.classList.add('search-image');
-      // append image to list item
-      li.appendChild(img);
-      // create title and year elements
-      const info = document.createElement('div');
-      const title = document.createElement('span');
-      const year = document.createElement('span');
-      // add classes
-      info.classList.add('info');
-      title.classList.add('info-title');
-      year.classList.add('info-year');
-      // add text content
-      title.textContent = result.title || result.name;
-      const date = result.release_date || result.first_air_date || '';
-      year.textContent = date.split('-')[0];
-      // add info to list item
-      info.appendChild(title);
-      info.appendChild(year);
-      li.appendChild(info);
-      // add hover events
-      li.addEventListener('mouseover', () => info.classList.add('peek'));
-      li.addEventListener('mouseleave', () => info.classList.remove('peek'));
-      // add list item to results
-      this.elements.searchResults.appendChild(li);
-    });
-
-    // clear existing search pagination
-    while (this.elements.searchPagination.firstChild) {
-      this.elements.searchPagination.removeChild(this.elements.searchPagination.firstChild);
-    }
-
-    // add previous page
-    if (data.page > 1) {
-      // create link element
-      const previousPage = document.createElement('a');
-      // add inner html content
-      previousPage.innerHTML = '&laquo;';
-      // handle click event to fetch results from previous page
-      previousPage.addEventListener('click', () => {
-        bunny.changeQuery(bunny.query, bunny.category, bunny.page - 1);
-        this.paintData();
-      });
-      // add link to search pagination
-      this.elements.searchPagination.appendChild(previousPage);
-    }
-
-    // add all pages
-    for (let i = 1; i <= data.total_pages; i++) {
-      if (i === 1 || (i >= data.page - 2 && i <= data.page + 2) || i === data.total_pages) {
-        // create link element
-        const link = document.createElement('a');
-        // if current page
-        if (data.page === i) {
-          // set active page class
-          link.classList.add('active');
-          // make it editable
-          link.setAttribute('contenteditable', true);
-          link.addEventListener('click', () => document.execCommand('selectAll', false, null));
-          link.addEventListener('keypress', event => {
-            if (event.code === 'Enter') {
-              bunny.changeQuery(bunny.query, bunny.category, parseInt(event.target.textContent));
-              this.paintData();
-              event.preventDefault();
-            }
-          });
-        } else {
-          // handle click event to fetch data from page
-          link.addEventListener('click', () => {
-            bunny.changeQuery(bunny.query, bunny.category, i);
-            this.paintData();
-          });
-        }
-        // add text content
-        link.textContent = i;
-        // add link to search pagination
-        this.elements.searchPagination.appendChild(link);
+    if (this.elements.searchResults.children.length) {
+      for (const child of this.elements.searchResults.children) {
+        child.classList.remove('fadeIn', 'zoomInUp', 'delay-2s');
+        child.classList.add('fadeOut', 'faster');
       }
     }
 
-    // add next page
-    if (data.page < data.total_pages) {
-      // create link element
-      const nextPage = document.createElement('a');
-      // add inner html content
-      nextPage.innerHTML = '&raquo;';
-      // handle click event to fetch results from next page
-      nextPage.addEventListener('click', () => {
-        bunny.changeQuery(bunny.query, bunny.category, bunny.page + 1);
-        this.paintData();
+    const paint = () => {
+      // clear existing search results
+      while (this.elements.searchResults.firstChild) {
+        this.elements.searchResults.removeChild(
+          this.elements.searchResults.firstChild
+        );
+      }
+
+      // display results
+      data.results.forEach(result => {
+        // create list item
+        const li = document.createElement('li');
+        // add classes
+        li.classList.add('search-result');
+        li.classList.add(
+          ...(this.firstLoad
+            ? ['animated', 'zoomInUp', 'delay-2s']
+            : ['animated', 'fadeIn', 'faster'])
+        );
+        // handle click event
+        li.addEventListener('click', () => this.paintDialog(result));
+        // create the image
+        const img = document.createElement('img');
+        // set the image path
+        img.setAttribute(
+          'src',
+          result.poster_path
+            ? `https://image.tmdb.org/t/p/w200${result.poster_path}`
+            : 'img/placeholder.png'
+        );
+        // set alt attribute
+        img.setAttribute('alt', `${result.title} poster`);
+        // attach image class
+        img.classList.add('search-image');
+        // append image to list item
+        li.appendChild(img);
+        // create title and year elements
+        const info = document.createElement('div');
+        const title = document.createElement('span');
+        const year = document.createElement('span');
+        // add classes
+        info.classList.add('info');
+        title.classList.add('info-title');
+        year.classList.add('info-year');
+        // add text content
+        title.textContent = result.title || result.name;
+        const date = result.release_date || result.first_air_date || '';
+        year.textContent = date.split('-')[0];
+        // add info to list item
+        info.appendChild(title);
+        info.appendChild(year);
+        li.appendChild(info);
+        // add hover events
+        li.addEventListener('mouseover', () => info.classList.add('peek'));
+        li.addEventListener('mouseleave', () => info.classList.remove('peek'));
+        // add list item to results
+        this.elements.searchResults.appendChild(li);
       });
-      // add link to search pagination
-      this.elements.searchPagination.appendChild(nextPage);
-    }
+
+      this.firstLoad = false;
+
+      // clear existing search pagination
+      while (this.elements.searchPagination.firstChild) {
+        this.elements.searchPagination.removeChild(
+          this.elements.searchPagination.firstChild
+        );
+      }
+
+      // add previous page
+      if (data.page > 1) {
+        // create link element
+        const previousPage = document.createElement('a');
+        // add inner html content
+        previousPage.innerHTML = '&laquo;';
+        // handle click event to fetch results from previous page
+        previousPage.addEventListener('click', () => {
+          bunny.changeQuery(bunny.query, bunny.category, bunny.page - 1);
+          this.paintData();
+        });
+        // add link to search pagination
+        this.elements.searchPagination.appendChild(previousPage);
+      }
+
+      // add all pages
+      for (let i = 1; i <= data.total_pages; i++) {
+        if (
+          i === 1 ||
+          (i >= data.page - 2 && i <= data.page + 2) ||
+          i === data.total_pages
+        ) {
+          // create link element
+          const link = document.createElement('a');
+          // if current page
+          if (data.page === i) {
+            // set active page class
+            link.classList.add('active');
+            // make it editable
+            link.setAttribute('contenteditable', true);
+            link.addEventListener('click', () =>
+              document.execCommand('selectAll', false, null)
+            );
+            link.addEventListener('keypress', event => {
+              if (event.code === 'Enter') {
+                bunny.changeQuery(
+                  bunny.query,
+                  bunny.category,
+                  parseInt(event.target.textContent)
+                );
+                this.paintData();
+                event.preventDefault();
+              }
+            });
+          } else {
+            // handle click event to fetch data from page
+            link.addEventListener('click', () => {
+              bunny.changeQuery(bunny.query, bunny.category, i);
+              this.paintData();
+            });
+          }
+          // add text content
+          link.textContent = i;
+          // add link to search pagination
+          this.elements.searchPagination.appendChild(link);
+        }
+      }
+
+      // add next page
+      if (data.page < data.total_pages) {
+        // create link element
+        const nextPage = document.createElement('a');
+        // add inner html content
+        nextPage.innerHTML = '&raquo;';
+        // handle click event to fetch results from next page
+        nextPage.addEventListener('click', () => {
+          bunny.changeQuery(bunny.query, bunny.category, bunny.page + 1);
+          this.paintData();
+        });
+        // add link to search pagination
+        this.elements.searchPagination.appendChild(nextPage);
+      }
+    };
+
+    this.firstLoad ? paint() : setTimeout(paint, 1000);
   }
 
   paintDialog(result) {
     // log data
     console.log(result);
 
-    const setTrailerLink = (videos) => {
+    const setTrailerLink = videos => {
       let result_video;
       for (const video of videos) {
-        if (video.type === "Trailer") {
+        if (video.type === 'Trailer') {
           result_video = video;
           break;
         }
       }
       // handle media trailer
       if (result_video) {
-        this.elements.trailerBtn.firstChild.style = ""; // failsafe
-        console.log(result_video)
+        this.elements.trailerBtn.firstChild.style = ''; // failsafe
+        console.log(result_video);
         this.elements.trailerBtn.href = `https://www.youtube.com/embed/${result_video.key}`;
       } else {
         this.elements.trailerBtn.firstChild.style =
-          "text-decoration: line-through";
+          'text-decoration: line-through';
       }
     };
 
@@ -241,10 +290,9 @@ class KittySan {
         .fetchMovieDetails(result.id)
         .then(data => {
           // set media status
-          this.elements.mediaStatus.textContent =
-            bunny.inTheatres.has(data.id)
-              ? 'In Theatres'
-              : data.status;
+          this.elements.mediaStatus.textContent = bunny.inTheatres.has(data.id)
+            ? 'In Theatres'
+            : data.status;
           // handle streaming link
           this.elements.streamBtn.onclick = () => {
             window.open(`https://ololo.to/s/${data.title} --new --whole`);
@@ -264,10 +312,17 @@ class KittySan {
           // handle streaming link
           this.elements.streamBtn.onclick = () => {
             const seasons = data.seasons.length;
-            const season = prompt(`Which season? (${seasons === 1 ? '1' : '1-' + seasons})`);
+            const season = prompt(
+              `Which season? (${seasons === 1 ? '1' : '1-' + seasons})`
+            );
             const episodes = data.seasons[parseInt(season) - 1].episodes;
             const episode = prompt(`Which episode? (1-${episodes})`);
-            window.open(`https://ololo.to/s/${result.name} s${season.padStart(2, '0')}e${episode.padStart(2, '0')} --new --strict`)
+            window.open(
+              `https://ololo.to/s/${result.name} s${season.padStart(
+                2,
+                '0'
+              )}e${episode.padStart(2, '0')} --new --strict`
+            );
           };
           // fetch videos
           bunny.fetchTVVideos(data.id).then(videos => {
@@ -277,10 +332,17 @@ class KittySan {
         .catch(err => console.error(err));
     }
     // add backdrop
-    this.elements.mediaBackdrop.setAttribute('src', result.backdrop_path ? `https://image.tmdb.org/t/p/w500${result.backdrop_path}` : 'img/placeholder_wide.png');
+    this.elements.mediaBackdrop.setAttribute(
+      'src',
+      result.backdrop_path
+        ? `https://image.tmdb.org/t/p/w500${result.backdrop_path}`
+        : 'img/placeholder_wide.png'
+    );
     // clear existing media ratings
     while (this.elements.mediaRating.firstChild) {
-      this.elements.mediaRating.removeChild(this.elements.mediaRating.firstChild);
+      this.elements.mediaRating.removeChild(
+        this.elements.mediaRating.firstChild
+      );
     }
     // helper functions
     const roundHalf = num => Math.round(num * 2) * 0.5;
@@ -302,22 +364,28 @@ class KittySan {
     }
     // clear existing media genres
     while (this.elements.mediaGenres.firstChild) {
-      this.elements.mediaGenres.removeChild(this.elements.mediaGenres.firstChild);
+      this.elements.mediaGenres.removeChild(
+        this.elements.mediaGenres.firstChild
+      );
     }
     // add genres
-    bunny[bunny.category + '_genres'].filter(genre => result.genre_ids.includes(genre.id)).forEach(genre => {
-      // create genre element
-      const li = document.createElement('li');
-      // add classes
-      li.classList.add('genre');
-      // add text content
-      li.textContent = genre.name;
-      // add genre element to genres div
-      this.elements.mediaGenres.appendChild(li);
-    });
+    bunny[bunny.category + '_genres']
+      .filter(genre => result.genre_ids.includes(genre.id))
+      .forEach(genre => {
+        // create genre element
+        const li = document.createElement('li');
+        // add classes
+        li.classList.add('genre');
+        // add text content
+        li.textContent = genre.name;
+        // add genre element to genres div
+        this.elements.mediaGenres.appendChild(li);
+      });
     // add overview
     this.elements.mediaOverview.textContent = result.overview;
     // display dialog
+    this.elements.mediaDialog.classList.remove('fadeOut');
+    this.elements.mediaDialog.classList.add('animated', 'fadeIn', 'faster');
     this.elements.mediaDialog.style.display = 'block';
   }
 
