@@ -19,13 +19,13 @@
 
 <body>
   <div class="container">
-    <header class="header">
+    <header class="header animated fadeInDown">
       <img src="img/easter-bunny.svg" class="logo" role="presentation"/>
       <h1 class="banner">Showbunny</h1>
       <img src="img/easter-bunny.svg" class="logo" role="presentation"/>
     </header>
     <main>
-      <section class="search-form-wrapper">
+      <section class="search-form-wrapper animated bounceInRight delay-1s">
         <form role="search" id="search-form">
           <div class="search-container">
             <input type="search" name="bunny-search" id="search-bar" placeholder="Search..." aria-label="search for media content">
@@ -37,8 +37,8 @@
         </form>
       </section>
       <section class="search">
-        <ul id="search-results"></ul>
-        <div id="search-pagination"></div>
+        <ul id="search-results" class="animated fadeIn delay-2s"></ul>
+        <div id="search-pagination" class="animated fadeInUp delay-3s"></div>
       </section>
       <div id="media-dialog">
         <div id="media-content">
@@ -89,7 +89,7 @@
       </section>
     </main>
     <footer>
-      <small>Showbunny &copy;</small>
+      <small class="animated fadeIn delay-4s">Showbunny &copy;</small>
     </footer>
   </div>
 </body>
