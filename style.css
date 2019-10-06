@@ -399,10 +399,11 @@ p {
 
 #select-season,
 #select-episode {
-  margin: 3px;
+  margin: 3px 0 3px 3px;
   border-radius: 7px;
   font-size: 14px;
   border: solid #000 1px;
+  padding: 4px 8px;
 }
 
 #media-select-container {
@@ -414,6 +415,11 @@ p {
 #media-select {
   display: flex;
   justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+#stream-episode {
+  margin-left: 3px;
 }
 
 #select-error {
