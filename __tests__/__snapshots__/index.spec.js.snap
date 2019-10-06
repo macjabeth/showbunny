@@ -10,7 +10,7 @@ exports[`output renders to the screen 1`] = `
     
     
     <header
-      class="header"
+      class="header animated fadeInDown"
     >
       
       
@@ -42,7 +42,7 @@ exports[`output renders to the screen 1`] = `
       
       
       <section
-        class="search-form-wrapper"
+        class="search-form-wrapper animated bounceInRight delay-1s"
       >
         
         
@@ -116,11 +116,13 @@ exports[`output renders to the screen 1`] = `
         
         
         <ul
+          class="animated fadeIn delay-2s"
           id="search-results"
         />
         
         
         <div
+          class="animated fadeInUp delay-3s"
           id="search-pagination"
         />
         
@@ -300,6 +302,48 @@ exports[`output renders to the screen 1`] = `
             
             </div>
             
+            
+            <div
+              id="media-select-container"
+            >
+              
+              
+              <div
+                id="media-select"
+              >
+                
+                
+                <button
+                  class="stream-btn"
+                  id="stream-episode"
+                >
+                  
+                  
+                  <span>
+                    Stream Now!
+                  </span>
+                  
+                  
+                  <i
+                    class="fas fa-play-circle"
+                  />
+                  
+                
+                </button>
+                
+              
+              </div>
+              
+              
+              <div
+                id="select-error"
+              >
+                You must select a season and an episode to stream
+              </div>
+              
+            
+            </div>
+            
           
           </div>
           
@@ -346,7 +390,9 @@ exports[`output renders to the screen 1`] = `
     <footer>
       
       
-      <small>
+      <small
+        class="animated fadeIn delay-4s"
+      >
         Showbunny ©
       </small>
       
