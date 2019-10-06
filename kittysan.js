@@ -19,8 +19,12 @@ class KittySan {
       mediaStream: document.getElementById('media-stream'),
       mediaDetails: document.getElementById('media-details'),
       mediaOverview: document.getElementById('media-overview'),
+      mediaSelectContainer: document.getElementById('media-select-container'),
+      mediaSelect: document.getElementById('media-select'),
       trailerBtn: document.getElementById('trailer'),
       streamBtn: document.getElementById('stream'),
+      streamEpisodeBtn: document.getElementById('stream-episode'),
+      streamError: document.getElementById('select-error'),
       streamContainer: document.getElementById('stream-container'),
       streamIframe: document.getElementById('stream-iframe')
     };
@@ -261,6 +265,27 @@ class KittySan {
     this.firstLoad ? paint() : setTimeout(paint, 1000);
   }
 
+  paintEpisodeSelect() {
+    this.elements.mediaSelectContainer.style.display = '';
+    this.elements.streamBtn.style.display = 'none';
+    this.elements.streamError.style.display = 'none';
+
+    if (document.contains(document.getElementById('select-season'))) {
+      document.getElementById('select-season').remove();
+      document.getElementById('select-episode').remove();
+    }
+
+    ['episode', 'season'].forEach(value => {
+      const selectList = document.createElement('select');
+      selectList.id = `select-${value}`;
+      var option = new Option();
+      option.value = 0;
+      option.text = `Select ${value}`;
+      selectList.options.add(option);
+      this.elements.mediaSelect.insertBefore(selectList, this.elements.mediaSelect.childNodes[0]);
+    });
+  }
+
   paintDialog(result) {
     // log data
     console.log(result);
@@ -289,6 +314,9 @@ class KittySan {
       bunny
         .fetchMovieDetails(result.id)
         .then(data => {
+          this.elements.mediaSelectContainer.style.display = 'none';
+          this.elements.streamBtn.style.display = '';
+
           // set media status
           this.elements.mediaStatus.textContent = bunny.inTheatres.has(data.id)
             ? 'In Theatres'
@@ -309,21 +337,43 @@ class KittySan {
         .then(data => {
           // set media status
           this.elements.mediaStatus.textContent = data.status;
+
+          this.paintEpisodeSelect();
+
+          const selectSeason = document.getElementById('select-season');
+          const selectEpisode = document.getElementById('select-episode');
+
+          data.seasons.forEach((season, index) => {
+            var option = new Option();
+            option.value = index + 1;
+            option.text = `Season ${index + 1}`;
+            selectSeason.options.add(option);
+          });
+
+          selectSeason.onchange = () => {
+            const selectedSeason = selectSeason.value
+            const episodes = data.seasons[parseInt(selectedSeason) - 1].episode_count;
+            Array.from({ length: episodes }).forEach((episode, index) => {
+              var option = new Option();
+              option.value = index + 1;
+              option.text = `Episode ${index + 1}`;
+              selectEpisode.options.add(option);
+            });
+          }
+
           // handle streaming link
-          this.elements.streamBtn.onclick = () => {
-            const seasons = data.seasons.length;
-            const season = prompt(
-              `Which season? (${seasons === 1 ? '1' : '1-' + seasons})`
-            );
-            const episodes = data.seasons[parseInt(season) - 1].episodes;
-            const episode = prompt(`Which episode? (1-${episodes})`);
-            window.open(
-              `https://ololo.to/s/${result.name} s${season.padStart(
-                2,
-                '0'
-              )}e${episode.padStart(2, '0')} --new --strict`
-            );
+          this.elements.streamEpisodeBtn.onclick = () => {
+            this.elements.streamError.style.display = 'none';
+            const selectedSeason = selectSeason.value;
+            const selectedEpisode = selectEpisode.value;
+
+            if (selectedSeason === '0' || selectedEpisode === '0') {
+              this.elements.streamError.style.display = '';
+            } else {
+              window.open(`https://ololo.to/s/${result.name} s${selectedSeason.padStart(2, '0')}e${selectedEpisode.padStart(2, '0')} --new --strict`)
+            }
           };
+
           // fetch videos
           bunny.fetchTVVideos(data.id).then(videos => {
             setTrailerLink(videos.results);

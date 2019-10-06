@@ -397,6 +397,31 @@ p {
   text-decoration: none;
 }
 
+#select-season,
+#select-episode {
+  margin: 3px;
+  border-radius: 7px;
+  font-size: 14px;
+  border: solid #000 1px;
+}
+
+#media-select-container {
+  margin: 0 5px 0 3px;
+  margin-top: -10px;
+  margin-bottom: 15px;
+}
+
+#media-select {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#select-error {
+  margin: 5px 0 10px 0;
+  float: right;
+  color: #800;
+}
+
 @media (min-width: 565px) {
   .banner {
     font-size: 6rem;
