@@ -7,7 +7,7 @@ html {
 
 body {
   background-color: #f5f5f5;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 1.6rem;
   line-height: 1.25;
 }
@@ -39,7 +39,7 @@ footer {
 }
 
 .banner {
-  font-family: 'Fascinate Inline', cursive;
+  font-family: "Fascinate Inline", cursive;
   font-size: 4rem;
   margin: 0;
 }
@@ -79,7 +79,7 @@ main {
   margin: 0 auto;
 }
 
-input[type='radio'] {
+input[type="radio"] {
   display: none;
 }
 
@@ -90,12 +90,12 @@ input[type="radio"] + label {
   cursor: pointer;
 }
 
-input[type='radio'] + label:hover {
+input[type="radio"] + label:hover {
   background-color: #2f4f4f;
   color: #f8f8ff;
 }
 
-input[type='radio'] + label:last-child {
+input[type="radio"] + label:last-child {
   margin-right: 10px;
   margin-left: 5px;
 }
@@ -127,9 +127,15 @@ input[type="radio"]:checked + label {
 
 /* Card info styles */
 .info {
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.8) 40%, rgba(0, 0, 0, 0.5) 80%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.8) 40%,
+    rgba(0, 0, 0, 0.5) 80%,
+    rgba(0, 0, 0, 0) 100%
+  );
   color: #fff;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   text-align: center;
   transition: 0.3s;
   position: absolute;
@@ -426,6 +432,11 @@ p {
   margin: 5px 0 10px 0;
   float: right;
   color: #800;
+}
+
+.animated.delay-half {
+  -webkit-animation-delay: 500ms;
+  animation-delay: 500ms;
 }
 
 @media (min-width: 565px) {
