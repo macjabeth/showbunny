@@ -1,64 +1,56 @@
-<!doctype html>
-<html class="no-js" lang="">
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Showbunny</title>
+    <meta
+      name="description"
+      content="A place to watch and track your favourite movies and tv shows"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
-  <meta charset="utf-8">
-  <title></title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="Showbunny" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://showbunny.xyz" />
+    <meta property="og:image" content="" />
 
-  <meta property="og:title" content="">
-  <meta property="og:type" content="">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="">
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="apple-touch-icon" href="/icon.png" />
+    <!-- Place favicon.ico in the root directory -->
 
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="apple-touch-icon" href="icon.png">
-  <!-- Place favicon.ico in the root directory -->
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="stylesheet" href="/css/defaults.css" />
+    <link rel="stylesheet" href="/css/main.css" />
 
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/defaults.css">
-  <link rel="stylesheet" href="css/main.css">
+    <meta name="theme-color" content="#f2f2f2" />
+  </head>
 
-  <meta name="theme-color" content="#fafafa">
-</head>
+  <body>
+    <header class="header">
+      <h1 class="logo">Showbunny</h1>
+      <nav class="top-nav">
+        <a href="#popular">Popular</a>
+        <a href="#episodes">Episodes</a>
+      </nav>
+      <div>
+        <!-- Use later for authentication -->
+      </div>
+    </header>
+    <main id="top">
+      <section id="popular">
+        <h2>Popular</h2>
+        <ul class="cards"></ul>
+      </section>
+      <section>
+        <h2>Episodes</h2>
+        <div id="episodes"></div>
+      </section>
+    </main>
+    <footer>&copy; Showbunny</footer>
 
-<body>
-  <header class="header">
-    <h1 class="logo">Showbunny</h1>
-    <nav class="top-nav">
-      <a href="#popular">Popular</a>
-      <a href="#episodes">Episodes</a>
-    </nav>
-    <div>
-      <!-- Use later for authentication -->
-    </div>
-  </header>
-  <main id="top">
-    <section id="popular">
-      <h2>Popular</h2>
-      <ul class="cards"></ul>
-    </section>
-    <section>
-      <h2>Episodes</h2>
-      <div id="episodes"></div>
-    </section>
-  </main>
-  <footer>
-    &copy; Showbunny
-  </footer>
-
-  <!-- Scripts -->
-  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
-  <script src="js/plugins.js"></script>
-  <script src="js/main.js"></script>
-
-  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-  <script>
-    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
-  </script>
-  <script src="https://www.google-analytics.com/analytics.js" async></script>
-</body>
-
+    <!-- Scripts -->
+    <script src="/js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="/js/plugins.js"></script>
+    <script type="module" src="/js/main.js"></script>
+  </body>
 </html>
