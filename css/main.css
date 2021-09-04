@@ -1,0 +1,93 @@
+/* Theme */
+
+:root {
+  --bg-color: #181818;
+  --fg-color: #f2f2f2;
+  --yellow: #f8b91a;
+}
+
+/* Base Styles */
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--fg-color);
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+.top-nav > a {
+  color: var(--fg-color);
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.top-nav > a:not(:last-child) {
+  margin-right: 2rem;
+}
+
+.cards {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.card:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.card {
+  height: 300px;
+  width: 200px;
+  position: relative;
+  border-radius: .25rem;
+  flex-shrink: 0;
+}
+
+.card__rating {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background-color: var(--bg-color);
+  padding: .25rem .5rem;
+  opacity: .75;
+  border-radius: .5rem;
+  font-size: 0.75rem;
+}
+
+.card__rating::before {
+  content: '⭐';
+  margin-right: 2.5px;
+  margin-left: -5px;
+}
+
+.card__title {
+  position: absolute;
+  bottom: -5px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-size: small;
+}
+
+.card__title > p {
+  background-color: var(--bg-color);
+  padding: .25rem .5rem;
+  opacity: .75;
+  border-radius: .5rem;
+  margin: 1rem;
+}
+
+@media screen and (min-width: 600px) {
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

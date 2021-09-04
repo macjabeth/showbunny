@@ -1,139 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta
-      name="Description"
-      content="Watch and track your favourite tv shows and movies."
-    />
-    <title>Showbunny</title>
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="fonts.css" />
-    <link rel="preconnect" href="https://api.themoviedb.org" crossorigin />
-    <script
-      src="https://kit.fontawesome.com/4f64c80531.js"
-      crossorigin
-    ></script>
-    <script defer src="bunnychan.js"></script>
-    <script defer src="kittysan.js"></script>
-    <script defer src="app.js"></script>
-  </head>
+<!doctype html>
+<html class="no-js" lang="">
 
-  <body>
-    <div class="container">
-      <header class="header animated fadeInDown">
-        <img src="img/easter-bunny.svg" class="logo" role="presentation" />
-        <h1 class="banner">Showbunny</h1>
-        <img src="img/easter-bunny.svg" class="logo" role="presentation" />
-      </header>
-      <main>
-        <section class="search-form-wrapper animated fadeIn delay-half">
-          <form role="search" id="search-form">
-            <div class="search-container">
-              <input
-                type="search"
-                name="bunny-search"
-                id="search-bar"
-                placeholder="Search..."
-                aria-label="search for media content"
-              />
-              <input
-                type="radio"
-                name="search-category"
-                id="movie-category"
-                value="movie"
-                checked
-              />
-              <label for="movie-category"><span>Movie</span></label>
-              <input
-                type="radio"
-                name="search-category"
-                id="tv-category"
-                value="tv"
-              />
-              <label for="tv-category"><span>TV</span></label>
-            </div>
-          </form>
-        </section>
-        <section class="search">
-          <ul id="search-results" class="animated fadeIn delay-1s"></ul>
-          <div id="search-pagination" class="animated fadeInUp delay-1s"></div>
-        </section>
-        <div id="media-dialog">
-          <div id="media-content">
-            <div id="media-header">
-              <div class="close-btn">
-                <i class="fas fa-times" id="media-close"></i>
-              </div>
-              <img id="media-backdrop" />
-            </div>
-            <div id="media-text">
-              <div class="media-info">
-                <div class="title-status">
-                  <div class="title-container">
-                    <h2 id="media-title"></h2>
-                    <span id="media-rating"></span>
-                  </div>
-                  <div id="media-status">Status?</div>
-                </div>
-              </div>
-              <div id="media-genres">
-                <!-- <h3 class="genre-header">Genres:</h3> -->
-                <ul class="genres">
-                  <li class="genre"></li>
-                </ul>
-              </div>
-              <div id="media-details">
-                <h2>Info</h2>
-                <p id="media-overview"></p>
-              </div>
-              <div id="media-stream">
-                <a
-                  id="trailer"
-                  class="stream-btn trailer-btn"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <span>Trailer!</span>
-                  <i class="fas fa-play-circle"></i>
-                </a>
-                <button id="stream" class="stream-btn">
-                  <span>Stream Now!</span>
-                  <i class="fas fa-play-circle"></i>
-                </button>
-              </div>
-              <div id="media-select-container">
-                <div id="media-select">
-                  <button id="stream-episode" class="stream-btn">
-                    <span>Stream Now!</span>
-                    <i class="fas fa-play-circle"></i>
-                  </button>
-                </div>
-                <div id="select-error">
-                  You must select a season and an episode to stream
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <section id="stream-container" class="stream-container">
-          <div class="close-btn close-btn-dark">
-            <i class="fas fa-times"></i>
-          </div>
-          <iframe
-            title="stream iframe"
-            id="stream-iframe"
-            frameborder="0"
-            allowfullscreen
-          ></iframe>
-        </section>
-      </main>
-      <footer>
-        <small class="animated fadeIn delay-4s">Showbunny &copy;</small>
-      </footer>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/defaults.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+  <header class="header">
+    <h1 class="logo">Showbunny</h1>
+    <nav class="top-nav">
+      <a href="#popular">Popular</a>
+      <a href="#episodes">Episodes</a>
+    </nav>
+    <div>
+      <!-- Use later for authentication -->
     </div>
-  </body>
+  </header>
+  <main id="top">
+    <section id="popular">
+      <h2>Popular</h2>
+      <ul class="cards"></ul>
+    </section>
+    <section>
+      <h2>Episodes</h2>
+      <div id="episodes"></div>
+    </section>
+  </main>
+  <footer>
+    &copy; Showbunny
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+  <script>
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+  </script>
+  <script src="https://www.google-analytics.com/analytics.js" async></script>
+</body>
+
 </html>
