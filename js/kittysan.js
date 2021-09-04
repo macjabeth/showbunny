@@ -7,10 +7,10 @@ export default class KittySan {
   constructor() {
     this.elements = {
       popular: document.querySelector('#popular .cards')
-    }
+    };
   }
 
-  populatePopularCards(cards) {
+  paintPopularMovies(cards) {
     for (const card of cards) {
       // Create elements
       const cardItem = document.createElement('li');
