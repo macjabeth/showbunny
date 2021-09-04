@@ -1,8 +1,3 @@
-// Styles
-import '../css/normalize.css';
-import '../css/defaults.css';
-import '../css/main.css';
-
 // Parcel needs this when working with async
 import BunnyChan from './bunnychan';
 import KittySan from './kittysan';
