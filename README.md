@@ -10,7 +10,7 @@
     A place to watch and track your favourite movies and tv shows!
     <br/>
     <br/>
-    <a href="https://showbunny.xyz">Visit Site</a>
+    <a href="https://showbunny.xyz">Visit Site</a> (<a href="https://macjabeth.github.io/showbunny/">Prior Version</a>)
     &mdash;
     <a href="https://github.com/macjabeth/showbunny/issues">Report Bug</a>
     &mdash;
