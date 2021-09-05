@@ -25,10 +25,87 @@
     <meta name="theme-color" content="#f2f2f2" />
 
     <!-- Plausible Analytics -->
-    <script defer data-domain="showbunny.xyz" src="https://plausible.io/js/plausible.js"></script>
+    <script
+      defer
+      data-domain="showbunny.xyz"
+      src="https://plausible.io/js/plausible.js"
+    ></script>
   </head>
 
   <body>
+    <template id="movie-poster">
+      <style>
+        .card {
+          width: 154px;
+          position: relative;
+          border-radius: 0.25rem;
+          flex-shrink: 0;
+        }
+
+        .card__rating {
+          position: absolute;
+          top: 5px;
+          left: 5px;
+          background-color: var(--bg-color);
+          padding: 0.25rem 0.5rem;
+          opacity: 0.75;
+          border-radius: 0.5rem;
+          font-size: 0.75rem;
+        }
+
+        .card__rating::before {
+          content: '⭐';
+          margin-right: 2.5px;
+          margin-left: -5px;
+        }
+
+        .card__image {
+          display: block;
+          max-width: 100%;
+        }
+      </style>
+      <li class="card">
+        <picture>
+          <source
+            class="js-picture-source"
+            media="(max-width: 92px)"
+            srcset="https://image.tmdb.org/t/p/w92"
+          />
+          <source
+            class="js-picture-source"
+            media="(max-width: 154px)"
+            srcset="https://image.tmdb.org/t/p/w154"
+          />
+          <source
+            class="js-picture-source"
+            media="(max-width: 185px)"
+            srcset="https://image.tmdb.org/t/p/w185"
+          />
+          <source
+            class="js-picture-source"
+            media="(max-width: 342px)"
+            srcset="https://image.tmdb.org/t/p/w342"
+          />
+          <source
+            class="js-picture-source"
+            media="(max-width: 500px)"
+            srcset="https://image.tmdb.org/t/p/w500"
+          />
+          <source
+            class="js-picture-source"
+            media="(max-width: 780px)"
+            srcset="https://image.tmdb.org/t/p/w780"
+          />
+          <img
+            class="card__image"
+            src="https://image.tmdb.org/t/p/original"
+            alt="Poster Image"
+          />
+        </picture>
+        <div class="card__rating">0</div>
+      </li>
+    </template>
+
     <header class="header">
       <h1 class="logo">Showbunny</h1>
       <nav class="top-nav">
@@ -54,6 +131,7 @@
     <!-- Scripts -->
     <script src="/js/vendor/modernizr-3.11.2.min.js"></script>
     <script src="/js/plugins.js"></script>
+    <script src="/js/components/movie-poster.js"></script>
     <script type="module" src="/js/main.js"></script>
   </body>
 </html>
