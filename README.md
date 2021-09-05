@@ -44,6 +44,8 @@ This project was built using vanilla HTML, CSS and JavaScript.
 
 * [H5BP](https://html5boilerplate.com/)
 * [Vite](https://vitejs.dev/)
+* [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components)
+* [Design Concept](https://www.behance.net/gallery/115532245/Responsive-Anime-Website-Design-Concept/modules/659279239)
 
 ## Getting Started
 
@@ -120,3 +122,5 @@ Distributed under the MIT License. See [LICENSE](https://github.com/macjabeth/sh
 * [shad-k](https://github.com/shad-k)
 * [crownedpigeon](https://github.com/crownedpigeon)
 * [bennetthanna](https://github.com/bennetthanna)
+* [itsbmed](https://www.behance.net/itsbmed)
+* [UpGrowt](https://www.behance.net/UpGrowt)
