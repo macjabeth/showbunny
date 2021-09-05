@@ -24,7 +24,7 @@ export default class KittySan {
       cardTitle.classList.add('card__title');
 
       // Update styling
-      cardItem.style.background = `url("https://image.tmdb.org/t/p/w200${card.poster_path}")`;
+      cardItem.innerHTML = `<img src="https://image.tmdb.org/t/p/w200${card.poster_path}" alt="${card.title}" />`;
 
       // Add the content
       cardRating.textContent = card.vote_average;
