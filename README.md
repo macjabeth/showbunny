@@ -18,7 +18,7 @@
   </p>
 </p>
 
-![Contributors](https://img.shields.io/github/contributors/macjabeth/showbunny?color=dark-green) ![Issues](https://img.shields.io/github/issues/macjabeth/showbunny) ![License](https://img.shields.io/github/license/macjabeth/showbunny)
+![Vercel](https://therealsujitk-vercel-badge.vercel.app/?app=showbunny-macjabeth) ![Contributors](https://img.shields.io/github/contributors/macjabeth/showbunny?color=dark-green) ![Issues](https://img.shields.io/github/issues/macjabeth/showbunny) ![License](https://img.shields.io/github/license/macjabeth/showbunny)
 
 ## Table Of Contents
 
