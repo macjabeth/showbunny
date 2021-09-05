@@ -3,7 +3,8 @@ import './vendor/modernizr-3.11.2.min.js';
 import './plugins';
 import './components/movie-poster';
 
-// Parcel needs this when working with async
+// BunnyChan handles API requests.
+// KittySan handles DOM manipulation.
 import BunnyChan from './bunnychan';
 import KittySan from './kittysan';
 
