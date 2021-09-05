@@ -1,7 +1,7 @@
 <br/>
 <p align="center">
   <a href="https://github.com/macjabeth/showbunny">
-    <img src="img/logo.png" alt="Logo" width="80" height="80">
+    <img src="https://raw.githubusercontent.com/macjabeth/showbunny/master/img/easter-bunny.svg" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Showbunny</h3>
@@ -10,13 +10,10 @@
     A place to watch and track your favourite movies and tv shows!
     <br/>
     <br/>
-    <a href="https://github.com/macjabeth/showbunny"><strong>Explore the docs »</strong></a>
-    <br/>
-    <br/>
-    <a href="https://github.com/macjabeth/showbunny">View Demo</a>
-    .
+    <a href="https://showbunny.xyz">Visit Site</a>
+    &mdash;
     <a href="https://github.com/macjabeth/showbunny/issues">Report Bug</a>
-    .
+    &mdash;
     <a href="https://github.com/macjabeth/showbunny/issues">Request Feature</a>
   </p>
 </p>
@@ -38,8 +35,6 @@
 * [Acknowledgements](#acknowledgements)
 
 ## About The Project
-
-![Screen Shot](img/screenshot.png)
 
 There are many great streaming sites on the web; however, most of them lacked features I wished were included. I wanted to create a site so amazing that it'll be the last one you ever need.
 
@@ -78,15 +73,17 @@ npm install
 ## Usage
 
 The default npm scripts are as follows.
+
 ```json
 {
   "scripts": {
-    "dev": "vite", // start dev server
-    "build": "vite build", // build for production
-    "serve": "vite preview" // locally preview production build
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
   }
 }
 ```
+
 To start the dev server, type `npm run dev` into the terminal.
 
 ## Roadmap
