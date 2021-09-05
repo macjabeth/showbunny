@@ -12,28 +12,14 @@ export default class KittySan {
 
   paintPopularMovies(cards) {
     for (const card of cards) {
-      // Create elements
-      const cardItem = document.createElement('li');
-      const cardRating = document.createElement('div');
-      const cardTitle = document.createElement('div');
-      const titleTag = document.createElement('p');
+      // Create movie poster element
+      const moviePoster = document.createElement('movie-poster');
 
-      // Add Classes
-      cardItem.classList.add('card');
-      cardRating.classList.add('card__rating');
-      cardTitle.classList.add('card__title');
-
-      // Update styling
-      cardItem.style.background = `url("https://image.tmdb.org/t/p/w200${card.poster_path}")`;
-
-      // Add the content
-      cardRating.textContent = card.vote_average;
-      titleTag.textContent = card.title;
+      moviePoster.dataset.posterPath = card.poster_path;
+      moviePoster.dataset.rating = card.vote_average;
 
       // Append to the DOM
-      // cardTitle.append(titleTag);
-      cardItem.append(cardRating);
-      this.elements.popular.append(cardItem);
+      this.elements.popular.append(moviePoster);
     }
   }
 }
