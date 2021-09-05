@@ -46,6 +46,7 @@ This project was built using vanilla HTML, CSS and JavaScript.
 * [Vite](https://vitejs.dev/)
 * [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components)
 * [Design Concept](https://www.behance.net/gallery/115532245/Responsive-Anime-Website-Design-Concept/modules/659279239)
+* [TMDB](http://api.themoviedb.org/)
 
 ## Getting Started
 
