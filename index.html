@@ -33,7 +33,7 @@
   </head>
 
   <body>
-    <template id="movie-poster">
+    <template id="media-poster">
       <style>
         .card {
           width: 154px;
@@ -42,15 +42,23 @@
           flex-shrink: 0;
         }
 
-        .card__rating {
-          position: absolute;
-          top: 5px;
-          left: 5px;
-          background-color: var(--bg-color);
+        .card__image {
+          display: block;
+          max-width: 100%;
+        }
+
+        .badge {
           padding: 0.25rem 0.5rem;
           opacity: 0.75;
           border-radius: 0.5rem;
           font-size: 0.75rem;
+          background-color: var(--bg-color);
+        }
+
+        .card__rating {
+          position: absolute;
+          top: 5px;
+          left: 5px;
         }
 
         .card__rating::before {
@@ -59,9 +67,38 @@
           margin-left: -5px;
         }
 
-        .card__image {
-          display: block;
-          max-width: 100%;
+        .card__episode-count {
+          position: absolute;
+          top: 5px;
+          right: 5px;
+        }
+
+        .card__episode-count::before {
+          content: '📺';
+          margin-right: 2.5px;
+          margin-left: -5px;
+        }
+
+        @media screen and (min-width: 600px) {
+          .card {
+            width: 185px;
+          }
+        }
+
+        @media screen and (min-width: 1024px) {
+          .card {
+            width: 342px;
+          }
+
+          .badge {
+            font-size: 1rem;
+          }
+        }
+
+        @media screen and (min-width: 2560px) {
+          .card {
+            width: 500px;
+          }
         }
       </style>
       <li class="card">
@@ -102,16 +139,17 @@
             alt="Poster Image"
           />
         </picture>
-        <div class="card__rating">0</div>
+        <div class="badge card__rating">0</div>
+        <div class="badge card__episode-count">0</div>
       </li>
     </template>
 
     <header class="header">
       <h1 class="logo">Showbunny</h1>
-      <nav class="top-nav">
+      <!-- <nav class="top-nav">
         <a href="#popular">Popular</a>
         <a href="#episodes">Episodes</a>
-      </nav>
+      </nav> -->
       <div>
         <!-- Use later for authentication -->
       </div>
@@ -119,8 +157,10 @@
 
     <main id="top">
       <section id="popular">
-        <h2>Popular</h2>
-        <ul class="cards"></ul>
+        <h2>Popular movies</h2>
+        <ul class="cards movie-cards"></ul>
+        <h2>Popular shows</h2>
+        <ul class="cards show-cards"></ul>
       </section>
       <section>
         <h2>Episodes</h2>
