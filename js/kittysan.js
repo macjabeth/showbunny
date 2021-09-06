@@ -32,6 +32,7 @@ class KittySan {
 
       moviePoster.dataset.posterPath = card.poster_path;
       moviePoster.dataset.rating = card.vote_average;
+      moviePoster.ariaLabel = card.title;
 
       // Append to the DOM
       this.elements.popularMovies.append(moviePoster);
@@ -52,6 +53,7 @@ class KittySan {
 
       tvPoster.dataset.posterPath = card.poster_path;
       tvPoster.dataset.rating = card.vote_average;
+      tvPoster.ariaLabel = card.name;
 
       // Grab TV episode count
       const details = await BunnyChan.fetchTVDetails(card.id);
