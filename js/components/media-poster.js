@@ -1,16 +1,16 @@
-class MoviePoster extends HTMLElement {
+class MediaPoster extends HTMLElement {
   constructor() {
     super();
 
     const shadow = this.attachShadow({ mode: 'open' });
-    const template = document.getElementById('movie-poster');
+    const template = document.getElementById('media-poster');
     const clone = template.content.cloneNode(true);
 
     shadow.appendChild(clone);
   }
 
   connectedCallback() {
-    const { posterPath, rating } = this.dataset;
+    const { posterPath, rating, episodeCount } = this.dataset;
     const shadow = this.shadowRoot;
 
     // Update source URLs
@@ -23,7 +23,15 @@ class MoviePoster extends HTMLElement {
 
     // Update rating
     shadow.querySelector('.card__rating').textContent = rating;
+
+    // Update episode count
+    const cardEpisodeCount = shadow.querySelector('.card__episode-count');
+    if (episodeCount) {
+      cardEpisodeCount.textContent = `${episodeCount} EP`;
+    } else {
+      cardEpisodeCount.style.display = 'none';
+    }
   }
 }
 
-customElements.define('movie-poster', MoviePoster);
+customElements.define('media-poster', MediaPoster);
