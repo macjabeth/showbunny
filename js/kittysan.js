@@ -28,14 +28,17 @@ class KittySan {
 
     for (const card of cards) {
       // Create movie poster element
+      const listElement = document.createElement('li');
       const moviePoster = document.createElement('media-poster');
 
       moviePoster.dataset.posterPath = card.poster_path;
       moviePoster.dataset.rating = card.vote_average;
       moviePoster.ariaLabel = card.title;
 
+      listElement.append(moviePoster);
+
       // Append to the DOM
-      this.elements.popularMovies.append(moviePoster);
+      this.elements.popularMovies.append(listElement);
     }
   }
 
@@ -49,6 +52,7 @@ class KittySan {
 
     for (const card of cards) {
       // Create movie poster element
+      const listElement = document.createElement('li');
       const tvPoster = document.createElement('media-poster');
 
       tvPoster.dataset.posterPath = card.poster_path;
@@ -59,8 +63,10 @@ class KittySan {
       const details = await BunnyChan.fetchTVDetails(card.id);
       tvPoster.dataset.episodeCount = details.number_of_episodes;
 
+      listElement.append(tvPoster);
+
       // Append to the DOM
-      this.elements.popularShows.append(tvPoster);
+      this.elements.popularShows.append(listElement);
     }
   }
 }

@@ -60,7 +60,7 @@ h2:before {
   padding: 0;
 }
 
-media-poster:not(:last-child) {
+.cards li:not(:last-child) {
   margin-right: 0.5rem;
 }
 
