@@ -21,23 +21,42 @@
     <link rel="stylesheet" href="/css/normalize.css" />
     <link rel="stylesheet" href="/css/defaults.css" />
     <link rel="stylesheet" href="/css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
 
     <meta name="theme-color" content="#f2f2f2" />
 
     <!-- Plausible Analytics -->
-    <script defer data-domain="showbunny.xyz" src="https://plausible.io/js/plausible.js"></script>
+    <script
+      defer
+      data-domain="showbunny.xyz"
+      src="https://plausible.io/js/plausible.js"
+    ></script>
   </head>
 
   <body>
     <header class="header">
-      <h1 class="logo">Showbunny</h1>
-      <nav class="top-nav">
-        <a href="#popular">Popular</a>
-        <a href="#episodes">Episodes</a>
-      </nav>
-      <div>
-        <!-- Use later for authentication -->
+      <div class="left">
+        <h1 class="logo">
+          <img src="trans-icon.png" alt="error showing image" />Showbunny
+        </h1>
       </div>
+      <div class="nav">
+        <nav class="top-nav">
+          <a href="#popular">Popular</a>
+          <a href="#episodes">Episodes</a>
+          <input type="text" class="search" placeholder="Search" />
+        </nav>
+      </div>
+
+      <!-- Use later for authentication -->
+
+      <!-- <div class="authentication">
+      </div> -->
     </header>
     <main id="top">
       <section id="popular">
