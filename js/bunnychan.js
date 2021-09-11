@@ -3,7 +3,7 @@
  * This class handles API logic for TMDB.
  */
 
-export default class BunnyChan {
+class BunnyChan {
   constructor() {
     this.tmdb_key = 'fa4fa1ba075a48db1aeb756f4343bc23';
     this.session_id = '';
@@ -153,3 +153,5 @@ export default class BunnyChan {
     return await response.json();
   }
 }
+
+export default new BunnyChan();

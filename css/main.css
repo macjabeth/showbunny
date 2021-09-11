@@ -1,5 +1,7 @@
 /* Theme */
 
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 :root {
   --bg-color: #181818;
   --fg-color: #f2f2f2;
@@ -16,9 +18,29 @@ body {
   background-color: var(--bg-color);
   color: var(--fg-color);
   padding: 1rem;
+  font-family: 'Rubik', sans-serif;
   font-size: 1rem;
   font-family: 'Montserrat', sans-serif;
   height:2000px;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  position: relative;
+  font-size: 1.5rem;
+}
+
+h2:before {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  height: 15px;
+  width: 6rem;
+  border-bottom: 3px solid var(--yellow);
+  border-radius: 5px;
 }
 
 .header {
@@ -83,50 +105,8 @@ body {
   padding: 0;
 }
 
-.card:not(:last-child) {
-  margin-right: 1rem;
-}
-
-.card {
-  height: 300px;
-  width: 200px;
-  position: relative;
-  border-radius: 0.25rem;
-  flex-shrink: 0;
-}
-
-.card__rating {
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  background-color: var(--bg-color);
-  padding: 0.25rem 0.5rem;
-  opacity: 0.75;
-  border-radius: 0.5rem;
-  font-size: 0.75rem;
-}
-
-.card__rating::before {
-  content: '⭐';
-  margin-right: 2.5px;
-  margin-left: -5px;
-}
-
-.card__title {
-  position: absolute;
-  bottom: -5px;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  font-size: small;
-}
-
-.card__title > p {
-  background-color: var(--bg-color);
-  padding: 0.25rem 0.5rem;
-  opacity: 0.75;
-  border-radius: 0.5rem;
-  margin: 1rem;
+media-poster:not(:last-child) {
+  margin-right: 0.5rem;
 }
 
 @media screen and (min-width: 600px) {
@@ -134,5 +114,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 2rem;
   }
 }

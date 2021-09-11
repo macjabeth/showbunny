@@ -1,39 +1,68 @@
+import BunnyChan from './bunnychan';
+
 /**
  * KittySan
  * This class handles DOM manipulation.
  */
 
-export default class KittySan {
+class KittySan {
   constructor() {
     this.elements = {
-      popular: document.querySelector('#popular .cards')
+      popularMovies: document.querySelector('#popular .movie-cards'),
+      popularShows: document.querySelector('#popular .show-cards')
     };
   }
 
-  paintPopularMovies(cards) {
+  async meow() {
+    this.paintPopularMovies();
+    this.paintPopularShows();
+  }
+
+  async paintPopularMovies() {
+    BunnyChan.category = 'movie';
+
+    const data = await BunnyChan.fetchTrendingData();
+    const cards = data.results;
+
+    cards.sort((a, b) => b.vote_average - a.vote_average);
+
     for (const card of cards) {
-      // Create elements
-      const cardItem = document.createElement('li');
-      const cardRating = document.createElement('div');
-      const cardTitle = document.createElement('div');
-      const titleTag = document.createElement('p');
+      // Create movie poster element
+      const moviePoster = document.createElement('media-poster');
 
-      // Add Classes
-      cardItem.classList.add('card');
-      cardRating.classList.add('card__rating');
-      cardTitle.classList.add('card__title');
-
-      // Update styling
-      cardItem.style.background = `url("https://image.tmdb.org/t/p/w200${card.poster_path}")`;
-
-      // Add the content
-      cardRating.textContent = card.vote_average;
-      titleTag.textContent = card.title;
+      moviePoster.dataset.posterPath = card.poster_path;
+      moviePoster.dataset.rating = card.vote_average;
+      moviePoster.ariaLabel = card.title;
 
       // Append to the DOM
-      // cardTitle.append(titleTag);
-      cardItem.append(cardRating);
-      this.elements.popular.append(cardItem);
+      this.elements.popularMovies.append(moviePoster);
+    }
+  }
+
+  async paintPopularShows() {
+    BunnyChan.category = 'tv';
+
+    const data = await BunnyChan.fetchTrendingData();
+    const cards = data.results;
+
+    cards.sort((a, b) => b.vote_average - a.vote_average);
+
+    for (const card of cards) {
+      // Create movie poster element
+      const tvPoster = document.createElement('media-poster');
+
+      tvPoster.dataset.posterPath = card.poster_path;
+      tvPoster.dataset.rating = card.vote_average;
+      tvPoster.ariaLabel = card.name;
+
+      // Grab TV episode count
+      const details = await BunnyChan.fetchTVDetails(card.id);
+      tvPoster.dataset.episodeCount = details.number_of_episodes;
+
+      // Append to the DOM
+      this.elements.popularShows.append(tvPoster);
     }
   }
 }
+
+export default new KittySan();

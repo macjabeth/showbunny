@@ -1,12 +1,10 @@
-// Parcel needs this when working with async
-import BunnyChan from './bunnychan';
+// Components
+import './vendor/modernizr-3.11.2.min.js';
+import './plugins';
+import './components/media-poster';
+
+// KittySan handles DOM manipulation and interacts
+// with BunnyChan to handle API requests.
 import KittySan from './kittysan';
 
-const bunno = new BunnyChan();
-const kitty = new KittySan();
-
-(async () => {
-  // Popular Movies
-  const data = await bunno.fetchTrendingData();
-  kitty.paintPopularMovies(data.results);
-})();
+KittySan.meow();
