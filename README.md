@@ -30,6 +30,8 @@
 * [Usage](#usage)
 * [Roadmap](#roadmap)
 * [Contributing](#contributing)
+  * [Creating A Pull Request](#creating-a-pull-request)
+  * [Joining the Community](#joining-the-community)
 * [License](#license)
 * [Authors](#authors)
 * [Acknowledgements](#acknowledgements)
@@ -103,10 +105,14 @@ Contributions are what make the open source community such an amazing place to l
 ### Creating A Pull Request
 
 1. Fork the Project
-2. Create your [GitFlow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
+2. Create your [GitFlow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) Branch (`git checkout -b feature/amazing-feature`)
+3. Commit your Changes (`git commit -m 'Add some amazing-feature'`)
+4. Push to the Branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
+
+### Joining the Community
+
+We have a [community on Discord](https://discord.gg/g63XcJWFwv) to discuss Showbunny and other topics. Feel free to come join us!
 
 ## License
 
