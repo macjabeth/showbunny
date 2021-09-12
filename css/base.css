@@ -50,6 +50,15 @@ h2:before {
   border-radius: 5px;
 }
 
+a {
+  color: var(--yellow);
+  text-decoration: none;
+}
+
+footer {
+  margin: 2rem 0;
+}
+
 @media screen and (min-width: 600px) {
   h1 {
     font-size: 3rem;
