@@ -21,6 +21,12 @@
     <link rel="stylesheet" href="/css/normalize.css" />
     <link rel="stylesheet" href="/css/defaults.css" />
     <link rel="stylesheet" href="/css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
 
     <meta name="theme-color" content="#f2f2f2" />
 
@@ -36,10 +42,11 @@
     <template id="media-poster">
       <style>
         .card {
-          width: 154px;
-          position: relative;
           border-radius: 0.25rem;
+          color: var(--fg-color);
           flex-shrink: 0;
+          position: relative;
+          width: 154px;
         }
 
         .card__image {
@@ -48,35 +55,35 @@
         }
 
         .badge {
-          padding: 0.25rem 0.5rem;
-          opacity: 0.75;
+          background-color: var(--bg-color);
           border-radius: 0.5rem;
           font-size: 0.75rem;
-          background-color: var(--bg-color);
+          opacity: 0.75;
+          padding: 0.25rem 0.5rem;
         }
 
         .card__rating {
+          left: 5px;
           position: absolute;
           top: 5px;
-          left: 5px;
         }
 
         .card__rating::before {
           content: '⭐';
-          margin-right: 2.5px;
           margin-left: -5px;
+          margin-right: 2.5px;
         }
 
         .card__episode-count {
           position: absolute;
-          top: 5px;
           right: 5px;
+          top: 5px;
         }
 
         .card__episode-count::before {
           content: '📺';
-          margin-right: 2.5px;
           margin-left: -5px;
+          margin-right: 2.5px;
         }
 
         @media screen and (min-width: 600px) {
@@ -101,64 +108,71 @@
           }
         }
       </style>
-      <li class="card">
-        <picture>
-          <source
-            class="js-picture-source"
-            media="(max-width: 600px)"
-            srcset="https://image.tmdb.org/t/p/w154"
-          />
-          <source
-            class="js-picture-source"
-            media="(max-width: 1024px)"
-            srcset="https://image.tmdb.org/t/p/w185"
-          />
-          <source
-            class="js-picture-source"
-            media="(max-width: 2559px)"
-            srcset="https://image.tmdb.org/t/p/w342"
-          />
-          <source
-            class="js-picture-source"
-            media="(min-width: 2560px)"
-            srcset="https://image.tmdb.org/t/p/w500"
-          />
-          <img
-            class="card__image"
-            src="https://image.tmdb.org/t/p/w500"
-            alt="Poster Image"
-          />
-        </picture>
-        <div class="badge card__rating">0</div>
-        <div class="badge card__episode-count">0</div>
-      </li>
+      <a href="#">
+        <li class="card">
+          <picture>
+            <source
+              class="js-picture-source"
+              media="(max-width: 600px)"
+              srcset="https://image.tmdb.org/t/p/w154"
+            />
+            <source
+              class="js-picture-source"
+              media="(max-width: 1024px)"
+              srcset="https://image.tmdb.org/t/p/w185"
+            />
+            <source
+              class="js-picture-source"
+              media="(max-width: 2559px)"
+              srcset="https://image.tmdb.org/t/p/w342"
+            />
+            <source
+              class="js-picture-source"
+              media="(min-width: 2560px)"
+              srcset="https://image.tmdb.org/t/p/w500"
+            />
+            <img
+              class="card__image"
+              src="https://image.tmdb.org/t/p/w500"
+              alt="Poster Image"
+            />
+          </picture>
+          <div class="badge card__rating">0</div>
+          <div class="badge card__episode-count">0</div>
+        </li>
+      </a>
     </template>
 
     <header class="header">
       <h1 class="logo">Showbunny</h1>
-      <!-- <nav class="top-nav">
-        <a href="#popular">Popular</a>
+      <nav class="nav-menu">
+        <a href="#home">Home</a>
+        <a href="#movies">Movies</a>
+        <a href="#tv">TV</a>
         <a href="#episodes">Episodes</a>
-      </nav> -->
-      <div>
-        <!-- Use later for authentication -->
-      </div>
+      </nav>
     </header>
 
-    <main id="top">
-      <section id="popular">
-        <h2>Popular movies</h2>
-        <ul class="cards movie-cards"></ul>
-        <h2>Popular shows</h2>
-        <ul class="cards show-cards"></ul>
-      </section>
-      <section>
-        <h2>Episodes</h2>
-        <div id="episodes"></div>
-      </section>
+    <main>
+      <div id="home-page">
+        <section id="popular">
+          <h2>Popular movies</h2>
+          <ul class="cards movie-cards"></ul>
+          <h2>Popular shows</h2>
+          <ul class="cards show-cards"></ul>
+        </section>
+      </div>
+      <div id="movies-page">
+        <h2>Movies Page</h2>
+        <a href="#home">Go back</a>
+      </div>
     </main>
 
-    <footer>&copy; Showbunny</footer>
+    <footer>
+      <span>&copy; Showbunny</span>
+      <span>|</span>
+      <a href="https://discord.gg/g63XcJWFwv">Discord Community</a>
+    </footer>
 
     <script type="module" src="/js/main.js"></script>
   </body>

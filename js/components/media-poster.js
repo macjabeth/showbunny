@@ -10,7 +10,7 @@ class MediaPoster extends HTMLElement {
   }
 
   connectedCallback() {
-    const { posterPath, rating, episodeCount } = this.dataset;
+    const { posterPath, rating, episodeCount, route } = this.dataset;
     const shadow = this.shadowRoot;
 
     // Update source URLs
@@ -31,6 +31,9 @@ class MediaPoster extends HTMLElement {
     } else {
       cardEpisodeCount.style.display = 'none';
     }
+
+    // Update route path
+    shadow.querySelector('a').href = route;
   }
 }
 

@@ -125,3 +125,4 @@ Distributed under the MIT License. See [LICENSE](https://github.com/macjabeth/sh
 * [bennetthanna](https://github.com/bennetthanna)
 * [itsbmed](https://www.behance.net/itsbmed)
 * [UpGrowt](https://www.behance.net/UpGrowt)
+* [ARJITMALIK](https://github.com/ARJITMALIK)

@@ -1,0 +1,12 @@
+.cards {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+media-poster:not(:last-child) {
+  margin-right: 0.5rem;
+}

@@ -31,6 +31,7 @@ class KittySan {
       const listElement = document.createElement('li');
       const moviePoster = document.createElement('media-poster');
 
+      moviePoster.dataset.route = '#movies/' + card.id;
       moviePoster.dataset.posterPath = card.poster_path;
       moviePoster.dataset.rating = card.vote_average;
       moviePoster.ariaLabel = card.title;
@@ -55,6 +56,7 @@ class KittySan {
       const listElement = document.createElement('li');
       const tvPoster = document.createElement('media-poster');
 
+      tvPoster.dataset.route = '#tv/' + card.id;
       tvPoster.dataset.posterPath = card.poster_path;
       tvPoster.dataset.rating = card.vote_average;
       tvPoster.ariaLabel = card.name;
@@ -68,6 +70,11 @@ class KittySan {
       // Append to the DOM
       this.elements.popularShows.append(listElement);
     }
+  }
+
+  async paintMovieDetails(movieId) {
+    const movieDetails = await BunnyChan.fetchMovieDetails(movieId);
+    console.log({ movieDetails });
   }
 }
 
