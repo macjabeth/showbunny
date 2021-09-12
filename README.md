@@ -126,3 +126,4 @@ Distributed under the MIT License. See [LICENSE](https://github.com/macjabeth/sh
 * [itsbmed](https://www.behance.net/itsbmed)
 * [UpGrowt](https://www.behance.net/UpGrowt)
 * [ARJITMALIK](https://github.com/ARJITMALIK)
+* [Bassadin](https://github.com/Bassadin)
