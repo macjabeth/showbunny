@@ -34,9 +34,9 @@ class KittySan {
       moviePoster.dataset.route = '#movies/' + card.id;
       moviePoster.dataset.posterPath = card.poster_path;
       moviePoster.dataset.rating = card.vote_average;
-      moviePoster.ariaLabel = card.title;
 
       listElement.append(moviePoster);
+      listElement.ariaLabel = card.title;
 
       // Append to the DOM
       this.elements.popularMovies.append(listElement);
@@ -59,13 +59,13 @@ class KittySan {
       tvPoster.dataset.route = '#tv/' + card.id;
       tvPoster.dataset.posterPath = card.poster_path;
       tvPoster.dataset.rating = card.vote_average;
-      tvPoster.ariaLabel = card.name;
 
       // Grab TV episode count
       const details = await BunnyChan.fetchTVDetails(card.id);
       tvPoster.dataset.episodeCount = details.number_of_episodes;
 
       listElement.append(tvPoster);
+      listElement.ariaLabel = card.name;
 
       // Append to the DOM
       this.elements.popularShows.append(listElement);
