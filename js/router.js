@@ -12,20 +12,21 @@ export default class Router {
   initialise(hash) {
     const { route, page, context } = this.parseRoute(hash);
 
+    console.log('init', { route, page, context });
+
     this.hidePages();
 
     this.highlightAnchor(route);
 
     this.showPage(page);
 
-    this.handlePageScript(page);
+    this.handlePageScript(page, context);
   }
 
   handleRoutes() {
     const { route, page, context } = this.parseRoute(location.hash);
 
-    console.log(this.pages);
-    console.log(route, page);
+    console.log('handler', { route, page, context });
 
     if (this.pages.has(page)) {
       this.highlightAnchor(route);
@@ -43,7 +44,9 @@ export default class Router {
         break;
 
       case 'movies-page':
-        KittySan.paintMovieDetails(context);
+        if (!context) return;
+        const [movieId] = context;
+        KittySan.paintMovieDetails(movieId);
         break;
 
       default:

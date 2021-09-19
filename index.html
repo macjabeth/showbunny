@@ -36,76 +36,6 @@
 
   <body>
     <template id="media-poster">
-      <style>
-        .card {
-          border-radius: 0.25rem;
-          color: var(--fg-color);
-          flex-shrink: 0;
-          position: relative;
-          width: 154px;
-        }
-
-        .card__image {
-          display: block;
-          max-width: 100%;
-          width: calc(100% - 5px);
-          height: auto;
-        }
-
-        .badge {
-          background-color: var(--bg-color);
-          border-radius: 0.5rem;
-          font-size: 0.75rem;
-          opacity: 0.75;
-          padding: 0.25rem 0.5rem;
-        }
-
-        .card__rating {
-          left: 5px;
-          position: absolute;
-          top: 5px;
-        }
-
-        .card__rating::before {
-          content: '⭐';
-          margin-left: -5px;
-          margin-right: 2.5px;
-        }
-
-        .card__episode-count {
-          position: absolute;
-          right: 5px;
-          top: 5px;
-        }
-
-        .card__episode-count::before {
-          content: '📺';
-          margin-left: -5px;
-          margin-right: 2.5px;
-        }
-
-        @media screen and (min-width: 600px) {
-          .card {
-            width: 185px;
-          }
-        }
-
-        @media screen and (min-width: 1024px) {
-          .card {
-            width: 342px;
-          }
-
-          .badge {
-            font-size: 1rem;
-          }
-        }
-
-        @media screen and (min-width: 2560px) {
-          .card {
-            width: 500px;
-          }
-        }
-      </style>
       <a href="#">
         <div class="card">
           <picture>
@@ -131,6 +61,27 @@
       </a>
     </template>
 
+    <template id="media-card">
+      <div class="card">
+        <img
+          class="card-image"
+          alt="Poster Image"
+          src="https://image.tmdb.org/t/p/w780"
+        />
+        <div class="card-info">
+          <div class="card-header">
+            <h2 class="card-title"></h2>
+            <div class="card-meta">
+              <span class="card-year"></span>
+              <span class="card-rating"></span>
+            </div>
+          </div>
+          <p class="card-overview"></p>
+          <ul class="card-genres"></ul>
+        </div>
+      </div>
+    </template>
+
     <header class="header">
       <h1 class="logo">Showbunny</h1>
       <nav class="nav-menu">
@@ -152,7 +103,6 @@
       </div>
       <div id="movies-page">
         <h2>Movies Page</h2>
-        <a href="#home">Go back</a>
       </div>
     </main>
 
