@@ -2,11 +2,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 3rem;
+  margin-bottom: 4.8rem;
 }
 
 .logo {
-  font-size: 3rem;
+  font-size: 4.8rem;
   font-variant: small-caps;
 }
 
@@ -19,12 +19,12 @@
 }
 
 .nav-menu a {
-  font-size: 1.25rem;
+  font-size: 2rem;
   font-weight: bold;
   text-decoration: none;
   color: var(--fg-color);
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: 0.8rem;
   transition: 150ms;
 }
 
@@ -36,7 +36,7 @@
 
 @media screen and (min-width: 425px) {
   .logo {
-    font-size: 4rem;
+    font-size: 6rem;
   }
 
   .nav-menu {
@@ -52,6 +52,6 @@
   }
 
   .nav-menu a {
-    font-size: 1.5rem;
+    font-size: 2.4rem;
   }
 }
