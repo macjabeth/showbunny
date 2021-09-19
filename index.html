@@ -48,6 +48,8 @@
         .card__image {
           display: block;
           max-width: 100%;
+          width: calc(100% - 5px);
+          height: auto;
         }
 
         .badge {
@@ -109,22 +111,12 @@
           <picture>
             <source
               class="js-picture-source"
-              media="(max-width: 600px)"
-              srcset="https://image.tmdb.org/t/p/w154"
-            />
-            <source
-              class="js-picture-source"
-              media="(max-width: 1024px)"
-              srcset="https://image.tmdb.org/t/p/w185"
-            />
-            <source
-              class="js-picture-source"
-              media="(max-width: 2559px)"
+              media="(max-width: 599px)"
               srcset="https://image.tmdb.org/t/p/w342"
             />
             <source
               class="js-picture-source"
-              media="(min-width: 2560px)"
+              media="(min-width: 600px)"
               srcset="https://image.tmdb.org/t/p/w500"
             />
             <img
