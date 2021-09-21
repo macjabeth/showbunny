@@ -2,47 +2,46 @@ const sheet = new CSSStyleSheet();
 
 sheet.replaceSync(`
   .card {
-    border-radius: 0.25rem;
+    border-radius: 0.4rem;
     color: var(--fg-color);
     flex-shrink: 0;
     position: relative;
     width: 154px;
   }
 
-  .card__image {
+  .card-image {
     display: block;
     max-width: 100%;
-    width: calc(100% - 5px);
     height: auto;
   }
 
   .badge {
     background-color: var(--bg-color);
-    border-radius: 0.5rem;
-    font-size: 0.75rem;
+    border-radius: 0.8rem;
+    font-size: 1.2rem;
     opacity: 0.75;
-    padding: 0.25rem 0.5rem;
+    padding: 0.4rem 0.8rem;
   }
 
-  .card__rating {
+  .card-rating {
     left: 5px;
     position: absolute;
     top: 5px;
   }
 
-  .card__rating::before {
+  .card-rating::before {
     content: '⭐';
     margin-left: -5px;
     margin-right: 2.5px;
   }
 
-  .card__episode-count {
+  .card-episode-count {
     position: absolute;
-    right: 10px;
+    right: 5px;
     top: 5px;
   }
 
-  .card__episode-count::before {
+  .card-episode-count::before {
     content: '📺';
     margin-left: -5px;
     margin-right: 2.5px;
@@ -60,7 +59,7 @@ sheet.replaceSync(`
     }
 
     .badge {
-      font-size: 1rem;
+      font-size: initial;
     }
   }
 

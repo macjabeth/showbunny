@@ -46,7 +46,7 @@ class KittySan {
       const shadow = moviePoster.shadowRoot;
 
       // Update source URLs
-      const cardImage = shadow.querySelector('.card__image');
+      const cardImage = shadow.querySelector('.card-image');
       cardImage.setAttribute(
         'src',
         cardImage.getAttribute('src') + card.poster_path
@@ -60,10 +60,10 @@ class KittySan {
       }
 
       // Update rating
-      shadow.querySelector('.card__rating').textContent = card.vote_average;
+      shadow.querySelector('.card-rating').textContent = card.vote_average;
 
       // Update episode count
-      shadow.querySelector('.card__episode-count').style.display = 'none';
+      shadow.querySelector('.card-episode-count').style.display = 'none';
 
       // Update route path
       shadow.querySelector('a').href = '#movies/' + card.id;
@@ -93,7 +93,7 @@ class KittySan {
       const shadow = tvPoster.shadowRoot;
 
       // Update source URLs
-      const cardImage = shadow.querySelector('.card__image');
+      const cardImage = shadow.querySelector('.card-image');
       cardImage.setAttribute(
         'src',
         cardImage.getAttribute('src') + card.poster_path
@@ -107,13 +107,13 @@ class KittySan {
       }
 
       // Update rating
-      shadow.querySelector('.card__rating').textContent = card.vote_average;
+      shadow.querySelector('.card-rating').textContent = card.vote_average;
 
       // Grab TV episode count
       const details = await BunnyChan.fetchTVDetails(card.id);
 
       // Update episode count
-      const cardEpisodeCount = shadow.querySelector('.card__episode-count');
+      const cardEpisodeCount = shadow.querySelector('.card-episode-count');
       cardEpisodeCount.textContent = `${details.number_of_episodes} EP`;
 
       // Update route path
