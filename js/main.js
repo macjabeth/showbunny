@@ -1,10 +1,7 @@
-// Components
 import './vendor/modernizr-3.11.2.min.js';
 import './plugins';
-import './components/media-poster';
-import './components/media-card';
+import './components';
 
-// Set up our route definitions
+// Set up SPA Router
 import Router from './router';
-
 const router = new Router();
