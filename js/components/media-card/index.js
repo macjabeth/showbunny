@@ -1,3 +1,4 @@
+import template from './template';
 import sheet from './style';
 
 class MediaCard extends HTMLElement {
@@ -5,7 +6,6 @@ class MediaCard extends HTMLElement {
     super();
 
     const shadow = this.attachShadow({ mode: 'open' });
-    const template = document.getElementById('media-card');
     const clone = template.content.cloneNode(true);
 
     shadow.appendChild(clone);

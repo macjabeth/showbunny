@@ -36,53 +36,6 @@
   </head>
 
   <body>
-    <template id="media-poster">
-      <a href="#">
-        <div class="card">
-          <picture>
-            <source
-              class="js-picture-source"
-              media="(max-width: 599px)"
-              srcset="https://image.tmdb.org/t/p/w342"
-            />
-            <source
-              class="js-picture-source"
-              media="(min-width: 600px)"
-              srcset="https://image.tmdb.org/t/p/w500"
-            />
-            <img
-              class="card-image"
-              src="https://image.tmdb.org/t/p/w500"
-              alt="Poster Image"
-            />
-          </picture>
-          <div class="badge card-rating">0</div>
-          <div class="badge card-episode-count">0</div>
-        </div>
-      </a>
-    </template>
-
-    <template id="media-card">
-      <div class="card">
-        <img
-          class="card-image"
-          alt="Poster Image"
-          src="https://image.tmdb.org/t/p/w780"
-        />
-        <div class="card-info">
-          <div class="card-header">
-            <h2 class="card-title"></h2>
-            <div class="card-meta">
-              <span class="card-year"></span>
-              <span class="card-rating"></span>
-            </div>
-          </div>
-          <p class="card-overview"></p>
-          <ul class="card-genres"></ul>
-        </div>
-      </div>
-    </template>
-
     <header class="header">
       <h1 class="logo">Showbunny</h1>
       <nav class="nav-menu">
