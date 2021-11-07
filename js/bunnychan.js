@@ -38,8 +38,7 @@ class BunnyChan {
     const data = await fetch(
       `https://api.themoviedb.org/3/authentication/token/new?api_key=${this.tmdb_key}`
     ).then(res => res.json());
-    if (!data.success)
-      throw new Error(`Error creating request token; ${data.status_message}`);
+    if (!data.success) throw new Error(`Error creating request token; ${data.status_message}`);
     return data.request_token;
   }
 
@@ -55,8 +54,7 @@ class BunnyChan {
         body: JSON.stringify({ request_token })
       }
     ).then(res => res.json());
-    if (!data.success)
-      throw new Error(`Error creating session; ${data.status_message}`);
+    if (!data.success) throw new Error(`Error creating session; ${data.status_message}`);
     this.session_id = data.session_id;
   }
 
@@ -120,10 +118,7 @@ class BunnyChan {
 
   async fetchTrendingData() {
     // Check if the data has already been fetched for a category.
-    if (
-      this.cachedResponse[this.category] &&
-      this.cachedResponse[this.category][this.page]
-    )
+    if (this.cachedResponse[this.category] && this.cachedResponse[this.category][this.page])
       return this.cachedResponse[this.category][this.page];
 
     // If not then fetch the data.
@@ -132,8 +127,7 @@ class BunnyChan {
     );
 
     // Cache the data for the next time.
-    this.cachedResponse[this.category] =
-      this.cachedResponse[this.category] || {};
+    this.cachedResponse[this.category] = this.cachedResponse[this.category] || {};
     this.cachedResponse[this.category][this.page] = await response.json();
 
     return this.cachedResponse[this.category][this.page];

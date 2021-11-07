@@ -49,6 +49,12 @@ export default class Router {
         KittySan.paintMovieDetails(movieId);
         break;
 
+      case 'tv-page':
+        if (!context) return;
+        const [tvId] = context;
+        KittySan.paintTVDetails(tvId);
+        break;
+
       default:
         break;
     }
@@ -70,9 +76,7 @@ export default class Router {
   }
 
   highlightAnchor(route) {
-    document
-      .querySelectorAll('.nav-menu a')
-      .forEach(el => el.classList.remove('current'));
+    document.querySelectorAll('.nav-menu a').forEach(el => el.classList.remove('current'));
     document.querySelector(`[href="${route}"]`).classList.add('current');
   }
 

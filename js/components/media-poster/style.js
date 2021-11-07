@@ -2,7 +2,6 @@ const sheet = new CSSStyleSheet();
 
 sheet.replaceSync(`
   .card {
-    border-radius: 0.4rem;
     color: var(--fg-color);
     flex-shrink: 0;
     position: relative;
@@ -10,6 +9,7 @@ sheet.replaceSync(`
   }
 
   .card-image {
+    border-radius: 0.4rem;
     display: block;
     max-width: 100%;
     height: auto;

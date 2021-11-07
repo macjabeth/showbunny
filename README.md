@@ -22,19 +22,19 @@
 
 ## Table Of Contents
 
-* [About the Project](#about-the-project)
-* [Built With](#built-with)
-* [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
-  * [Installation](#installation)
-* [Usage](#usage)
-* [Roadmap](#roadmap)
-* [Contributing](#contributing)
-  * [Creating A Pull Request](#creating-a-pull-request)
-  * [Joining the Community](#joining-the-community)
-* [License](#license)
-* [Authors](#authors)
-* [Acknowledgements](#acknowledgements)
+- [About the Project](#about-the-project)
+- [Built With](#built-with)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
+  - [Creating A Pull Request](#creating-a-pull-request)
+  - [Joining the Community](#joining-the-community)
+- [License](#license)
+- [Authors](#authors)
+- [Acknowledgements](#acknowledgements)
 
 ## About The Project
 
@@ -44,11 +44,11 @@ There are many great streaming sites on the web; however, most of them lacked fe
 
 This project was built using vanilla HTML, CSS and JavaScript.
 
-* [H5BP](https://html5boilerplate.com/)
-* [Vite](https://vitejs.dev/)
-* [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components)
-* [Design Concept](https://www.behance.net/gallery/115532245/Responsive-Anime-Website-Design-Concept/modules/659279239)
-* [TMDB](http://api.themoviedb.org/)
+- [H5BP](https://html5boilerplate.com/)
+- [Vite](https://vitejs.dev/)
+- [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components)
+- [Design Concept](https://www.behance.net/gallery/115532245/Responsive-Anime-Website-Design-Concept/modules/659279239)
+- [TMDB](http://api.themoviedb.org/)
 
 ## Getting Started
 
@@ -58,8 +58,8 @@ To run this project locally, please follow the below steps.
 
 You will need the following installed on your machine:
 
-* [Node.js](https://nodejs.org/)
-* [Git](https://git-scm.com/)
+- [Node.js](https://nodejs.org/)
+- [Git](https://git-scm.com/)
 
 ### Installation
 
@@ -98,9 +98,10 @@ See the [open issues](https://github.com/macjabeth/showbunny/issues) for a list 
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated** (and will get you added to the acknowledgements section).
-* If you have suggestions for adding or removing features, feel free to [open an issue](https://github.com/macjabeth/showbunny/issues/new) to discuss it, or directly create a pull request after making any necessary changes.
-* Create individual PRs for each suggestion.
-* Please also read through the [Code Of Conduct](https://github.com/macjabeth/macjabeth/blob/main/CODE-OF-CONDUCT.md) before posting your first idea.
+
+- If you have suggestions for adding or removing features, feel free to [open an issue](https://github.com/macjabeth/showbunny/issues/new) to discuss it, or directly create a pull request after making any necessary changes.
+- Create individual PRs for each suggestion.
+- Please also read through the [Code Of Conduct](https://github.com/macjabeth/macjabeth/blob/main/CODE-OF-CONDUCT.md) before posting your first idea.
 
 ### Creating A Pull Request
 
@@ -120,16 +121,16 @@ Distributed under the MIT License. See [LICENSE](https://github.com/macjabeth/sh
 
 ## Authors
 
-* **[macjabeth](https://github.com/macjabeth/)** - *a software engineer passionate about learning new technologies and teaching others to be better developers*
-* **[BabyMaybe](https://github.com/BabyMaybe)** - *my friendly neighbourhood cat*
+- **[macjabeth](https://github.com/macjabeth/)** - _a software engineer passionate about learning new technologies and teaching others to be better developers_
+- **[BabyMaybe](https://github.com/BabyMaybe)** - _my friendly neighbourhood cat_
 
 ## Acknowledgements
 
-* [dreaminfo](https://github.com/dreaminfo)
-* [shad-k](https://github.com/shad-k)
-* [crownedpigeon](https://github.com/crownedpigeon)
-* [bennetthanna](https://github.com/bennetthanna)
-* [itsbmed](https://www.behance.net/itsbmed)
-* [UpGrowt](https://www.behance.net/UpGrowt)
-* [ARJITMALIK](https://github.com/ARJITMALIK)
-* [Bassadin](https://github.com/Bassadin)
+- [dreaminfo](https://github.com/dreaminfo)
+- [shad-k](https://github.com/shad-k)
+- [crownedpigeon](https://github.com/crownedpigeon)
+- [bennetthanna](https://github.com/bennetthanna)
+- [itsbmed](https://www.behance.net/itsbmed)
+- [UpGrowt](https://www.behance.net/UpGrowt)
+- [ARJITMALIK](https://github.com/ARJITMALIK)
+- [Bassadin](https://github.com/Bassadin)

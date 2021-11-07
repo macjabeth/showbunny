@@ -15,9 +15,11 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "format": "prettier --write ."
   },
   "devDependencies": {
-    "vite": "^2.5.3"
+    "prettier": "^2.4.1",
+    "vite": "^2.6.13"
   }
 }
