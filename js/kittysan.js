@@ -55,7 +55,7 @@ class KittySan {
       }
 
       // Update rating
-      shadow.querySelector('.card-rating').textContent = card.vote_average;
+      shadow.querySelector('.card-rating').textContent = card.vote_average.toFixed(1);
 
       // Update episode count
       shadow.querySelector('.card-episode-count').style.display = 'none';
@@ -96,7 +96,7 @@ class KittySan {
       }
 
       // Update rating
-      shadow.querySelector('.card-rating').textContent = card.vote_average;
+      shadow.querySelector('.card-rating').textContent = card.vote_average.toFixed(1);
 
       // Grab TV episode count
       const details = await BunnyChan.fetchTVDetails(card.id);
@@ -129,7 +129,7 @@ class KittySan {
     shadow.querySelector('.card-image').src += movieDetails.backdrop_path;
     shadow.querySelector('.card-title').textContent = movieDetails.title;
     shadow.querySelector('.card-year').textContent = movieDetails.release_date.split('-')[0];
-    shadow.querySelector('.card-rating').textContent = movieDetails.vote_average;
+    shadow.querySelector('.card-rating').textContent = movieDetails.vote_average.toFixed(1);
     shadow.querySelector('.card-overview').textContent = movieDetails.overview;
 
     const cardGenres = shadow.querySelector('.card-genres');
@@ -156,7 +156,7 @@ class KittySan {
     shadow.querySelector('.card-image').src += tvDetails.backdrop_path;
     shadow.querySelector('.card-title').textContent = tvDetails.name;
     shadow.querySelector('.card-year').textContent = tvDetails.first_air_date.split('-')[0];
-    shadow.querySelector('.card-rating').textContent = tvDetails.vote_average;
+    shadow.querySelector('.card-rating').textContent = tvDetails.vote_average.toFixed(1);
     shadow.querySelector('.card-overview').textContent = tvDetails.overview;
 
     const cardGenres = shadow.querySelector('.card-genres');
