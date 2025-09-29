@@ -1,5 +1,5 @@
-import template from './template';
 import sheet from './style';
+import template from './template';
 
 class MediaCard extends HTMLElement {
   constructor() {

@@ -5,8 +5,45 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
+  gap: 1rem;
 }
 
 .cards li:not(:last-child) {
   margin-right: 1rem;
+}
+
+.cards .skeleton {
+  width: 154px;
+  height: 231px;
+  border-radius: 0.4rem;
+  background: linear-gradient(90deg, rgba(255,255,255,0.08) 25%, rgba(255,255,255,0.16) 37%, rgba(255,255,255,0.08) 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes shimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: 0 0; }
+}
+
+.load-more {
+  margin: 1.2rem 0 2.4rem;
+  padding: 0.8rem 1.2rem;
+  border-radius: 0.6rem;
+  border: none;
+  background-color: var(--yellow);
+  color: var(--bg-color);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.episodes-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 2rem;
+  overflow: visible;
+}
+.episodes-cards li:not(:last-child) {
+  margin-right: 0;
 }

@@ -1,6 +1,6 @@
 /* Theme */
 
-@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 :root {
   --bg-color: #181818;
@@ -30,7 +30,7 @@ body {
   background-color: var(--bg-color);
   color: var(--fg-color);
   padding: 1rem;
-  font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
   font-size: 1.6rem;
   min-height: 100vh;
 }
@@ -45,7 +45,7 @@ h2 {
 }
 
 h2:before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -5px;
   height: 15px;
@@ -71,4 +71,31 @@ footer {
   h2 {
     font-size: 3.2rem;
   }
+}
+
+.filters {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 1rem 0 2rem;
+}
+.filters label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.filters select {
+  background-color: var(--bg-light);
+  color: var(--fg-color);
+  border: 1px solid #333;
+  border-radius: 0.4rem;
+  padding: 0.4rem 0.6rem;
+}
+
+.tv-episodes {
+  margin-top: 2rem;
+}
+.tv-episodes .controls {
+  margin-bottom: 1rem;
 }

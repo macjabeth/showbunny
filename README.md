@@ -22,11 +22,13 @@
 
 ## Table Of Contents
 
-- [About the Project](#about-the-project)
+- [Table Of Contents](#table-of-contents)
+- [About The Project](#about-the-project)
 - [Built With](#built-with)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
+  - [Environment variables](#environment-variables)
 - [Usage](#usage)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
@@ -75,6 +77,14 @@ Then install NPM packages.
 npm install
 ```
 
+### Environment variables
+
+Create a .env file in the project root (or .env.local) and define your TMDB API key:
+
+```sh
+VITE_TMDB_KEY=your_tmdb_api_key_here
+```
+
 ## Usage
 
 The default npm scripts are as follows.
@@ -84,7 +94,10 @@ The default npm scripts are as follows.
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "format": "biome format --write .",
+    "lint": "biome lint .",
+    "check": "biome check --write ."
   }
 }
 ```
@@ -122,7 +135,7 @@ Distributed under the MIT License. See [LICENSE](https://github.com/macjabeth/sh
 ## Authors
 
 - **[macjabeth](https://github.com/macjabeth/)** - _a software engineer passionate about learning new technologies and teaching others to be better developers_
-- **[BabyMaybe](https://github.com/BabyMaybe)** - _my friendly neighbourhood cat_
+- **[BabyMaybe](https://github.com/BabyMaybe)** - _a feral neighbourhood cat_
 
 ## Acknowledgements
 

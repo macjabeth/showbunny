@@ -1,0 +1,32 @@
+{
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 100
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "semicolons": "always",
+      "trailingCommas": "none"
+    }
+  },
+  "files": {
+    "includes": ["js", "css", "index.html", "404.html"],
+    "experimentalScannerIgnores": [
+      "js/vendor/**",
+      "js/plugins.js",
+      "css/normalize.css",
+      "css/defaults.css",
+      "dist/**",
+      "public/**"
+    ]
+  }
+}

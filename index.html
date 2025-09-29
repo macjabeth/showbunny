@@ -47,15 +47,60 @@
         <section id="popular">
           <h2>Popular movies</h2>
           <ul class="cards movie-cards"></ul>
+          <button class="load-more load-more-movies" type="button" aria-label="Load more popular movies">Load more</button>
           <h2>Popular shows</h2>
           <ul class="cards show-cards"></ul>
+          <button class="load-more load-more-shows" type="button" aria-label="Load more popular shows">Load more</button>
         </section>
       </div>
       <div id="movies-page">
-        <h2>Movies Page</h2>
+        <h2>Movies</h2>
+        <div class="filters" id="movies-filters">
+          <label>Sort by
+            <select id="movies-sort-field"></select>
+          </label>
+          <label>Order
+            <select id="movies-order">
+              <option value="desc" selected>Descending</option>
+              <option value="asc">Ascending</option>
+            </select>
+          </label>
+          <label>Genre
+            <select id="movies-genre">
+              <option value="">All</option>
+            </select>
+          </label>
+        </div>
+        <ul class="cards movies-base-cards"></ul>
+        <button class="load-more load-more-movies-base" type="button" aria-label="Load more movies">Load more</button>
+        <div class="movies-details"></div>
       </div>
       <div id="tv-page">
-        <h2>TV Page</h2>
+        <h2>TV</h2>
+        <div class="filters" id="tv-filters">
+          <label>Sort by
+            <select id="tv-sort-field"></select>
+          </label>
+          <label>Order
+            <select id="tv-order">
+              <option value="desc" selected>Descending</option>
+              <option value="asc">Ascending</option>
+            </select>
+          </label>
+          <label>Genre
+            <select id="tv-genre">
+              <option value="">All</option>
+            </select>
+          </label>
+        </div>
+        <ul class="cards tv-base-cards"></ul>
+        <button class="load-more load-more-tv-base" type="button" aria-label="Load more tv shows">Load more</button>
+        <div class="tv-details"></div>
+      </div>
+      <div id="episodes-page">
+        <h2>Episodes</h2>
+        <ul class="cards episodes-cards"></ul>
+        <button class="load-more load-more-episodes" type="button" aria-label="Load more episodes">Load more</button>
       </div>
     </main>
 

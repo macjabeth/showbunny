@@ -16,11 +16,13 @@ export default class Router {
 
     this.hidePages();
 
-    this.highlightAnchor(route);
-
-    this.showPage(page);
-
-    this.handlePageScript(page, context);
+    if (this.pages.has(page)) {
+      this.highlightAnchor(route);
+      this.showPage(page);
+      this.handlePageScript(page, context);
+    } else {
+      window.location.hash = '#home';
+    }
   }
 
   handleRoutes() {
@@ -43,17 +45,30 @@ export default class Router {
         KittySan.meow();
         break;
 
-      case 'movies-page':
-        if (!context) return;
+      case 'movies-page': {
+        if (!Array.isArray(context) || context.length === 0 || !context[0]) {
+          KittySan.paintMoviesBase();
+          break;
+        }
         const [movieId] = context;
         KittySan.paintMovieDetails(movieId);
         break;
+      }
 
-      case 'tv-page':
-        if (!context) return;
+      case 'tv-page': {
+        if (!Array.isArray(context) || context.length === 0 || !context[0]) {
+          KittySan.paintTVBase();
+          break;
+        }
         const [tvId] = context;
         KittySan.paintTVDetails(tvId);
         break;
+      }
+
+      case 'episodes-page': {
+        KittySan.paintEpisodes();
+        break;
+      }
 
       default:
         break;
@@ -63,21 +78,26 @@ export default class Router {
   hidePages() {
     const pages = document.querySelectorAll('[id$="page"]');
 
-    this.pages = new Set(Array.from(pages).map(node => node.id));
+    this.pages = new Set(Array.from(pages).map((node) => node.id));
 
-    pages.forEach(page => (page.style.display = 'none'));
+    pages.forEach((page) => {
+      page.style.display = 'none';
+    });
   }
 
   parseRoute(path) {
     if (!path) path = '#home';
     const [route, ...context] = path.split('/');
-    const page = route.slice(1) + '-page';
+    const page = `${route.slice(1)}-page`;
     return { route, page, context };
   }
 
   highlightAnchor(route) {
-    document.querySelectorAll('.nav-menu a').forEach(el => el.classList.remove('current'));
-    document.querySelector(`[href="${route}"]`).classList.add('current');
+    document.querySelectorAll('.nav-menu a').forEach((el) => {
+      el.classList.remove('current');
+    });
+    const anchor = document.querySelector(`[href="${route}"]`);
+    if (anchor) anchor.classList.add('current');
   }
 
   hidePage(pageId) {
