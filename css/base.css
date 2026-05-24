@@ -2,18 +2,24 @@
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(245, 166, 35, 0.4);
+  background: var(--accent-glow);
+}
+
+/* Selection */
+::selection {
+  background: var(--accent-soft);
+  color: var(--accent-hover);
 }
 
 html {
@@ -25,37 +31,30 @@ body {
   background-color: var(--bg);
   color: var(--text);
   font-family: "Rubik", sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
+  line-height: 1.5;
   min-height: 100vh;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image:
-    radial-gradient(ellipse at 50% 0%, rgba(245, 166, 35, 0.04) 0%, transparent 50%);
+    radial-gradient(ellipse at 50% 0%, rgba(245, 166, 35, 0.05) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 20%, rgba(245, 166, 35, 0.025) 0%, transparent 40%);
+  background-attachment: fixed;
 }
 
-h1 {
-  font-size: 3.2rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-
-h2 {
-  position: relative;
-  font-size: 2.4rem;
+h1, h2, h3 {
   font-weight: 700;
   letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin: 0 0 0.8rem;
 }
 
-h2::after {
-  content: "";
-  position: absolute;
-  bottom: -6px;
-  left: 0;
-  height: 3px;
-  width: 48px;
-  background: linear-gradient(90deg, var(--accent), transparent);
-  border-radius: 2px;
-}
+h1 { font-size: 2.8rem; letter-spacing: -0.02em; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.7rem; }
+
+p { margin: 0 0 1rem; }
 
 a {
   color: var(--accent);
@@ -63,7 +62,16 @@ a {
   transition: color var(--fast);
 }
 a:hover {
-  color: #ffb347;
+  color: var(--accent-hover);
+}
+
+button {
+  font-family: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
 }
 
 /* Page transitions */
@@ -73,4 +81,47 @@ main > div {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* Skeleton loader — the bunny is hopping */
+@keyframes bunnyPulse {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 0.85; }
+}
+
+.skeleton {
+  list-style: none;
+  background: linear-gradient(
+    135deg,
+    var(--bg-elevated) 0%,
+    var(--bg-card) 50%,
+    var(--bg-elevated) 100%
+  );
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  aspect-ratio: 2 / 3;
+  animation: bunnyPulse 1.4s var(--ease) infinite;
+}
+
+/* Skeleton variants based on parent grid */
+.episodes-cards .skeleton,
+.tv-episodes .skeleton {
+  aspect-ratio: 16 / 9;
+}
+
+@media screen and (min-width: 1024px) {
+  .movies-base-cards .skeleton,
+  .tv-base-cards .skeleton,
+  .movie-cards .skeleton,
+  .show-cards .skeleton {
+    aspect-ratio: 2 / 3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

@@ -14,6 +14,7 @@ template.innerHTML = `
           <span class="card-year"></span>
           <span class="card-rating"></span>
         </div>
+        <div class="card-episode-count"></div>
       </div>
       <p class="card-overview"></p>
       <ul class="card-genres"></ul>

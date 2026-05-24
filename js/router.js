@@ -12,8 +12,6 @@ export default class Router {
   initialise(hash) {
     const { route, page, context } = this.parseRoute(hash);
 
-    console.log('init', { route, page, context });
-
     this.hidePages();
 
     if (this.pages.has(page)) {
@@ -27,8 +25,6 @@ export default class Router {
 
   handleRoutes() {
     const { route, page, context } = this.parseRoute(location.hash);
-
-    console.log('handler', { route, page, context });
 
     if (this.pages.has(page)) {
       this.highlightAnchor(route);

@@ -3,30 +3,65 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap");
 
 :root {
+  /* Color */
   --bg: #0a0a0f;
   --bg-elevated: #12121a;
   --bg-card: #181825;
   --bg-card-hover: #1e1e2f;
   --text: #e8e8ed;
-  --text-muted: #8888a0;
+  --text-muted: #a0a0b8;
+  --text-dim: #6a6a85;
   --accent: #f5a623;
+  --accent-hover: #ffb347;
   --accent-glow: rgba(245, 166, 35, 0.25);
   --accent-soft: rgba(245, 166, 35, 0.1);
   --border: rgba(255, 255, 255, 0.06);
   --border-hover: rgba(245, 166, 35, 0.3);
 
+  /* Radius */
   --radius-sm: 0.5rem;
   --radius-md: 0.8rem;
   --radius-lg: 1.2rem;
   --radius-xl: 1.6rem;
+  --radius-pill: 999px;
 
+  /* Shadows */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.5);
   --shadow-glow: 0 0 30px var(--accent-glow);
 
+  /* Motion */
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
   --fast: 150ms var(--ease);
   --normal: 250ms var(--ease);
   --slow: 400ms var(--ease);
+
+  /* Layout */
+  --page-max: 1400px;
+  --page-pad-x: 1.6rem;
+  --gap-grid: 1.4rem;
+  --header-h: 64px;
+}
+
+@media screen and (min-width: 600px) {
+  :root {
+    --page-pad-x: 2rem;
+    --gap-grid: 1.6rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  :root {
+    --page-pad-x: 4rem;
+    --gap-grid: 2rem;
+    --header-h: 72px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  :root {
+    --page-pad-x: 8rem;
+    --gap-grid: 2.4rem;
+  }
 }

@@ -3,18 +3,19 @@
 @import "navbar.css";
 @import "cards.css";
 
-/* Hero Section */
+/* ============================================================
+   Hero
+   ============================================================ */
 
 #hero {
   position: relative;
-  width: 100%;
-  padding: 6rem 2rem 4rem;
+  padding: 4rem var(--page-pad-x) 3.2rem;
   text-align: center;
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(245, 166, 35, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 0%, rgba(245, 166, 35, 0.1) 0%, transparent 60%),
     linear-gradient(180deg, var(--bg-elevated) 0%, var(--bg) 100%);
-  overflow: hidden;
   border-bottom: 1px solid var(--border);
+  overflow: hidden;
 }
 
 #hero::before {
@@ -23,10 +24,33 @@
   top: -50%;
   left: 50%;
   transform: translateX(-50%);
-  width: 600px;
+  width: min(600px, 100vw);
   height: 600px;
-  background: radial-gradient(circle, rgba(245, 166, 35, 0.06) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(245, 166, 35, 0.08) 0%, transparent 70%);
   pointer-events: none;
+}
+
+#hero::after {
+  content: "";
+  position: absolute;
+  right: -3rem;
+  bottom: -4rem;
+  width: 18rem;
+  height: 18rem;
+  background: url("/img/bunny.svg") center / contain no-repeat;
+  opacity: 0.05;
+  pointer-events: none;
+  transform: rotate(-12deg);
+}
+
+@media screen and (min-width: 1024px) {
+  #hero::after {
+    width: 26rem;
+    height: 26rem;
+    right: 3rem;
+    bottom: -5rem;
+    opacity: 0.07;
+  }
 }
 
 #hero-content {
@@ -37,8 +61,8 @@
 }
 
 #hero h2 {
-  font-size: 3.6rem;
-  margin-bottom: 1.2rem;
+  font-size: 2.6rem;
+  margin-bottom: 1rem;
   background: linear-gradient(135deg, var(--text) 0%, var(--accent) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -50,79 +74,138 @@
 }
 
 #hero p {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   color: var(--text-muted);
   font-weight: 300;
   line-height: 1.6;
+  margin: 0;
 }
 
-/* Section containers */
+@media screen and (min-width: 600px) {
+  #hero {
+    padding-top: 5.5rem;
+    padding-bottom: 4rem;
+  }
+  #hero h2 { font-size: 3.4rem; }
+  #hero p { font-size: 1.7rem; }
+}
+
+@media screen and (min-width: 1024px) {
+  #hero h2 { font-size: 4rem; }
+}
+
+/* ============================================================
+   Page containers
+   ============================================================ */
 
 .section-container {
-  max-width: 1400px;
+  max-width: var(--page-max);
   margin: 0 auto;
-  padding: 0 2rem 4rem;
+  padding: 3.2rem var(--page-pad-x) 4rem;
 }
-
-.section-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 2rem;
-}
-
-.section-header h2 {
-  margin-bottom: 0;
-}
-
-/* Popular sections */
 
 #popular {
   padding-top: 2.4rem;
 }
 
-#popular h2 {
-  margin-top: 3.2rem;
+/* ============================================================
+   Section headers
+   ============================================================ */
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.2rem;
+  margin: 0 0 2rem;
+  flex-wrap: wrap;
 }
 
-#popular h2:first-of-type {
-  margin-top: 0;
+.section-header h2 {
+  margin: 0;
+  font-size: 2rem;
+  position: relative;
+  padding-bottom: 0.8rem;
 }
 
-/* Footer */
+.section-header h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 40px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  border-radius: 2px;
+}
 
-footer {
-  max-width: 1400px;
-  margin: 4rem auto;
-  padding: 2.4rem;
-  text-align: center;
-  color: var(--text-muted);
-  font-size: 1.4rem;
+/* Stacked sections inside one container */
+.section-container > section + section {
+  margin-top: 5.6rem;
+  padding-top: 4rem;
   border-top: 1px solid var(--border);
 }
 
-footer span {
-  margin: 0 0.8rem;
+@media screen and (min-width: 1024px) {
+  .section-container > section + section {
+    margin-top: 6.4rem;
+    padding-top: 4.8rem;
+  }
 }
 
-footer a {
-  color: var(--text-muted);
-  transition: color var(--fast);
+@media screen and (min-width: 600px) {
+  .section-header h2 { font-size: 2.4rem; }
 }
 
-footer a:hover {
-  color: var(--accent);
+@media screen and (min-width: 1024px) {
+  .section-header h2 { font-size: 2.8rem; }
+  .section-header h2::after { width: 56px; }
 }
 
-/* Filters */
+/* ============================================================
+   Form controls (select) — used by filters & episode controls
+   ============================================================ */
+
+.filters select,
+.tv-episodes .controls select {
+  background-color: var(--bg-card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.7rem 2.6rem 0.7rem 1rem;
+  font-family: "Rubik", sans-serif;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: all var(--fast);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23a0a0b8' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.8rem center;
+}
+
+.filters select:hover,
+.tv-episodes .controls select:hover {
+  border-color: var(--border-hover);
+}
+
+.filters select:focus-visible,
+.tv-episodes .controls select:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+/* ============================================================
+   Filters bar
+   ============================================================ */
 
 .filters {
   display: flex;
-  gap: 1.2rem;
+  gap: 1rem;
   align-items: center;
   flex-wrap: wrap;
-  margin: 0 0 2.4rem;
-  padding: 1.6rem 2rem;
+  margin: 0 0 2rem;
+  padding: 1.2rem 1.4rem;
   background: var(--bg-elevated);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
@@ -132,101 +215,81 @@ footer a:hover {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   color: var(--text-muted);
   font-weight: 500;
 }
 
-.filters select {
-  background-color: var(--bg-card);
-  color: var(--text);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 0.6rem 2.4rem 0.6rem 1rem;
-  font-family: "Rubik", sans-serif;
-  font-size: 1.4rem;
-  cursor: pointer;
-  transition: all var(--fast);
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238888a0' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 0.8rem center;
+@media screen and (min-width: 600px) {
+  .filters {
+    padding: 1.4rem 1.8rem;
+    gap: 1.2rem;
+  }
+  .filters label { font-size: 1.4rem; }
 }
 
-.filters select:hover {
-  border-color: var(--accent);
-}
+/* ============================================================
+   Detail wrappers
+   ============================================================ */
 
-.filters select:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-soft);
+.movies-details,
+.tv-details {
+  margin-top: 2rem;
 }
 
 /* TV episodes section */
 
 .tv-episodes {
-  margin-top: 3.2rem;
-  padding: 2.4rem;
-  background: var(--bg-elevated);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
+  margin: 3.2rem 0 0;
+  padding: 2rem 0 0;
+  border-top: 1px solid var(--border);
 }
 
 .tv-episodes .controls {
-  margin-bottom: 2rem;
+  margin-bottom: 1.6rem;
   display: flex;
   align-items: center;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .tv-episodes .controls label {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 500;
   color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
 }
 
-.tv-episodes .controls select {
-  background-color: var(--bg-card);
-  color: var(--text);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 0.6rem 2.4rem 0.6rem 1rem;
-  font-family: "Rubik", sans-serif;
-  font-size: 1.4rem;
-  cursor: pointer;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238888a0' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 0.8rem center;
+/* ============================================================
+   Footer
+   ============================================================ */
+
+footer {
+  max-width: var(--page-max);
+  margin: 4rem auto 0;
+  padding: 2.4rem var(--page-pad-x);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 1.3rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
 }
 
-/* Responsive */
-
-@media screen and (min-width: 600px) {
-  h1 {
-    font-size: 4.8rem;
-  }
-
-  h2 {
-    font-size: 3.2rem;
-  }
-
-  #hero h2 {
-    font-size: 4.2rem;
-  }
+footer span:nth-of-type(2) {
+  color: var(--text-dim);
 }
 
-@media screen and (min-width: 1024px) {
-  .section-container {
-    padding-left: 4rem;
-    padding-right: 4rem;
-  }
+footer a {
+  color: var(--text-muted);
+  transition: color var(--fast);
 }
 
-@media screen and (min-width: 1440px) {
-  .section-container {
-    padding-left: 8rem;
-    padding-right: 8rem;
-  }
+footer a:hover {
+  color: var(--accent);
 }

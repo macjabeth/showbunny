@@ -1,71 +1,116 @@
 @import "theme.css";
 
+/* ============================================================
+   Generic cards list reset
+   ============================================================ */
+
 .cards {
-  display: flex;
-  overflow-x: auto;
-  overflow-y: hidden;
-  list-style-type: none;
+  list-style: none;
   margin: 0;
   padding: 0;
-  gap: 1.6rem;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: 0.8rem;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(245, 166, 35, 0.3) transparent;
-  cursor: grab;
+  display: grid;
+  gap: var(--gap-grid);
 }
 
-.cards::-webkit-scrollbar {
-  height: 6px;
-}
-.cards::-webkit-scrollbar-track {
-  background: transparent;
-}
-.cards::-webkit-scrollbar-thumb {
-  background: rgba(245, 166, 35, 0.2);
-  border-radius: 3px;
-}
-.cards::-webkit-scrollbar-thumb:hover {
-  background: rgba(245, 166, 35, 0.4);
+.cards li {
+  list-style: none;
+  margin: 0;
 }
 
-.cards:active {
-  cursor: grabbing;
+/* ============================================================
+   Poster grids — fluid auto-fill so every page scales together
+   ============================================================ */
+
+.movie-cards,
+.show-cards,
+.movies-base-cards,
+.tv-base-cards {
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
 }
 
-.cards .skeleton {
-  width: 154px;
-  height: 231px;
-  border-radius: var(--radius-md);
-  background: linear-gradient(90deg,
-    rgba(245, 166, 35, 0.03) 25%,
-    rgba(245, 166, 35, 0.08) 37%,
-    rgba(245, 166, 35, 0.03) 63%);
-  background-size: 400% 100%;
-  animation: shimmer 1.2s ease-in-out infinite;
-  flex-shrink: 0;
-  border: 1px solid var(--border);
+@media screen and (min-width: 600px) {
+  .movie-cards,
+  .show-cards,
+  .movies-base-cards,
+  .tv-base-cards {
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  }
 }
 
-@keyframes shimmer {
-  0% { background-position: 100% 0; }
-  100% { background-position: 0 0; }
+@media screen and (min-width: 1024px) {
+  .movie-cards,
+  .show-cards,
+  .movies-base-cards,
+  .tv-base-cards {
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  }
 }
+
+@media screen and (min-width: 1440px) {
+  .movie-cards,
+  .show-cards,
+  .movies-base-cards,
+  .tv-base-cards {
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  }
+}
+
+/* ============================================================
+   Episodes / detail-style cards — wider items
+   ============================================================ */
+
+.episodes-cards {
+  grid-template-columns: 1fr;
+}
+
+@media screen and (min-width: 700px) {
+  .episodes-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .episodes-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .episodes-cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.episodes-cards li,
+.tv-episodes .episodes-cards li {
+  height: 100%;
+}
+
+.episodes-cards li media-card {
+  display: block;
+  height: 100%;
+}
+
+/* ============================================================
+   Load-more (the carrot button)
+   ============================================================ */
 
 .load-more {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin: 2rem auto;
+  gap: 0.5rem;
+  margin: 2.8rem auto 0;
   padding: 1rem 2.8rem;
   border: none;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-pill);
   background: linear-gradient(135deg, var(--accent), #e8960f);
-  color: var(--bg);
+  color: #1a1208;
+  font-family: inherit;
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   cursor: pointer;
-  transition: all var(--normal);
+  transition: transform var(--normal), box-shadow var(--normal), filter var(--normal);
   box-shadow: 0 2px 16px var(--accent-glow);
   letter-spacing: 0.02em;
 }
@@ -73,33 +118,24 @@
 .load-more:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 30px rgba(245, 166, 35, 0.35);
+  filter: brightness(1.05);
 }
 
 .load-more:active {
   transform: translateY(0);
 }
 
-.episodes-cards {
-  display: grid;
-  grid-template-columns: 1fr;
-  row-gap: 1.6rem;
-  overflow: visible;
+.load-more:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--accent);
 }
 
-.episodes-cards li {
-  list-style: none;
-}
-
-.episodes-cards li.media-card {
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  transition: all var(--normal);
-  background: var(--bg-card);
-}
-
-.episodes-cards li.media-card:hover {
-  border-color: var(--border-hover);
-  box-shadow: var(--shadow-glow);
-  transform: translateY(-2px);
+/* Center load-more in its container */
+.section-container .load-more,
+.cards + .load-more {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: max-content;
+  max-width: 90vw;
 }

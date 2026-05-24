@@ -1,7 +1,7 @@
 const template = document.createElement('template');
 
 template.innerHTML = `
-  <a href="#">
+  <a href="#" class="card-link">
     <div class="card">
       <picture>
         <source
@@ -20,8 +20,19 @@ template.innerHTML = `
           alt="Poster Image"
         />
       </picture>
-      <div class="badge card-rating">0</div>
-      <div class="badge card-episode-count">0</div>
+      <div class="card-overlay">
+        <div class="card-info">
+          <div class="card-header">
+            <h3 class="card-title"></h3>
+            <div class="card-meta">
+              <span class="card-year"></span>
+              <span class="card-rating"></span>
+            </div>
+          </div>
+          <p class="card-overview"></p>
+          <div class="card-episode-count"></div>
+        </div>
+      </div>
     </div>
   </a>
 `;

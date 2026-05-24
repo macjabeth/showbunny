@@ -51,16 +51,20 @@
           </div>
         </section>
         <div class="section-container" id="popular">
-          <div class="section-header">
-            <h2>🥕 Bunny Picks — Movies</h2>
-          </div>
-          <ul class="cards movie-cards"></ul>
-          <button class="load-more load-more-movies" type="button" aria-label="Load more popular movies">🐰 More Carrots</button>
-          <div class="section-header">
-            <h2>🥕 Bunny Picks — TV Shows</h2>
-          </div>
-          <ul class="cards show-cards"></ul>
-          <button class="load-more load-more-shows" type="button" aria-label="Load more popular shows">🐰 More Carrots</button>
+          <section class="section" aria-labelledby="popular-movies-heading">
+            <div class="section-header">
+              <h2 id="popular-movies-heading">🥕 Bunny Picks — Movies</h2>
+            </div>
+            <ul class="cards movie-cards"></ul>
+            <button class="load-more load-more-movies" type="button" aria-label="Load more popular movies">🐰 More Carrots</button>
+          </section>
+          <section class="section" aria-labelledby="popular-shows-heading">
+            <div class="section-header">
+              <h2 id="popular-shows-heading">🥕 Bunny Picks — TV Shows</h2>
+            </div>
+            <ul class="cards show-cards"></ul>
+            <button class="load-more load-more-shows" type="button" aria-label="Load more popular shows">🐰 More Carrots</button>
+          </section>
         </div>
       </div>
       <div id="movies-page">
@@ -128,7 +132,7 @@
 
     <footer>
       <span>🐰 &copy; 2025 Showbunny</span>
-      <span>|</span>
+      <span aria-hidden="true">·</span>
       <a href="https://discord.gg/g63XcJWFwv">Join the Warren 🐾</a>
     </footer>
 
