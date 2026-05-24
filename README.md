@@ -1,20 +1,20 @@
 <br/>
 <p align="center">
   <a href="https://github.com/macjabeth/showbunny">
-    <img src="https://raw.githubusercontent.com/macjabeth/showbunny/master/img/easter-bunny.svg" alt="Logo" width="80" height="80">
+    <img src="https://raw.githubusercontent.com/macjabeth/showbunny/master/img/bunny.svg" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Showbunny</h3>
+  <h3 align="center">Showbunny 🐰</h3>
 
   <p align="center">
-    A place to watch and track your favourite movies and tv shows!
+    Your cozy burrow for discovering and tracking movies &amp; TV shows!
     <br/>
     <br/>
-    <a href="https://showbunny.xyz">Visit Site</a> (<a href="https://macjabeth.github.io/showbunny/">Prior Version</a>)
+    <a href="https://showbunny.xyz">Visit the Warren 🐾</a> (<a href="https://macjabeth.github.io/showbunny/">Prior Version</a>)
     &mdash;
-    <a href="https://github.com/macjabeth/showbunny/issues">Report Bug</a>
+    <a href="https://github.com/macjabeth/showbunny/issues">Report Bug 🐛</a>
     &mdash;
-    <a href="https://github.com/macjabeth/showbunny/issues">Request Feature</a>
+    <a href="https://github.com/macjabeth/showbunny/issues">Request Feature 🐰</a>
   </p>
 </p>
 
@@ -40,7 +40,9 @@
 
 ## About The Project
 
-There are many great streaming sites on the web; however, most of them lacked features I wished were included. I wanted to create a site so amazing that it'll be the last one you ever need.
+There are many great streaming sites on the web; however, most of them lacked features we wished were included. We wanted to create a site so amazing — so *burrow-worthy* — that it'll be the last one you ever need. 🐰
+
+Welcome to **Showbunny**, your cozy warren for all things film and television.
 
 ## Built With
 
@@ -54,7 +56,7 @@ This project was built using vanilla HTML, CSS and JavaScript.
 
 ## Getting Started
 
-To run this project locally, please follow the below steps.
+To hop into this project locally, follow the steps below.
 
 ### Prerequisites
 
@@ -65,13 +67,13 @@ You will need the following installed on your machine:
 
 ### Installation
 
-First you will want to clone the repository.
+First, clone the repository:
 
 ```sh
 git clone https://github.com/macjabeth/showbunny.git
 ```
 
-Then install NPM packages.
+Then install the NPM packages:
 
 ```sh
 npm install
@@ -79,7 +81,7 @@ npm install
 
 ### Environment variables
 
-Create a .env file in the project root (or .env.local) and define your TMDB API key:
+Create a `.env` file in the project root (or `.env.local`) and define your TMDB API key:
 
 ```sh
 VITE_TMDB_KEY=your_tmdb_api_key_here
@@ -87,7 +89,7 @@ VITE_TMDB_KEY=your_tmdb_api_key_here
 
 ## Usage
 
-The default npm scripts are as follows.
+The default npm scripts are as follows:
 
 ```json
 {
@@ -126,7 +128,7 @@ Contributions are what make the open source community such an amazing place to l
 
 ### Joining the Community
 
-We have a [community on Discord](https://discord.gg/g63XcJWFwv) to discuss Showbunny and other topics. Feel free to come join us!
+We have a [community on Discord](https://discord.gg/g63XcJWFwv) to discuss Showbunny and other topics. Hop on in! 🐾
 
 ## License
 

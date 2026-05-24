@@ -3,13 +3,15 @@
 
 # TEAM
 
-    <name> -- <role> -- <twitter>
+    macjabeth -- lead developer
+    BabyMaybe -- feral neighbourhood cat & chief carrot inspector
 
 # THANKS
 
-    <name>
+    All the bunnies who contribute to the warren!
 
 # TECHNOLOGY COLOPHON
 
-    CSS3, HTML5
-    Apache Server Configs, jQuery, Modernizr, Normalize.css
+    CSS3, HTML5, JavaScript
+    Vite, Modernizr, Normalize.css
+    TMDB API

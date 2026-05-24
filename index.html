@@ -2,14 +2,14 @@
 <html class="no-js" lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Showbunny</title>
+    <title>Showbunny — Your burrow for movies &amp; TV shows 🐰</title>
     <meta
       name="description"
-      content="A place to watch and track your favourite movies and tv shows"
+      content="Hop into Showbunny — your cozy burrow to discover, watch, and track your favourite movies and TV shows"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <meta property="og:title" content="Showbunny" />
+    <meta property="og:title" content="Showbunny 🐰" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://showbunny.xyz" />
     <meta property="og:image" content="" />
@@ -25,7 +25,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
 
-    <meta name="theme-color" content="#f2f2f2" />
+    <meta name="theme-color" content="#0a0a0f" />
 
     <!-- Plausible Analytics -->
     <script defer data-domain="showbunny.xyz" src="https://plausible.io/js/plausible.js"></script>
@@ -33,81 +33,103 @@
 
   <body>
     <header class="header">
-      <h1 class="logo">Showbunny</h1>
+      <a href="#home" class="logo">🐰 Showbunny</a>
       <nav class="nav-menu">
-        <a href="#home">Home</a>
-        <a href="#movies">Movies</a>
-        <a href="#tv">TV</a>
-        <a href="#episodes">Episodes</a>
+        <a href="#home">🏠 Burrow</a>
+        <a href="#movies">🎬 Movies</a>
+        <a href="#tv">📺 TV</a>
+        <a href="#episodes">🐣 New</a>
       </nav>
     </header>
 
     <main>
       <div id="home-page">
-        <section id="popular">
-          <h2>Popular movies</h2>
-          <ul class="cards movie-cards"></ul>
-          <button class="load-more load-more-movies" type="button" aria-label="Load more popular movies">Load more</button>
-          <h2>Popular shows</h2>
-          <ul class="cards show-cards"></ul>
-          <button class="load-more load-more-shows" type="button" aria-label="Load more popular shows">Load more</button>
+        <section id="hero">
+          <div id="hero-content">
+            <h2>🐰 Hop into your next obsession</h2>
+            <p>Explore trending movies, burrow through TV shows, and never miss an episode your bunny heart craves.</p>
+          </div>
         </section>
+        <div class="section-container" id="popular">
+          <div class="section-header">
+            <h2>🥕 Bunny Picks — Movies</h2>
+          </div>
+          <ul class="cards movie-cards"></ul>
+          <button class="load-more load-more-movies" type="button" aria-label="Load more popular movies">🐰 More Carrots</button>
+          <div class="section-header">
+            <h2>🥕 Bunny Picks — TV Shows</h2>
+          </div>
+          <ul class="cards show-cards"></ul>
+          <button class="load-more load-more-shows" type="button" aria-label="Load more popular shows">🐰 More Carrots</button>
+        </div>
       </div>
       <div id="movies-page">
-        <h2>Movies</h2>
-        <div class="filters" id="movies-filters">
-          <label>Sort by
-            <select id="movies-sort-field"></select>
-          </label>
-          <label>Order
-            <select id="movies-order">
-              <option value="desc" selected>Descending</option>
-              <option value="asc">Ascending</option>
-            </select>
-          </label>
-          <label>Genre
-            <select id="movies-genre">
-              <option value="">All</option>
-            </select>
-          </label>
+        <div class="section-container">
+          <div class="section-header">
+            <h2>🎬 Movie Burrow</h2>
+          </div>
+          <div class="filters" id="movies-filters">
+            <label>Sort by
+              <select id="movies-sort-field"></select>
+            </label>
+            <label>Order
+              <select id="movies-order">
+                <option value="desc" selected>Descending</option>
+                <option value="asc">Ascending</option>
+              </select>
+            </label>
+            <label>Genre
+              <select id="movies-genre">
+                <option value="">All</option>
+              </select>
+            </label>
+          </div>
+          <ul class="cards movies-base-cards"></ul>
+          <button class="load-more load-more-movies-base" type="button" aria-label="Load more movies">🐰 More Carrots</button>
+          <div class="movies-details"></div>
         </div>
-        <ul class="cards movies-base-cards"></ul>
-        <button class="load-more load-more-movies-base" type="button" aria-label="Load more movies">Load more</button>
-        <div class="movies-details"></div>
       </div>
       <div id="tv-page">
-        <h2>TV</h2>
-        <div class="filters" id="tv-filters">
-          <label>Sort by
-            <select id="tv-sort-field"></select>
-          </label>
-          <label>Order
-            <select id="tv-order">
-              <option value="desc" selected>Descending</option>
-              <option value="asc">Ascending</option>
-            </select>
-          </label>
-          <label>Genre
-            <select id="tv-genre">
-              <option value="">All</option>
-            </select>
-          </label>
+        <div class="section-container">
+          <div class="section-header">
+            <h2>📺 TV Burrow</h2>
+          </div>
+          <div class="filters" id="tv-filters">
+            <label>Sort by
+              <select id="tv-sort-field"></select>
+            </label>
+            <label>Order
+              <select id="tv-order">
+                <option value="desc" selected>Descending</option>
+                <option value="asc">Ascending</option>
+              </select>
+            </label>
+            <label>Genre
+              <select id="tv-genre">
+                <option value="">All</option>
+              </select>
+            </label>
+          </div>
+          <ul class="cards tv-base-cards"></ul>
+          <button class="load-more load-more-tv-base" type="button" aria-label="Load more tv shows">🐰 More Carrots</button>
+          <div class="tv-details"></div>
         </div>
-        <ul class="cards tv-base-cards"></ul>
-        <button class="load-more load-more-tv-base" type="button" aria-label="Load more tv shows">Load more</button>
-        <div class="tv-details"></div>
       </div>
       <div id="episodes-page">
-        <h2>Episodes</h2>
-        <ul class="cards episodes-cards"></ul>
-        <button class="load-more load-more-episodes" type="button" aria-label="Load more episodes">Load more</button>
+        <div class="section-container">
+          <div class="section-header">
+            <h2>🐣 Bunny Burrows — Upcoming Episodes</h2>
+          </div>
+          <ul class="cards episodes-cards"></ul>
+          <button class="load-more load-more-episodes" type="button" aria-label="Load more episodes">🐰 More Carrots</button>
+        </div>
       </div>
     </main>
 
     <footer>
-      <span>&copy; Showbunny</span>
+      <span>🐰 &copy; 2025 Showbunny</span>
       <span>|</span>
-      <a href="https://discord.gg/g63XcJWFwv">Discord Community</a>
+      <a href="https://discord.gg/g63XcJWFwv">Join the Warren 🐾</a>
     </footer>
 
     <script type="module" src="/js/main.js"></script>

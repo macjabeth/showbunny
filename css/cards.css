@@ -1,3 +1,5 @@
+@import "theme.css";
+
 .cards {
   display: flex;
   overflow-x: auto;
@@ -5,21 +7,44 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
-  gap: 1rem;
+  gap: 1.6rem;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 0.8rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(245, 166, 35, 0.3) transparent;
+  cursor: grab;
 }
 
-.cards li:not(:last-child) {
-  margin-right: 1rem;
+.cards::-webkit-scrollbar {
+  height: 6px;
+}
+.cards::-webkit-scrollbar-track {
+  background: transparent;
+}
+.cards::-webkit-scrollbar-thumb {
+  background: rgba(245, 166, 35, 0.2);
+  border-radius: 3px;
+}
+.cards::-webkit-scrollbar-thumb:hover {
+  background: rgba(245, 166, 35, 0.4);
+}
+
+.cards:active {
+  cursor: grabbing;
 }
 
 .cards .skeleton {
   width: 154px;
   height: 231px;
-  border-radius: 0.4rem;
-  background: linear-gradient(90deg, rgba(255,255,255,0.08) 25%, rgba(255,255,255,0.16) 37%, rgba(255,255,255,0.08) 63%);
+  border-radius: var(--radius-md);
+  background: linear-gradient(90deg,
+    rgba(245, 166, 35, 0.03) 25%,
+    rgba(245, 166, 35, 0.08) 37%,
+    rgba(245, 166, 35, 0.03) 63%);
   background-size: 400% 100%;
   animation: shimmer 1.2s ease-in-out infinite;
   flex-shrink: 0;
+  border: 1px solid var(--border);
 }
 
 @keyframes shimmer {
@@ -28,22 +53,53 @@
 }
 
 .load-more {
-  margin: 1.2rem 0 2.4rem;
-  padding: 0.8rem 1.2rem;
-  border-radius: 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem auto;
+  padding: 1rem 2.8rem;
   border: none;
-  background-color: var(--yellow);
-  color: var(--bg-color);
-  font-weight: bold;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--accent), #e8960f);
+  color: var(--bg);
+  font-weight: 600;
+  font-size: 1.5rem;
   cursor: pointer;
+  transition: all var(--normal);
+  box-shadow: 0 2px 16px var(--accent-glow);
+  letter-spacing: 0.02em;
+}
+
+.load-more:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 30px rgba(245, 166, 35, 0.35);
+}
+
+.load-more:active {
+  transform: translateY(0);
 }
 
 .episodes-cards {
   display: grid;
   grid-template-columns: 1fr;
-  row-gap: 2rem;
+  row-gap: 1.6rem;
   overflow: visible;
 }
-.episodes-cards li:not(:last-child) {
-  margin-right: 0;
+
+.episodes-cards li {
+  list-style: none;
+}
+
+.episodes-cards li.media-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--normal);
+  background: var(--bg-card);
+}
+
+.episodes-cards li.media-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-2px);
 }
