@@ -66,6 +66,27 @@ export default class Router {
         break;
       }
 
+      case 'search-page': {
+        KittySan.initSearch();
+        break;
+      }
+
+      case 'person-page': {
+        if (Array.isArray(context) && context.length > 0 && context[0]) {
+          const [personId] = context;
+          KittySan.paintPersonDetails(personId);
+        }
+        break;
+      }
+
+      case 'collection-page': {
+        if (Array.isArray(context) && context.length > 0 && context[0]) {
+          const [collectionId] = context;
+          KittySan.paintCollectionDetails(collectionId);
+        }
+        break;
+      }
+
       default:
         break;
     }

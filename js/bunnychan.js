@@ -34,7 +34,7 @@ class BunnyChan {
     // fetch movies in theatres
     this.fetchMoviesInTheatres()
       .then((data) => {
-        this.inTheatres = data;
+        this.inTheatres = data.results || [];
       })
       .catch((err) => console.error(err));
   }
@@ -109,8 +109,124 @@ class BunnyChan {
     const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${this.tmdb_key}&language=en-US`;
     if (import.meta.env && import.meta.env.DEV) console.debug('[TMDB] now playing request', { url });
     const response = await fetch(url);
-    const data = await response.json();
-    return new Set(data.results.map((movie) => movie.id));
+    return await response.json();
+  }
+
+  async fetchMoviesUpcoming() {
+    const url = `https://api.themoviedb.org/3/movie/upcoming?api_key=${this.tmdb_key}&language=en-US&page=${this.page}`;
+    if (import.meta.env && import.meta.env.DEV) console.debug('[TMDB] upcoming request', { url });
+    const response = await fetch(url);
+    return await response.json();
+  }
+
+  async fetchTopRated(type) {
+    const url = `https://api.themoviedb.org/3/${type}/top_rated?api_key=${this.tmdb_key}&language=en-US&page=${this.page}`;
+    if (import.meta.env && import.meta.env.DEV) console.debug(`[TMDB] top_rated ${type} request`, { url });
+    const response = await fetch(url);
+    return await response.json();
+  }
+
+  async fetchAiringToday() {
+    const url = `https://api.themoviedb.org/3/tv/airing_today?api_key=${this.tmdb_key}&language=en-US&page=${this.page}`;
+    if (import.meta.env && import.meta.env.DEV) console.debug('[TMDB] airing_today request', { url });
+    const response = await fetch(url);
+    return await response.json();
+  }
+
+  async fetchMovieCredits(movie_id) {
+    const url = `https://api.themoviedb.org/3/movie/${movie_id}/credits?api_key=${this.tmdb_key}&language=en-US`;
+    if (import.meta.env && import.meta.env.DEV) console.debug('[TMDB] movie credits request', { url });
+    const response = await fetch(url);
+    return await response.json();
+  }
+
+  async fetchTVCredits(tv_id) {
+    const url = `https://api.themoviedb.org/3/tv/${tv_id}/credits?api_key=${this.tmdb_key}&language=en-US`;
+    if (import.meta.env && import.meta.env.DEV) console.debug('[TMDB] tv credits request', { url });
+    const response = await fetch(url);
+    return await response.json();
+  }
+
+  async fetchMovieSimilar(movie_id) {
+    const url = `https://api.themoviedb.org/3/movie/${movie_id}/similar?api_key=${this.tmdb_key}&language=en-US`;
+    if (import.meta.env && import.meta.env.DEV) console.debug('[TMDB] movie similar request', { url });
+    const response = await fetch(url);
+    return await response.json();
+  }
+
+  async fetchTVSimilar(tv_id) {
+    const url = `https://api.themoviedb.org/3/tv/${tv_id}/similar?api_key=${this.tmdb_key}&language=en-US`;
+    if (import.meta.env && import.meta.env.DEV) console.debug('[TMDB] tv similar request', { url });
+    const response = await fetch(url);
+    return await response.json();
+  }
+
+  async fetchMovieRecommendations(movie_id) {
+    const url = `https://api.themoviedb.org/3/movie/${movie_id}/recommendations?api_key=${this.tmdb_key}&language=en-US`;
+    if (import.meta.env && import.meta.env.DEV) console.debug('[TMDB] movie recommendations request', { url });
+    const response = await fetch(url);
+    return await response.json();
+  }
+
+  async fetchTVRecommendations(tv_id) {
+    const url = `https://api.themoviedb.org/3/tv/${tv_id}/recommendations?api_key=${this.tmdb_key}&language=en-US`;
+    if (import.meta.env && import.meta.env.DEV) console.debug('[TMDB] tv recommendations request', { url });
+    const response = await fetch(url);
+    return await response.json();
+  }
+
+  async fetchMovieKeywords(movie_id) {
+    const url = `https://api.themoviedb.org/3/movie/${movie_id}/keywords?api_key=${this.tmdb_key}&language=en-US`;
+    if (import.meta.env && import.meta.env.DEV) console.debug('[TMDB] movie keywords request', { url });
+    const response = await fetch(url);
+    return await response.json();
+  }
+
+  async fetchTVKeywords(tv_id) {
+    const url = `https://api.themoviedb.org/3/tv/${tv_id}/keywords?api_key=${this.tmdb_key}&language=en-US`;
+    if (import.meta.env && import.meta.env.DEV) console.debug('[TMDB] tv keywords request', { url });
+    const response = await fetch(url);
+    return await response.json();
+  }
+
+  async fetchPersonDetails(person_id) {
+    const url = `https://api.themoviedb.org/3/person/${person_id}?api_key=${this.tmdb_key}&language=en-US`;
+    if (import.meta.env && import.meta.env.DEV) console.debug('[TMDB] person details request', { url });
+    const response = await fetch(url);
+    return await response.json();
+  }
+
+  async fetchPersonMovieCredits(person_id) {
+    const url = `https://api.themoviedb.org/3/person/${person_id}/movie_credits?api_key=${this.tmdb_key}&language=en-US`;
+    if (import.meta.env && import.meta.env.DEV) console.debug('[TMDB] person movie credits request', { url });
+    const response = await fetch(url);
+    return await response.json();
+  }
+
+  async fetchPersonTVCredits(person_id) {
+    const url = `https://api.themoviedb.org/3/person/${person_id}/tv_credits?api_key=${this.tmdb_key}&language=en-US`;
+    if (import.meta.env && import.meta.env.DEV) console.debug('[TMDB] person tv credits request', { url });
+    const response = await fetch(url);
+    return await response.json();
+  }
+
+  async fetchCollection(collection_id) {
+    const url = `https://api.themoviedb.org/3/collection/${collection_id}?api_key=${this.tmdb_key}&language=en-US`;
+    if (import.meta.env && import.meta.env.DEV) console.debug('[TMDB] collection request', { url });
+    const response = await fetch(url);
+    return await response.json();
+  }
+
+  async fetchMovieExternalIds(movie_id) {
+    const url = `https://api.themoviedb.org/3/movie/${movie_id}/external_ids?api_key=${this.tmdb_key}`;
+    const response = await fetch(url);
+    return await response.json();
+  }
+
+  async fetchTVExternalIds(tv_id) {
+    const url = `https://api.themoviedb.org/3/tv/${tv_id}/external_ids?api_key=${this.tmdb_key}`;
+    const response = await fetch(url);
+    return await response.json();
   }
 
   async fetchTVDetails(tv_id) {

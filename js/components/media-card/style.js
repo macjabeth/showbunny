@@ -222,6 +222,73 @@ sheet.replaceSync(`
     padding: 0.25rem 0.7rem;
     white-space: nowrap;
   }
+
+  /* Metadata bar (runtime, status, budget, etc) */
+  .card-metadata-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.2rem;
+  }
+
+  .meta-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    background: var(--bg-elevated);
+    padding: 0.3rem 0.7rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border);
+  }
+
+  /* Tagline */
+  .card-tagline {
+    margin: 0.2rem 0 0;
+    font-style: italic;
+    color: var(--text-dim);
+    font-size: 1.25rem;
+    line-height: 1.5;
+  }
+
+  /* Homepage link */
+  .card-homepage-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 1.25rem;
+    color: var(--accent);
+    text-decoration: none;
+    transition: color var(--fast);
+  }
+
+  .card-homepage-link:hover {
+    color: var(--accent-hover);
+  }
+
+  /* Production info */
+  .card-production {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  /* Collection link */
+  .card-collection-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 1.25rem;
+    color: var(--accent);
+    text-decoration: none;
+    transition: color var(--fast);
+  }
+
+  .card-collection-link:hover {
+    color: var(--accent-hover);
+  }
 `);
 
 export default sheet;
